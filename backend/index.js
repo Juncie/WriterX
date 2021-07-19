@@ -15,7 +15,9 @@ mongoose
 
 app.use(express.json())
 
-app.use(cors())
+app.use(cors({
+    origin: ['http://localhost:3000', process.env.clientURL] //Add client urls to allow CORS
+}))
 
 
 
