@@ -2,6 +2,7 @@
 
 import axios from 'axios'
 
+console.log(process.env)
 
 const serverUrl = process.env.NODE_ENV === 'production' ? 'https://toro-plate.herokuapp.com/api' : `http://localhost:5000/api`
 console.log(serverUrl)
