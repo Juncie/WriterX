@@ -27,9 +27,9 @@ app.use('/api', require('./routes.js'))
 
 
 //Sends our one single page on all requests 
-app.get('*', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
-})
+// app.get('*', (req, res, next) => {
+//     res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
+// })
 
 
 

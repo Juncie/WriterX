@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 const serverUrl = process.env.NODE_ENV === 'production' ? 'https://toro-plate.herokuapp.com/api' : `http://localhost:5000/api`
-
+console.log(serverUrl)
 const createHeaders = () => {
     return { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
 }
@@ -25,8 +25,9 @@ const actions = {
     },
 
     authenticate: async (profileObj) => {
+        console.log(profileObj, 'profileObj')
         let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders())
-
+        console.log(res)
         localStorage.setItem('token', res.data.token)
 
         return res
