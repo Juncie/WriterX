@@ -3,7 +3,7 @@
 import axios from 'axios'
 
 
-const serverUrl = process.env.NODE_ENV === 'production' ? '' : `http://localhost:5000/api`
+const serverUrl = process.env.NODE_ENV === 'production' ? 'https://toro-plate.herokuapp.com/api' : `http://localhost:5000/api`
 
 const createHeaders = () => {
     return { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
@@ -21,11 +21,11 @@ const actions = {
         return res
     },
     getAllPosts: async (post) => {
-        return await axios.get(`${serverUrl}/all-the-posts`)
+        return await axios.get(`${serverUrl}/all-the-posts`, createHeaders())
     },
 
     authenticate: async (profileObj) => {
-        let res = await axios.post(`${serverUrl}/authenticate`, profileObj)
+        let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders())
 
         localStorage.setItem('token', res.data.token)
 
