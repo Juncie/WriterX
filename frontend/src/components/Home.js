@@ -7,7 +7,7 @@ function Home(props) {
     const [allPosts, setAllPosts] = useState([])
 
     useEffect(async () => {
-        let res = await actions.getAllPosts()
+        let res = await actions.communitySuggestions()
         console.log(res)
         setAllPosts(res.data)
     }, [])

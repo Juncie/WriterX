@@ -14,20 +14,20 @@ const createHeaders = () => {
 const actions = {
 
     getUser: async () => {
-        return await axios.get(`${serverUrl}/get-the-user`, createHeaders())
+        return await axios.get(`${serverUrl}/userProfile`, createHeaders())
     },
 
-    addPost: async (post) => {
-        let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders())
+    suggestions: async (post) => {
+        let res = await axios.post(`${serverUrl}/suggestions`, post, createHeaders())
         return res
     },
-    getAllPosts: async (post) => {
-        return await axios.get(`${serverUrl}/all-the-posts`, createHeaders())
+    communitySuggestions: async (post) => {
+        return await axios.get(`${serverUrl}/Communitysuggestions`, createHeaders())
     },
 
-    authenticate: async (profileObj) => {
+    login: async (profileObj) => {
         console.log(profileObj, 'profileObj')
-        let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders())
+        let res = await axios.post(`${serverUrl}/login`, profileObj, createHeaders())
         console.log(res)
         localStorage.setItem('token', res.data.token)
 

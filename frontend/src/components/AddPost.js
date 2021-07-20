@@ -15,7 +15,7 @@ function AddPost(props) {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        let res = await actions.addPost({ post })
+        let res = await actions.suggestions({ post })
         history.push('/') //props.history.push is also an option
     }
 

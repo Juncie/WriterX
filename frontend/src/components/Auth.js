@@ -11,7 +11,7 @@ function Auth(props) {
 
     const responseGoogle = async (response) => {
         console.log(response)
-        await actions.authenticate(response.profileObj)
+        await actions.login(response.profileObj)
         await getTheUser()
     }
 
