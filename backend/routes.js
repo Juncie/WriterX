@@ -9,7 +9,7 @@ const User = require('./models/User')
 router.get('/', (req, res) => {
     res.json({ serverWorking: true })
 })
-
+//get User
 router.get('/userProfile', authorize, async (req, res) => {
     let user = await User.findById(res.locals.user._id)
     res.json(user)

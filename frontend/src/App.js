@@ -27,16 +27,7 @@ function App() {
       <div className="App">
         <h1>🚀 MERN APP TORO 🎯 </h1>
         <i>{user?.name}</i>
-        <nav>
-          <Link to='/'>Home</Link>
-
-          {user?.name ?
-            <>
-              <Link to='/Profile'>Profile</Link>
-              <Link to='/AddPost'>AddPost</Link>
-            </>
-            : <Link to='/Auth'>Login/Signup</Link>}
-        </nav>
+        
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} />} />
           <Route exact path="/AddPost" render={(props) => <AddPost {...props} />} />

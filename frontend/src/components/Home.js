@@ -1,27 +1,20 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios'
-import actions from '../api'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import actions from "../api";
+import { Link } from "react-router-dom";
 
-function Home(props) {
 
-    const [allPosts, setAllPosts] = useState([])
 
-    useEffect(async () => {
-        let res = await actions.communitySuggestions()
-        console.log(res)
-        setAllPosts(res.data)
-    }, [])
+function Home() {
 
-    const ShowPosts = () => allPosts.map(eachPost => <li key={eachPost._id}>{eachPost.post} <i>created by ...{eachPost.userId?.name}</i></li>)
+  return (
+      <div>
+        <nav>
+          <Link to="/">Home??</Link>
 
-    return (
-        <div>
-            Home
-            <ul>
-                <ShowPosts />
-            </ul>
-        </div>
-    );
+        </nav>
+      </div>
+  );
 }
 
 export default Home;
