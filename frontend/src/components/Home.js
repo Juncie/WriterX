@@ -10,7 +10,10 @@ function Home() {
   return (
       <div>
         <nav>
-          <Link to="/">Home??</Link>
+          <h1>Hub</h1>
+          <Link to="/">Welcome Page</Link>
+          <Link to="/home">Home</Link>
+          <Link to="/hub">My Hub</Link>
 
         </nav>
       </div>
@@ -18,9 +21,3 @@ function Home() {
 }
 
 export default Home;
-
-
-
-Hub
-
-Chapters = {[]}

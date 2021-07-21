@@ -9,14 +9,14 @@ const User = require('./models/User')
 router.get('/', (req, res) => {
     res.json({ serverWorking: true })
 })
-//get User
-router.get('/userProfile', authorize, async (req, res) => {
+
+router.get('/get-the-user', authorize, async (req, res) => {
     let user = await User.findById(res.locals.user._id)
     res.json(user)
 })
 
-// Post Suggestions
-router.post('/suggestions', authorize, async (req, res) => {
+
+router.post('/add-post', authorize, async (req, res) => {
 
     let newPost = req.body
     newPost.userId = res.locals.user._id
@@ -25,34 +25,14 @@ router.post('/suggestions', authorize, async (req, res) => {
     })
 })
 
-// Show All Suggestions
-router.get('/Communitysuggestions', (req, res) => {
+
+router.get('/all-the-posts', (req, res) => {
     Post.find().populate('userId').then(posts => {
         res.json(posts)
     })
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-router.post('/login', async (req, res) => {
+router.post('/authenticate', async (req, res) => {
     let user = await User.findOne({ email: req.body.email })
 
     if (!user) {

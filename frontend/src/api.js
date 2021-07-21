@@ -13,26 +13,29 @@ const createHeaders = () => {
 
 const actions = {
 
+
     getUser: async () => {
-        return await axios.get(`${serverUrl}/userProfile`, createHeaders())
+        return await axios.get(`${serverUrl}/get-the-user`, createHeaders())
     },
 
-    suggestions: async (post) => {
-        let res = await axios.post(`${serverUrl}/suggestions`, post, createHeaders())
+
+    addPost: async (post) => {
+        let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders())
         return res
     },
-    communitySuggestions: async (post) => {
-        return await axios.get(`${serverUrl}/Communitysuggestions`, createHeaders())
+    getAllPosts: async (post) => {
+        return await axios.get(`${serverUrl}/all-the-posts`, createHeaders())
     },
 
-    login: async (profileObj) => {
+
+    authenticate: async (profileObj) => {
         console.log(profileObj, 'profileObj')
-        let res = await axios.post(`${serverUrl}/login`, profileObj, createHeaders())
+        let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders())
         console.log(res)
         localStorage.setItem('token', res.data.token)
-
         return res
-    }
+    },
+
 }
 
 export default actions

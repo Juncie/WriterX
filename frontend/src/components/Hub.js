@@ -1,7 +1,24 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import actions from '../api'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
-function Hub(props) {
+
+
+
+const Hub = async () => {
+//     let [test, setTest] = useState({})
+
+//     let res = await actions.getUser()
+//     setTest(res.data)
+//   }
+  
+//   useEffect(() => {
+//     setTest()
+//   }, [])
+
+ const getPosts =  () => {
     return (
         <div>
           <nav>
@@ -10,8 +27,10 @@ function Hub(props) {
               <Link to="/hub">Hub</Link>  
           </nav>  
           <h1>Hub</h1>
+          <button onClick={getPosts}>CLICK ME</button>
         </div>
     );
+}
 }
 
 export default Hub;

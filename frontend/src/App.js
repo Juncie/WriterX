@@ -32,13 +32,15 @@ function App() {
         <i>{user?.name}</i>
         
         <Switch>
-          <Route exact path="/" render={(props) => <Home {...props} />} />
-          <Route exact path="/AddPost" render={(props) => <AddPost {...props} />} />
-          <Route exact path="/Auth" render={(props) => <Auth {...props} />} />
-          <Route exact path="/Profile" render={(props) => <Profile {...props} user={user} />} />
-          <Route exact path="/Directories" render={(props) => <Directories {...props} />} /> 
-          <Route exact path="/Hub" render={(props) => <Hub {...props} />} />
-          <Route exact path="/Canvas" render={(props) => <Canvas {...props} />} />
+          <Route exact path="/" render={(props) => <home {...props} />} />
+          <Route exact path="/addPost" render={(props) => <AddPost {...props} />} />
+          <Route exact path="/auth" render={(props) => <Auth {...props} />} />
+          <Route exact path="/profile" render={(props) => <Profile {...props} user={user} />} />
+          <Route exact path="/directories" render={(props) => <Directories {...props} />} /> 
+          <Route exact path="/hub" render={(props) => <Hub {...props} />} />
+          <Route exact path="/canvas" render={(props) => <Canvas {...props} />} />
+          <Route exact path="/home" render={(props) => <Home {...props} />} />
+          <Route exact path="/hub" render={(props) => <Hub {...props} />} />
         </Switch>
 
       </div>
