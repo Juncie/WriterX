@@ -4,8 +4,8 @@ const router = express.Router()
 const Post = require('./models/Post')
 const User = require('./models/User')
 const Characters = require('./models/Characters')
-const Locations = require('./models/Locations')
-const Plots = require('./models/Plots')
+//const Locations = require('./models/Locations')
+// const Plots = require('./models/Plots')
 /**ALL OUR BACKEND ROUTES */
 
 
@@ -49,31 +49,31 @@ router.post('/authenticate', async (req, res) => {
 })
 
 router.post('/add-character', authorize, async (req, res) => {
-
-    let newCharacter = req.body
-    newPost.charactersId = res.locals.characters._id
-    Character.create(newPost).then(post => {
-        res.json(post)
+console.log("hello")
+    let characters = req.body
+    characters.create(characters).then(res => {
+        console.log(res)
+        res.json(res)
     })
 })
 
-router.post('/add-location', authorize, async (req, res) => {
+// router.post('/add-location', authorize, async (req, res) => {
 
-    let newLocation = req.body
-    newPost.locationsId = res.locals.loacations._id
-    Location.create(newPost).then(post => {
-        res.json(post)
-    })
-})
+//     let newLocation = req.body
+//     newPost.locationsId = res.locals.loacations._id
+//     Location.create(newPost).then(post => {
+//         res.json(post)
+//     })
+// })
 
-router.post('/add-plot', authorize, async (req, res) => {
+// router.post('/add-plot', authorize, async (req, res) => {
 
-    let newPlot = req.body
-    newPost.plotsId = res.locals.plotss._id
-    Plot.create(newPost).then(post => {
-        res.json(post)
-    })
-})
+//     let newPlot = req.body
+//     newPost.plotsId = res.locals.plotss._id
+//     Plot.create(newPost).then(post => {
+//         res.json(post)
+//     })
+// })
 
 
 

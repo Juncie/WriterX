@@ -27,6 +27,10 @@ const actions = {
         return await axios.get(`${serverUrl}/all-the-posts`, createHeaders())
     },
 
+    postAllCharacters: async (post) => {
+        return await axios.post(`${serverUrl}/add-character`, createHeaders())
+    },
+
 
     authenticate: async (profileObj) => {
         console.log(profileObj, 'profileObj')

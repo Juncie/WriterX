@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const charactersSchema = new Schema({
     name: String,
-    age: number,
+    age: Number,
     imageUrl: String,
     bio: [String],
     description: { height: Number, eyeColor: String, weight: Number },
