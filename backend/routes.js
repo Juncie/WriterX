@@ -1,124 +1,126 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const Post = require("./models/Post");
+const Post = require("./models/Suggetions");
 const User = require("./models/User");
 const Characters = require("./models/Characters");
 const Novels = require("./models/Novels");
 //const Locations = require('./models/Locations')
 // const Plots = require('./models/Plots')
 /**ALL OUR BACKEND ROUTES */
-console.log("IS 11 WORKING?");
+console.log("IS 11 WORKING!@#!?");
 /**ALL OUR BACKEND ROUTES */
 router.get("/", (req, res) => {
+    console.log('anything')
   res.json({ serverWorking: true });
 });
 
-router.get("/get-the-user", authorize, async (req, res) => {
-  let user = await User.findById(res.locals.user._id);
-  res.json(user);
-});
-console.log("IS 21 WORKING?");
-router.post("/add-character", authorize, async (req, res) => {
-  console.log(req);
-  let newPost = req.body;
-  newPost.userId = res.locals.character._id;
-  // console.log(res)
-  console.log("IS 27 WORKING?");
-  Character.create(newPost).then((post) => {
-    res.json(post);
-  });
-});
+// router.get("/get-the-user", authorize, async (req, res) => {
+//   let user = await User.findById(res.locals.user._id);
+//   res.json(user);
+// });
+// console.log("IS 21 WORKING?");
+// router.post("/add-character", authorize, async (req, res) => {
+//   console.log(req);
+//   let newPost = req.body;
+//   newPost.userId = res.locals.character._id;
+//   // console.log(res)
+//   console.log("IS 27 WORKING?");
+//   Character.create(newPost).then((post) => {
+//     res.json(post);
+//   });
+// });
 
-console.log("IS 32 WORKING?");
-router.post("/add-post", authorize, async (req, res) => {
-  let newPost = req.body;
-  newPost.userId = res.locals.user._id;
-  Post.create(newPost).then((post) => {
-    console.log(res.data);
+// console.log("IS 32 WORKING?");
+// //former add-post
+// router.post("/suggestions", authorize, async (req, res) => {
+//   let newSuggestion = req.body;
+//   newSuggestion.userId = res.locals.user._id;
+//   Suggestion.create(newSuggestion).then((post) => {
+//     console.log(res.data);
 
-    res.json(post);
-  });
-});
-console.log("IS 43 WORKING?");
-router.get("/all-the-posts", (req, res) => {
-  Post.find()
-    .populate("userId")
-    .then((posts) => {
-      console.log(res);
-      res.json(posts);
-    });
-});
-console.log("IS 52 WORKING?");
+//     res.json(post);
+//   });
+// });
+// console.log("IS 43 WORKING?");
 
-router.post("/authenticate", async (req, res) => {
-  let user = await User.findOne({ email: req.body.email });
+// router.get("/community-board", (req, res) => {
+//   Post.find()
+//     .populate("userId")
+//     .then((posts) => {
+//       console.log(res);
+//       res.json(posts);
+//     });
+// });
+// console.log("IS 52 WORKING?");
 
-  if (!user) {
-    user = await User.create(req.body);
-  }
+// router.post("/authenticate", async (req, res) => {
+//   let user = await User.findOne({ email: req.body.email });
 
-  jwt.sign({ user }, "secret key", { expiresIn: "30min" }, (err, token) => {
-    res.json({ user, token });
-  });
-});
+//   if (!user) {
+//     user = await User.create(req.body);
+//   }
 
-router.post("/add-character", authorize, async (req, res) => {
-  console.log("hello");
-  let characters = req.body;
-  Characters.create(characters).then((res) => {
-    console.log(res);
-    res.json(res);
-  });
-});
+//   jwt.sign({ user }, "secret key", { expiresIn: "5 hours" }, (err, token) => {
+//     res.json({ user, token });
+//   });
+// });
 
-// router.post('./characters', (req, res) => {
-//     console.log('characters', req.body);
-// })
+// router.post("/add-character", authorize, async (req, res) => {
+//   console.log("hello");
+//   let characters = req.body;
+//   Characters.create(characters).then((res) => {
+//     console.log(res);
+//     res.json(res);
+//   });
+// });
 
-router.post("/novels", authorize, async (req, res) => {
-  let newNovels = req.body;
-  Novels.create(newNovels).then((post) => {
-    console.log(res.data);
+// //getallCharacters
 
-    res.json(post);
-  });
-});
-console.log(Novels);
-// router.post('/add-location', authorize, async (req, res) => {
+// router.post("/novels", authorize, async (req, res) => {
+//   console.log("helloooo");
+//   let newNovels = req.body;
+//   Novels.create(newNovels).then((res) => {
+//     console.log(res);
 
-//     let newLocation = req.body
-//     newPost.locationsId = res.locals.loacations._id
-//     Location.create(newPost).then(post => {
-//         res.json(post)
-//     })
-// })
+//     res.json(res);
+//   });
+// });
+// // router.post('/add-location', authorize, async (req, res) => {
 
-// router.post('/add-plot', authorize, async (req, res) => {
+// //     let newLocation = req.body
+// //     newPost.locationsId = res.locals.loacations._id
+// //     Location.create(newPost).then(post => {
+// //         res.json(post)
+// //     })
+// // })
 
-//     let newPlot = req.body
-//     newPost.plotsId = res.locals.plotss._id
-//     Plot.create(newPost).then(post => {
-//         res.json(post)
-//     })
-// })
+// // router.post('/add-plot', authorize, async (req, res) => {
 
-//Middle ware >>> Put this in the middle of any route where you want to authorize
-function authorize(req, res, next) {
-  let token = req.headers.authorization.split(" ")[1]; //Token from front end
-  if (token) {
-    jwt.verify(token, "secret key", (err, data) => {
-      if (!err) {
-        res.locals.user = data.user; //Set global variable with user data in the backend
-        next();
-      } else {
-        res.status(403).json({ message: err });
-        //throw new Error({ message: "ahhh" })
-      }
-    });
-  } else {
-    res.status(403).json({ message: "Must be logged in!" });
-  }
-}
+// //     let newPlot = req.body
+// //     newPost.plotsId = res.locals.plotss._id
+// //     Plot.create(newPost).then(post => {
+// //         res.json(post)
+// //     })
+// // })
+
+// //Middle ware >>> Put this in the middle of any route where you want to authorize
+// function authorize(req, res, next) {
+//   console.log("is this authorizingggg");
+//   let token = req.headers.authorization.split(" ")[1]; //Token from front end
+//   if (token) {
+//     jwt.verify(token, "secret key", (err, data) => {
+//       if (!err) {
+//         res.locals.user = data.user; //Set global variable with user data in the backend
+//         next();
+//       } else {
+//         res.status(403).json({ message: err });
+//         //throw new Error({ message: "ahhh" })
+//       }
+//     });
+//   } else {
+//     res.status(403).json({ message: "Must be logged in!" });
+//   }
+// }
 
 module.exports = router;
