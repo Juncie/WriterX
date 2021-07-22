@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import TheContext from "../TheContext";
 import actions from "../api";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 console.log(actions);
 function Profile(props) {
@@ -32,7 +33,14 @@ function Profile(props) {
   return (
     <div>
       <h2> Profile {props.user?.name}</h2>
+      <nav>
+        <Link to="/directories">Directories</Link>
+        <Link to="/canvas">Canvas</Link>
+        <Link to="/hub">Hub</Link>
+      </nav>
       {getThemPosts()}
+
+      {/* user Image not showing */}
       <img src={user?.imageUrl} alt="User" />
       <button onClick={logOut}>Log out</button>
     </div>

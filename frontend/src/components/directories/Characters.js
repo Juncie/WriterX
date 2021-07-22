@@ -8,7 +8,6 @@ function Characters(props) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log(e) 
         let res = await actions.postAllCharacters({ characters })
         history.push('/add-character')
         console.log("submitted", characters);

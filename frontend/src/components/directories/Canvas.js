@@ -1,22 +1,23 @@
 import { React, useState, useEffect } from "react";
-import actions from "../api";
+import actions from "../../api";
+import axios from "axios";
 
 function Canvas() {
-  const [novel, setNovel] = useState({});
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(e);
-    actions.newNovel().then((res) => {
-      setNovel("title", novel);
-      console.log(res);
-    });
-    console.log("submitted", novel);
-  };
+  const [novel, setNovel] = useState("");
 
   const handleChange = (e) => {
     setNovel(e.target.value);
   };
+
+  const handleSubmit = async (e) => {
+    console.log("is this working");
+    e.preventDefault();
+    actions.newNovel(novel).then((res) => {
+      console.log("hello", res.data);
+      // setNovel("title", novel);
+    });
+  };
+  console.log("submitted", novel);
 
   return (
     <div>

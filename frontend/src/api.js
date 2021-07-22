@@ -18,12 +18,12 @@ const actions = {
     return await axios.get(`${serverUrl}/get-the-user`, createHeaders());
   },
 
-  addPost: async (post) => {
-    let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders());
+  suggestions: async (post) => {
+    let res = await axios.post(`${serverUrl}/suggestions`, post, createHeaders());
     return res;
   },
   getAllPosts: async (post) => {
-    return await axios.get(`${serverUrl}/all-the-posts`, createHeaders());
+    return await axios.get(`${serverUrl}/community-board`, createHeaders());
   },
 
   postAllCharacters: async (post) => {
@@ -39,9 +39,9 @@ const actions = {
   },
 
   newNovel: async (novel) => {
-    let res = await axios.post(`${serverUrl}/novels`, novel, createHeaders()).then((res) => {
-      console.log(res);
-    });
+    console.log(novel);
+    let res = await axios.post(`${serverUrl}/novels`, novel, createHeaders());
+    console.log(res);
     return res;
   },
 };
