@@ -1,15 +1,14 @@
 import logo from './logo.svg';
 import { useEffect, useState } from 'react'
-import actions from './api'
+import actions from './components/api'
 import './App.css';
 import { Switch, Link, Route } from 'react-router-dom'
 import TheContext from './TheContext';
-import Home from './components/Home'
+import Welcome from './components/Welcome'
 import Auth from './components/Auth'
-import AddPost from './components/AddPost'
-import Profile from './components/Profile'
+import Suggestions from './components/Suggestions'
 import Hub from './components/Hub'
-import Canvas from './components/Canvas'
+import Canvas from './components/directories/Canvas'
 import Characters from './components/directories/Characters';
 
 
@@ -35,14 +34,11 @@ function App() {
           <h2>XXX</h2>
         </Link>
         <Switch>
-          <Route exact path="/" render={(props) => <home {...props} />} />
-          <Route exact path="/addPost" render={(props) => <AddPost {...props} />} />
+          <Route exact path="/" render={(props) => <Welcome {...props} />} />
+          <Route exact path="/suggestions" render={(props) => <Suggestions {...props} />} />
           <Route exact path="/auth" render={(props) => <Auth {...props} />} />
-          <Route exact path="/profile" render={(props) => <Profile {...props} user={user} />} />
-          <Route exact path="/hub" render={(props) => <Hub {...props} />} />
+          <Route exact path="/hub" render={(props) => <Hub {...props} user={user} />} />
           <Route exact path="/canvas" render={(props) => <Canvas {...props} />} />
-          <Route exact path="/home" render={(props) => <Home {...props} />} />
-          <Route exact path="/hub" render={(props) => <Hub {...props} />} />
           <Route exact path="/new-characters" render={(props) => <Characters  /> } />
         </Switch>
 
