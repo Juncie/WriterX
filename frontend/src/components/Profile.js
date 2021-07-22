@@ -15,7 +15,7 @@ function Profile(props) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    actions.getRake().then((res) => {
+    actions.getAllPosts().then((res) => {
       console.log(res);
       setPosts(res.data);
     });
