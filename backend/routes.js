@@ -8,7 +8,7 @@ const Novels = require("./models/Novels");
 //const Locations = require('./models/Locations')
 // const Plots = require('./models/Plots')
 /**ALL OUR BACKEND ROUTES */
-
+console.log("IS 11 WORKING?");
 /**ALL OUR BACKEND ROUTES */
 router.get("/", (req, res) => {
   res.json({ serverWorking: true });
@@ -18,17 +18,19 @@ router.get("/get-the-user", authorize, async (req, res) => {
   let user = await User.findById(res.locals.user._id);
   res.json(user);
 });
-
+console.log("IS 21 WORKING?");
 router.post("/add-character", authorize, async (req, res) => {
   console.log(req);
   let newPost = req.body;
   newPost.userId = res.locals.character._id;
   // console.log(res)
+  console.log("IS 27 WORKING?");
   Character.create(newPost).then((post) => {
     res.json(post);
   });
 });
 
+console.log("IS 32 WORKING?");
 router.post("/add-post", authorize, async (req, res) => {
   let newPost = req.body;
   newPost.userId = res.locals.user._id;
@@ -38,7 +40,7 @@ router.post("/add-post", authorize, async (req, res) => {
     res.json(post);
   });
 });
-
+console.log("IS 43 WORKING?");
 router.get("/all-the-posts", (req, res) => {
   Post.find()
     .populate("userId")
@@ -47,6 +49,7 @@ router.get("/all-the-posts", (req, res) => {
       res.json(posts);
     });
 });
+console.log("IS 52 WORKING?");
 
 router.post("/authenticate", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
@@ -77,7 +80,7 @@ router.post("/novels", authorize, async (req, res) => {
     res.json(post);
   });
 });
-
+console.log(Novels);
 // router.post('/add-location', authorize, async (req, res) => {
 
 //     let newLocation = req.body
