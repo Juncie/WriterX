@@ -40,7 +40,7 @@ const actions = {
 
   newNovel: async (novel) => {
     console.log(novel);
-    let res = await axios.post(`${serverUrl}/novels`, novel, createHeaders());
+    let res = await axios.post(`${serverUrl}/novels`,novel, createHeaders());
     console.log(res);
     return res;
   },

@@ -12,7 +12,7 @@ function Canvas() {
   const handleSubmit = async (e) => {
     console.log("is this working");
     e.preventDefault();
-    actions.newNovel(novel).then((res) => {
+    actions.newNovel({novel:novel,name:'BlahBLah'}).then((res) => {
       console.log("hello", res.data);
       // setNovel("title", novel);
     });
