@@ -13,6 +13,7 @@ function Characters(props) {
         let res = await actions.postAllCharacters({ characters })
         history.push('/add-character')
         console.log("submitted", characters);
+        console.log("anything")
         actions.characters().then((res) => {
             setCharacters("name", characters);
         });
