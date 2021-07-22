@@ -14,34 +14,36 @@ const createHeaders = () => {
 };
 
 const actions = {
+  getUser: async () => {
+    return await axios.get(`${serverUrl}/get-the-user`, createHeaders());
+  },
 
+  addPost: async (post) => {
+    let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders());
+    return res;
+  },
+  getAllPosts: async (post) => {
+    return await axios.get(`${serverUrl}/all-the-posts`, createHeaders());
+  },
 
-    getUser: async () => {
-        return await axios.get(`${serverUrl}/get-the-user`, createHeaders())
-    },
+  postAllCharacters: async (post) => {
+    return await axios.post(`${serverUrl}/add-character`, createHeaders());
+  },
 
+  authenticate: async (profileObj) => {
+    console.log(profileObj, "profileObj");
+    let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders());
+    console.log(res);
+    localStorage.setItem("token", res.data.token);
+    return res;
+  },
 
-    addPost: async (post) => {
-        let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders())
-        return res
-    },
-    getAllPosts: async (post) => {
-        return await axios.get(`${serverUrl}/all-the-posts`, createHeaders())
-    },
+  newNovel: async (novel) => {
+    let res = await axios.post(`${serverUrl}/novels`, novel, createHeaders()).then((res) => {
+      console.log(res);
+    });
+    return res;
+  },
+};
 
-    postAllCharacters: async (post) => {
-        return await axios.post(`${serverUrl}/add-character`, createHeaders())
-    },
-
-
-    authenticate: async (profileObj) => {
-        console.log(profileObj, 'profileObj')
-        let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders())
-        console.log(res)
-        localStorage.setItem('token', res.data.token)
-        return res
-    },
-
-}
-
-export default actions
+export default actions;
