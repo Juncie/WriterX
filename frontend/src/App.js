@@ -11,7 +11,7 @@ import Profile from './components/Profile'
 import Directories from './components/Directories'
 import Hub from './components/Hub'
 import Canvas from './components/Canvas'
-
+import NewCharacter from './components/directories/NewCharacter';
 function App() {
 
   let [user, setUser] = useState({})
@@ -30,7 +30,9 @@ function App() {
       <div className="App">
         <h1>🚀 MERN APP TORO 🎯 </h1>
         <i>{user?.name}</i>
-        
+        <Link to='/characters'>
+          <h2>XXX</h2>
+        </Link>
         <Switch>
           <Route exact path="/" render={(props) => <home {...props} />} />
           <Route exact path="/addPost" render={(props) => <AddPost {...props} />} />
@@ -41,6 +43,7 @@ function App() {
           <Route exact path="/canvas" render={(props) => <Canvas {...props} />} />
           <Route exact path="/home" render={(props) => <Home {...props} />} />
           <Route exact path="/hub" render={(props) => <Hub {...props} />} />
+          <Route exact path="/characters" render={(props) => <NewCharacter {...props} />} />
         </Switch>
 
       </div>

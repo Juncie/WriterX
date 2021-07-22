@@ -8,17 +8,23 @@ import { useEffect, useState } from 'react'
 
 
 const Hub = async () => {
-//     let [test, setTest] = useState({})
 
-//     let res = await actions.getUser()
-//     setTest(res.data)
-//   }
-  
-//   useEffect(() => {
-//     setTest()
-//   }, [])
+    let [test, setTest] = useState({})
 
- const getPosts =  () => {
+    const getTheTest = async () => {
+      let res = await actions.getTest()
+      console.log(res.data)
+      setTest(res.data)
+
+    }
+    
+    useEffect(() => {
+      getTheTest()
+    }, [])
+    
+    console.log(test)
+    
+    
     return (
         <div>
           <nav>
@@ -26,11 +32,13 @@ const Hub = async () => {
               <Link to="/canvas">Canvas</Link>
               <Link to="/hub">Hub</Link>  
           </nav>  
+          
           <h1>Hub</h1>
-          <button onClick={getPosts}>CLICK ME</button>
+         
+          <button onClick={getTheTest}>CLICK ME</button>
         </div>
     );
 }
-}
+
 
 export default Hub;

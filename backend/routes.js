@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken')
 const router = express.Router()
 const Post = require('./models/Post')
 const User = require('./models/User')
+
+
 /**ALL OUR BACKEND ROUTES */
-
-
 router.get('/', (req, res) => {
     res.json({ serverWorking: true })
 })
@@ -15,12 +15,25 @@ router.get('/get-the-user', authorize, async (req, res) => {
     res.json(user)
 })
 
+router.post('/add-character', authorize, async (req, res) => {
+    console.log(req)
+    let newPost = req.body
+    newPost.userId = res.locals.character._id
+    // console.log(res)
+    Character.create(newPost).then(post => {
+        res.json(post)
+    })
+})
+
+
 
 router.post('/add-post', authorize, async (req, res) => {
 
     let newPost = req.body
     newPost.userId = res.locals.user._id
     Post.create(newPost).then(post => {
+        console.log(res.data)
+        
         res.json(post)
     })
 })
@@ -28,6 +41,7 @@ router.post('/add-post', authorize, async (req, res) => {
 
 router.get('/all-the-posts', (req, res) => {
     Post.find().populate('userId').then(posts => {
+        console.log(res)
         res.json(posts)
     })
 })
@@ -44,8 +58,6 @@ router.post('/authenticate', async (req, res) => {
     })
 
 })
-
-
 
 
 //Middle ware >>> Put this in the middle of any route where you want to authorize
@@ -69,4 +81,4 @@ function authorize(req, res, next) {
 
 
 
-module.exports = router
+module.exports = router;
