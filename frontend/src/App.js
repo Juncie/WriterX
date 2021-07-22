@@ -8,10 +8,11 @@ import Home from './components/Home'
 import Auth from './components/Auth'
 import AddPost from './components/AddPost'
 import Profile from './components/Profile'
-import Directories from './components/Directories'
 import Hub from './components/Hub'
 import Canvas from './components/Canvas'
-import NewCharacter from './components/directories/NewCharacter';
+import Characters from './components/directories/Characters';
+
+
 function App() {
 
   let [user, setUser] = useState({})
@@ -38,12 +39,11 @@ function App() {
           <Route exact path="/addPost" render={(props) => <AddPost {...props} />} />
           <Route exact path="/auth" render={(props) => <Auth {...props} />} />
           <Route exact path="/profile" render={(props) => <Profile {...props} user={user} />} />
-          <Route exact path="/directories" render={(props) => <Directories {...props} />} /> 
           <Route exact path="/hub" render={(props) => <Hub {...props} />} />
           <Route exact path="/canvas" render={(props) => <Canvas {...props} />} />
           <Route exact path="/home" render={(props) => <Home {...props} />} />
           <Route exact path="/hub" render={(props) => <Hub {...props} />} />
-          <Route exact path="/characters" render={(props) => <NewCharacter {...props} />} />
+          <Route exact path="/characters" render={(props) => <Characters  /> } />
         </Switch>
 
       </div>

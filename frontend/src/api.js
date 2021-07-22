@@ -14,25 +14,34 @@ const createHeaders = () => {
 };
 
 const actions = {
-  getUser: async () => {
-    return await axios.get(`${serverUrl}/get-the-user`, createHeaders());
-  },
 
-  addPost: async (post) => {
-    let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders());
-    return res;
-  },
-  getRake: async () => {
-    return await axios.get(`${serverUrl}/all-the-posts`, createHeaders());
-  },
 
-  authenticate: async (profileObj) => {
-    console.log(profileObj, "profileObj");
-    let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders());
-    console.log(res);
-    localStorage.setItem("token", res.data.token);
-    return res;
-  },
-};
+    getUser: async () => {
+        return await axios.get(`${serverUrl}/get-the-user`, createHeaders())
+    },
 
-export default actions;
+
+    addPost: async (post) => {
+        let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders())
+        return res
+    },
+    getAllPosts: async (post) => {
+        return await axios.get(`${serverUrl}/all-the-posts`, createHeaders())
+    },
+
+    postAllCharacters: async (post) => {
+        return await axios.post(`${serverUrl}/add-character`, createHeaders())
+    },
+
+
+    authenticate: async (profileObj) => {
+        console.log(profileObj, 'profileObj')
+        let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders())
+        console.log(res)
+        localStorage.setItem('token', res.data.token)
+        return res
+    },
+
+}
+
+export default actions
