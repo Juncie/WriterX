@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import actions from '../../api';
+import actions from '../api';
 //import { useHistory } from 'react-router-dom';
 //import axios from 'axios'
 

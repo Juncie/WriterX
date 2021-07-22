@@ -1,44 +1,49 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import actions from '../api'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from "react";
+import TheContext from "../TheContext";
+import actions from "./api";
+import axios from "axios";
+import { Link } from 'react-router-dom';
 
+console.log(actions);
+function Hub(props) {
+  let { user, setUser } = useContext(TheContext);
 
+  const logOut = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
 
+  const [posts, setPosts] = useState([]);
 
-const Hub = async () => {
+  useEffect(() => {
+    actions.getAllPosts().then((res) => {
+      console.log(res);
+      setPosts(res.data);
+    });
+  }, []);
 
-    let [test, setTest] = useState({})
+  console.log(posts);
 
-    const getTheTest = async () => {
-      let res = await actions.getTest()
-      console.log(res.data)
-      setTest(res.data)
+  const getThemPosts = () => {
+    return posts.map((eachPost) => {
+      return <div>{eachPost.name}</div>;
+    });
+  };
 
-    }
-    
-    useEffect(() => {
-      getTheTest()
-    }, [])
-    
-    console.log(test)
-    
-    
-    return (
-        <div>
-          <nav>
+  return (
+    <div>
+      <h2> Hub {props.user?.name}</h2>
+      <nav>
               <Link to="/directories">Directories</Link>
               <Link to="/canvas">Canvas</Link>
               <Link to="/hub">Hub</Link>  
           </nav>  
-          
-          <h1>Hub</h1>
-         
-          <button onClick={getTheTest}>CLICK ME</button>
-        </div>
-    );
-}
 
+      {getThemPosts()}
+      <img src={user?.imageUrl} alt="User" />
+      <button onClick={logOut}>Log out</button>
+    </div>
+  );
+}
 
 export default Hub;

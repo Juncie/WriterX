@@ -19,6 +19,7 @@ router.get("/get-the-user", authorize, async (req, res) => {
   res.json(user);
 });
 console.log("IS 21 WORKING?");
+
 router.post("/newCharacters", authorize, async (req, res) => {
     console.log("nw char working");
     let characters = req.body;

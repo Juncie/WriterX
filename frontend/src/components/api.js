@@ -18,8 +18,8 @@ const actions = {
     return await axios.get(`${serverUrl}/get-the-user`, createHeaders());
   },
 
-  addPost: async (post) => {
-    let res = await axios.post(`${serverUrl}/add-post`, post, createHeaders());
+  suggestions: async (post) => {
+    let res = await axios.post(`${serverUrl}/suggestions`, post, createHeaders());
     return res;
   },
   getAllPosts: async (post) => {
