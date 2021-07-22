@@ -72,6 +72,10 @@ router.post("/add-character", authorize, async (req, res) => {
   });
 });
 
+// router.post('./characters', (req, res) => {
+//     console.log('characters', req.body);
+// })
+
 router.post("/novels", authorize, async (req, res) => {
   let newNovels = req.body;
   Novels.create(newNovels).then((post) => {
