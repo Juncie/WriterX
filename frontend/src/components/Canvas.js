@@ -6,16 +6,9 @@ function Canvas() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD:frontend/src/components/Canvas.js
-    console.log(e);
-    actions.newNovel().then((res) => {
-      setNovel("title", novel);
-      console.log(res);
-=======
     actions.newNovel({novel:novel,name:'BlahBLah'}).then((res) => {
       console.log("hello", res.data);
       // setNovel("title", novel);
->>>>>>> a35849c6d6ab6138e5625b82eee7797e316350d9:frontend/src/components/directories/Canvas.js
     });
     console.log("submitted", novel);
   };

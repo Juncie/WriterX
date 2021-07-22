@@ -1,7 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const Post = require("./models/Suggetions");
+//const Post = require("./models/Suggetions");
 const User = require("./models/User");
 const Characters = require("./models/Characters");
 const Novels = require("./models/Novels");
@@ -19,16 +19,15 @@ router.get("/get-the-user", authorize, async (req, res) => {
   res.json(user);
 });
 console.log("IS 21 WORKING?");
-router.post("/add-character", authorize, async (req, res) => {
-  console.log(req);
-  let newPost = req.body;
-  newPost.userId = res.locals.character._id;
-  // console.log(res)
-  console.log("IS 27 WORKING?");
-  Character.create(newPost).then((post) => {
-    res.json(post);
+router.post("/newCharacters", authorize, async (req, res) => {
+    console.log("nw char working");
+    let characters = req.body;
+    console.log("anything", req.body)
+    Characters.create(characters).then((newCharacter) => {
+      console.log(newCharacter);
+      res.json(newCharacter);
+    });
   });
-});
 
 console.log("IS 32 WORKING?");
 //former add-post

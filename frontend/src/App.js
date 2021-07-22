@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/canvas" render={(props) => <Canvas {...props} />} />
           <Route exact path="/home" render={(props) => <Home {...props} />} />
           <Route exact path="/hub" render={(props) => <Hub {...props} />} />
-          <Route exact path="/characters" render={(props) => <Characters  /> } />
+          <Route exact path="/new-characters" render={(props) => <Characters  /> } />
         </Switch>
 
       </div>

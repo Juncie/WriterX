@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const charactersSchema = new Schema({
-    name: String,
+    characters: String,
     age: Number,
     imageUrl: String,
     bio: [String],

@@ -4,24 +4,14 @@ import actions from '../../api';
 //import axios from 'axios'
 
 function Characters(props) {
-    const [characters, setCharacters] = useState({})
+    const [characters, setCharacters] = useState("")
 
     //let history = useHistory()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         let res = await actions.postAllCharacters({ characters })
-        history.push('/add-character')
         console.log("submitted", characters);
-        console.log("anything")
-        actions.characters().then((res) => {
-            setCharacters("name", characters);
-        });
-        // let res = await actions.postAllCharacters({ characters })
-        // history.push('/add-character')
-        // axios.post('http://localhost:3000/Characters', characters).then((res) => {
-            //console.log(res);
-            console.log("submitted", characters);
         };
 
     const handleChange = (e) => {
