@@ -63,14 +63,19 @@ router.post("/authenticate", async (req, res) => {
 router.post("/add-character", authorize, async (req, res) => {
   console.log("hello");
   let characters = req.body;
-  characters.create(characters).then((res) => {
+  Characters.create(characters).then((res) => {
     console.log(res);
     res.json(res);
   });
 });
 
-router.post("/", authorize, async (req, res) => {
-  Model.Method();
+router.post("/novels", authorize, async (req, res) => {
+  let newNovels = req.body;
+  Novels.create(newNovels).then((post) => {
+    console.log(res.data);
+
+    res.json(post);
+  });
 });
 
 // router.post('/add-location', authorize, async (req, res) => {
