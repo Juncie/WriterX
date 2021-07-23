@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GoogleLogin } from "react-google-login";
-import actions from "./api";
-import TheContext from "../TheContext";
+import actions from "../api";
+import TheContext from "../../TheContext";
 function Auth(props) {
   let { getTheUser } = useContext(TheContext);
 
@@ -9,13 +9,12 @@ function Auth(props) {
     console.log(response);
     await actions.authenticate(response.profileObj);
     await getTheUser();
-    props.history.push('/profile')
+    props.history.push("/hub");
   };
 
-//   const redirect = () => window.location.href = "http://localhost:3000/profile"
-  
-  
-  const failure = () => console.log('Game Over Man')
+  //   const redirect = () => window.location.href = "http://localhost:3000/profile"
+
+  const failure = () => console.log("Game Over Man");
   return (
     <div>
       <h3>Auth</h3>
