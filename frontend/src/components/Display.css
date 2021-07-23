@@ -1,9 +1,9 @@
-/* div {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    height: 100%;
-    position: absolute;
-    background: gray;
-} */
+div.notes {
+    float: left;
+    position: relative;
+    margin-left: 200px;
+}
 
+a.dropdown-item :hover {
+    background-color: yellow;
+}

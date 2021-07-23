@@ -7,6 +7,8 @@ function Sidebar(props) {
         <div>
           <nav>
               {/* <Link to="/welcome">Home</Welcome> */}
+              
+              <Link to ="Auth"><img src="https://styles.redditmedia.com/t5_kwwt3/styles/communityIcon_4g3bzdpyw2r41.png"/>Name</Link>
               <Link to="/hub">Hub</Link>
               <Link to="/community-board">Community Board</Link>
               <Link to="/canvas">Canvas</Link>
