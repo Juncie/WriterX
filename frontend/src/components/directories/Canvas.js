@@ -30,13 +30,12 @@ function Canvas() {
     </div>
     </div>
     <Editor />
-      <div className="canvas">
-      <h1>Canvas</h1>
+      {/* <div className="canvas">
       <form onSubmit={handleSubmit}>
         <input type="text" onChange={handleChange} name="title" />
         <button>CLICK ME</button>
       </form>
-      </div>
+      </div> */}
     </div>
   );
 }

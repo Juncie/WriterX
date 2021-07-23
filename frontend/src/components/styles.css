@@ -1,8 +1,14 @@
 .text-editor {
     min-width: 600px;
     margin: 0 auto;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
   }
+
   .ql-editor {
-    min-height: 200px;
+    height: 95vh;
+    min-width: 600px;
   }
   

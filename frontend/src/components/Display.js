@@ -28,6 +28,7 @@ function Display(props) {
           <Dropdown.Item href="#/action-3">Image</Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item href="#/action-4">Bio</Dropdown.Item>
+          <Dropdown.Divider />
           <Dropdown.Item href="#/action-5">Description</Dropdown.Item>
         </DropdownButton>
         
