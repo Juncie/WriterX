@@ -14,6 +14,8 @@ router.get("/", (req, res) => {
     console.log('anything')
   res.json({ serverWorking: true });
 });
+
+
 router.get("/get-the-user", authorize, async (req, res) => {
   let user = await User.findById(res.locals.user._id);
   res.json(user);
@@ -41,6 +43,7 @@ router.post("/suggestions", authorize, async (req, res) => {
     res.json(post);
   });
 });
+
 console.log("IS 43 WORKING?");
 
 router.get("/community-board", (req, res) => {
@@ -54,6 +57,7 @@ router.get("/community-board", (req, res) => {
 console.log("IS 52 WORKING?");
 
 router.post("/authenticate", async (req, res) => {
+  console.log(req.body, 'This is it baby')
   let user = await User.findOne({ email: req.body.email });
 
   if (!user) {

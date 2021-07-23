@@ -28,7 +28,6 @@ function App() {
   return (
     <TheContext.Provider value={{ user, setUser, getTheUser }}>
       <div className="App">
-        <h1>🚀 MERN APP TORO 🎯 </h1>
         <i>{user?.name}</i>
         <Link to='/characters'>
           <h2>XXX</h2>

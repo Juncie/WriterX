@@ -5,11 +5,11 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const URI = process.env.MONGODB_URI || "mongodb://localhost/Toro";
-console.log(URI);
+console.log('database', URI);
 mongoose
   .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((x) => console.log(`Connected to ${x.connections[0].name}`))
-  .catch(() => console.error("Error connecting to Mongo"));
+  .catch((err) => console.error("Error connecting to Mongo", err));
 
 app.use(express.json());
 

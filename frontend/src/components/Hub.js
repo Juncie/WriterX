@@ -4,7 +4,6 @@ import actions from "./api";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-console.log(actions);
 function Hub(props) {
   let { user, setUser } = useContext(TheContext);
 
@@ -21,8 +20,6 @@ function Hub(props) {
       setPosts(res.data);
     });
   }, []);
-
-  console.log(posts);
 
   const getThemPosts = () => {
     return posts.map((eachPost) => {
