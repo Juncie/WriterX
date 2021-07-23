@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Welcome(props) {
+function Toolbar(props) {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function Welcome(props) {
     );
 }
 
-export default Welcome;
+export default Toolbar;
