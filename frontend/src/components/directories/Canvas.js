@@ -1,5 +1,8 @@
 import { React, useState, useEffect } from "react";
 import actions from "../api";
+import Sidebar from '../Sidebar'
+import Display from "../Display"
+import './Canvas.css'
 
 function Canvas() {
   const [novel, setNovel] = useState({});
@@ -19,11 +22,15 @@ function Canvas() {
 
   return (
     <div>
+    <Sidebar />
+    <Display />
+      <div>
       <h1>Canvas</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" onChange={handleChange} name="title" />
         <button>CLICK ME</button>
       </form>
+      </div>
     </div>
   );
 }

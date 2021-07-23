@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import actions from '../api';
+import Sidebar from '../Sidebar'
 //import { useHistory } from 'react-router-dom';
 //import axios from 'axios'
 
@@ -20,6 +21,7 @@ function Characters(props) {
 
     return (
         <div>
+        <Sidebar />
             <form onSubmit={handleSubmit}>
                 <input onChange={handleChange} type="text" />
                 <button>Add Character</button>
