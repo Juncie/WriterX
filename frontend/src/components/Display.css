@@ -1,0 +1,9 @@
+div.notes {
+    float: left;
+    position: relative;
+    margin-left: 200px;
+}
+
+a.dropdown-item :hover {
+    background-color: yellow;
+}

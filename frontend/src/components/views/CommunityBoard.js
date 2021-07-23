@@ -1,7 +1,10 @@
 import React from "react";
+import Sidebar from './Sidebar'
 
 function CommunityBoard(props) {
-  return <div></div>;
+  return <div>
+    <Sidebar />
+  </div>;
 }
 
 export default CommunityBoard;
