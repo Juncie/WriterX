@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import actions from "./api";
+import actions from "../api";
 
 function Suggestions(props) {
   let [post, setPost] = useState("");
