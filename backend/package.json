@@ -17,6 +17,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.0.1",
     "mongoose": "^5.13.3",
     "react-bootstrap-dropdown": "^0.3.0",
     "react-bootstrap-validation": "^0.1.11"

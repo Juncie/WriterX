@@ -6,7 +6,7 @@ import "./styles.css";
 
 export const Editor = () => {
   const [state, setState] = React.useState({ value: null });
-  const handleChange = value => {
+  const handleChange = (value) => {
     setState({ value });
   };
   return (

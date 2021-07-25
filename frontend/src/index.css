@@ -17,19 +17,18 @@ nav {
   padding: 1rem;
 }
 
-/* Copy from here */
-
-.Hub-Novels-Div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* HUB PAGE Copy from here */
 .hubUserContent {
   display: flex;
   margin: 2em;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.Hub-Novels-Div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .HubNovels {
@@ -59,17 +58,15 @@ nav {
   margin: 0;
   padding: 0%;
   display: flex;
-  width: 40%;
-  height: 20em;
   background: burlywood;
+  flex-direction: column;
 }
 
 .hubNotesList {
   display: flex;
-  width: 33%;
   flex-wrap: wrap;
-  height: 100%;
   overflow-y: scroll;
+  height: 25em;
   background: rgba(49, 40, 40, 1);
 }
 .hubNotesList li {
@@ -102,17 +99,42 @@ nav {
   color: black;
 }
 .hubNewNotes {
-  display: flex;
-  flex-direction: column;
   /* CONFIGURE WIDTH TO BE TOTAL DIV - MYNOTES */
-  width: 67%;
 }
 
 .hubNewNotes h4 {
   align-self: center;
   padding-left: 1em;
 }
+.hubNewNote {
+  resize: none;
+  width: 25em;
+  height: 75%;
+}
+.inputNoteParent {
+  display: row;
+  flex-direction: column;
+  width: 100%;
+}
+
+.parentNewNote {
+  display: flex;
+}
 
 a {
   text-decoration: none;
+}
+
+.text-editor {
+  min-width: 600px;
+  margin: 0 auto;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.ql-editor {
+  height: 95vh;
+  min-width: 600px;
 }

@@ -4,15 +4,15 @@ import actions from "./components/api";
 import "./App.css";
 import { Switch, Link, Route } from "react-router-dom";
 import TheContext from "./TheContext";
-import Welcome from "./components/views/Welcome";
-import Auth from "./components/Auth";
-import Suggestions from "./components/views/Suggestions";
+import Welcome from "./components/Welcome";
+import Auth from "./components/Welcome";
+import Suggestions from "./components/Suggestions";
 import Hub from "./components/Hub";
 import Canvas from "./components/directories/Canvas";
 import Characters from "./components/directories/Characters";
-import Sidebar from "./components/views/Sidebar";
+import Sidebar from "./components/Sidebar";
 import Display from "./components/Display";
-import CommunityBoard from "./components/views/CommunityBoard";
+import CommunityBoard from "./components/CommunityBoard";
 import Novels from "./components/directories/Novels";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Chapters from "./components/directories/Chapters";
@@ -35,11 +35,7 @@ function App() {
   return (
     <TheContext.Provider value={{ user, setUser, getTheUser }}>
       <div className="App">
-        {/* <h1>🚀 MERN APP TORO 🎯 </h1> */}
         <i>{user?.name}</i>
-        {/* <Link to='/characters'>
-          {/* <h2>XXX</h2> */}
-        {/* </Link> */}
         <Switch>
           <Route exact path="/" render={(props) => <Welcome {...props} />} />
           <Route exact path="/suggestions" render={(props) => <Suggestions {...props} />} />
