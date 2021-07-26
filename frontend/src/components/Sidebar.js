@@ -1,8 +1,20 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
+import actions from "./api";
 
 function Sidebar(props) {
+  let [user, setUser] = useState({});
+
+  const getTheUser = async () => {
+    let res = await actions.getUser();
+    setUser(res.data);
+  };
+
+  useEffect(() => {
+    getTheUser();
+  }, []);
+
   return (
     <div>
       <nav>
@@ -10,7 +22,7 @@ function Sidebar(props) {
 
         <Link to="Auth">
           <img src="https://styles.redditmedia.com/t5_kwwt3/styles/communityIcon_4g3bzdpyw2r41.png" />
-          Name
+          {user?.name}
         </Link>
         <Link to="/hub">Hub</Link>
         <Link to="/community-board">Community Board</Link>

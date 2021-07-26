@@ -14,7 +14,7 @@ function Hub(props) {
     setUser(null);
   };
 
-  // GET REQUESTS
+  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
 
   //Novels
   const [novels, setNovels] = useState([]);
@@ -29,7 +29,9 @@ function Hub(props) {
     return novels.map((eachNovel) => {
       return (
         <div className="novelCovers">
-          <h5>{eachNovel.name}</h5>
+          <Link to="/">
+            <h5>{eachNovel.name}</h5>
+          </Link>
           {/* SET BACKGROUND CHANGE FUNCTION HERE */}
         </div>
       );
@@ -56,7 +58,7 @@ function Hub(props) {
   //   });
   // };
 
-  //POST REQUESTS
+  //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS
 
   //NEW NOVEL
   const [novel, setNovel] = useState([]);
@@ -77,20 +79,11 @@ function Hub(props) {
   };
 
   return (
-    // SET DIV CLASS OF NOVELS.MAP TO .novelCovers, THE CSS IS ALREADY DONE
+    // SET DIV CLASS OF NOVELS.MAP TO HUBNOVELS, THE CSS IS ALREADY DONE
     <div className="Hub">
-      <button onClick={logOut}>LOGOUT</button>
-      {/* <Sidebar /> */}
-      {/* <nav>
-        <div>
-          <img width="40em" src={user?.imageUrl} alt="User" style={{ borderRadius: "5em" }} />
-          <button onClick={logOut}>Log Out</button>
-        </div>
-        <Link to="/directories">Directories</Link>
-        <Link to="/canvas">Canvas</Link>
-        <Link to="/hub">Hub</Link>
-      </nav> */}
+      <Sidebar />
       <h2> {props.user?.name}'s Hub </h2>
+      <button onClick={logOut}>LOGOUT</button>
       <section className="hubUserContent">
         <h1>Novels</h1>
         <div className="HubNovels">
@@ -126,7 +119,7 @@ function Hub(props) {
 
           <div className="hubTasks">
             <h2>To Do</h2>
-            <input type="checkbox" id="checkbox" value="Edits" />
+            <input type="checkbox" id="checkbox-1" />
             <label for="checkbox">Edit Chapter 1</label>
           </div>
           <div className="hubTasks">
