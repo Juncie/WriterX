@@ -62,21 +62,24 @@ function Hub(props) {
   const [novel, setNovel] = useState([]);
   const [author, setAuthor] = useState("");
   const handleNovelChange = (e) => {
-    setNovel(e.target.value);
-    console.log(novel);
+    let newNovel = { ...novel };
+    newNovel[e.target.name] = e.target.value;
+    setNovel(newNovel);
   };
+  console.log(novel);
 
   const handleNovelSubmit = async (e) => {
     e.preventDefault();
-    setAuthor(user.name);
-    console.log(author);
-    let res = await actions.newNovel({ novel, author });
+    // setAuthor(user.name);
+    // console.log(author);
+    let res = await actions.newNovel({ novel });
     console.log("submitted", novel);
   };
 
   return (
     // SET DIV CLASS OF NOVELS.MAP TO .novelCovers, THE CSS IS ALREADY DONE
     <div className="Hub">
+      <button onClick={logOut}>LOGOUT</button>
       {/* <Sidebar /> */}
       {/* <nav>
         <div>
@@ -91,26 +94,12 @@ function Hub(props) {
       <section className="hubUserContent">
         <h1>Novels</h1>
         <div className="HubNovels">
-          {/* {getAllNovels()} */}
+          {getEachNovel()}
           <form onSubmit={handleNovelSubmit}>
             <input onChange={handleNovelChange} type="text" name="novel" />
+            <input onChange={handleNovelChange} type="text" name="plots" />
             <input type="submit" />
           </form>
-          <div
-            style={{
-              background: "Grey",
-              height: "15em",
-              width: "10em",
-              borderRadius: "5px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "1em",
-            }}
-          >
-            <h5>Ruin</h5>
-          </div>
         </div>
         <section className="hubSection2">
           <div className="hubNotes">
@@ -120,24 +109,6 @@ function Hub(props) {
                   <h4>My Notes</h4>
                   <Link to="/notes">
                     <li>Plothole on line 75</li>
-                  </Link>
-                  <Link to="/">
-                    <li>Chapter 8 Line 746 needs a revision</li>
-                  </Link>
-                  <Link to="/">
-                    <li>Lorem, ipsum dolor sit amet </li>
-                  </Link>
-                  <Link to="/">
-                    <li>Lorem, ipsum dolor sit amet </li>
-                  </Link>
-                  <Link to="/">
-                    <li>Lorem, ipsum dolor sit amet </li>
-                  </Link>
-                  <Link to="/">
-                    <li>Lorem, ipsum dolor sit amet </li>
-                  </Link>
-                  <Link to="/">
-                    <li>Lorem, ipsum dolor sit amet </li>
                   </Link>
                 </ol>
               </div>

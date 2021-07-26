@@ -41,16 +41,16 @@ const actions = {
     return res;
   },
   //NOVELS
-  newNovel: async (novel, author) => {
-    console.log(novel);
-    let res = await axios.post(`${serverUrl}/novels`, novel, author, createHeaders());
+  newNovel: async (novel) => {
+    let res = await axios.post(`${serverUrl}/novels`, novel, createHeaders());
     console.log(`Your new novel ${res} has been submitted!`);
 
     return res;
   },
 
   getUserNovels: async (novel) => {
-    await axios.get(`${serverUrl}/novels`, createHeaders());
+    let res = await axios.get(`${serverUrl}/userNovels`, createHeaders());
+    return res;
   },
   //NOTES
   newNote: async (note) => {

@@ -74,28 +74,33 @@ router.post("/add-character", authorize, async (req, res) => {
 //NOVELS
 
 router.post("/novels", authorize, async (req, res) => {
-  console.log("Created a new novel!");
-  let newNovel = req.body;
-  newNovel.userId = res.locals.user._id;
-  Novels.create(newNovel)
-    .populate("userId")
-    .then((novel) => {
-      console.log(novel);
+  console.log("Created a new novel!", req.body);
+  let novel = req.body.novel;
+  novel.userId = res.locals.user._id;
+  Novels.create(novel).then((novel) => {
+    console.log(novel);
 
-      res.json(novel);
-    });
+    res.json(novel);
+  });
 }),
-  //NOTES
-
-  router.post("/addNote", authorize, async (req, res) => {
-    console.log("Added a new note 💪");
-    let newNote = req.body;
-    Notes.create(newNote).then((note) => {
-      console.log(note);
-
-      res.json(note);
+  router.get("/userNovels", authorize, async (req, res) => {
+    console.log("These are user Novels");
+    Novels.find({ userId: res.locals.user._id }).then((userNovels) => {
+      console.log(userNovels);
+      res.json(userNovels);
     });
   });
+//NOTES
+
+router.post("/addNote", authorize, async (req, res) => {
+  console.log("Added a new note 💪");
+  let newNote = req.body;
+  Notes.create(newNote).then((note) => {
+    console.log(note);
+
+    res.json(note);
+  });
+});
 // router.post('/add-location', authorize, async (req, res) => {
 
 //     let newLocation = req.body
@@ -116,7 +121,7 @@ router.post("/novels", authorize, async (req, res) => {
 
 //Middle ware >>> Put this in the middle of any route where you want to authorize
 function authorize(req, res, next) {
-  console.log("Is Authorize on line 119 in Routes Working?");
+  console.log("Is Authorize Working?");
   let token = req.headers.authorization.split(" ")[1]; //Token from front end
   if (token) {
     jwt.verify(token, "secret key", (err, data) => {

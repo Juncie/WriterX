@@ -5,7 +5,6 @@ const userSchema = new Schema({
   email: String,
   imageUrl: String,
   googleId: String,
-  novels: [String],
 });
 
 module.exports = model("User", userSchema);
