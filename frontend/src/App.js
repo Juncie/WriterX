@@ -5,7 +5,7 @@ import "./App.css";
 import { Switch, Link, Route } from "react-router-dom";
 import TheContext from "./TheContext";
 import Welcome from "./components/Welcome";
-import Auth from "./components/Welcome";
+import Auth from "./components/Auth";
 import Suggestions from "./components/Suggestions";
 import Hub from "./components/Hub";
 import Canvas from "./components/directories/Canvas";

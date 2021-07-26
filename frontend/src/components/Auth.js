@@ -27,7 +27,7 @@ function Auth(props) {
         clientId={process.env.REACT_APP_GOOGLEID}
         buttonText="Login"
         onSuccess={responseGoogle}
-        onFailure={failure}
+        onFailure={responseGoogle}
         cookiePolicy={"single_host_origin"}
       />
     </div>

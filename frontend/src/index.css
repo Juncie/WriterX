@@ -10,6 +10,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+  background: #eeeeee;
+  padding: 1rem;
+}
+
 /* HUB PAGE Copy from here */
 .hubUserContent {
   display: flex;

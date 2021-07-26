@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { GoogleLogin } from "react-google-login";
 import actions from "./api";
 import TheContext from "../TheContext";
-import "./Auth.css";
+import { Link } from "react-router-dom";
+import "./Welcome.css";
 
 function Auth(props) {
   let { getTheUser } = useContext(TheContext);
@@ -20,20 +21,9 @@ function Auth(props) {
           <h1>WX</h1>
         </div>
         <div className="loginButtons">
-          <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLEID}
-            buttonText="Log in"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
-          />
-          <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLEID}
-            buttonText="Sign Up"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
-          />
+          <button>
+            <Link to="/auth">Log In</Link>
+          </button>
         </div>
       </div>
       <div className="body">
