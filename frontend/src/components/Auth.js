@@ -22,6 +22,7 @@ function Auth(props) {
         <option value="mercedes">Mercedes</option>
         <option value="audi">Audi</option>
       </select>
+
       <GoogleLogin
         clientId={process.env.REACT_APP_GOOGLEID}
         buttonText="Login"

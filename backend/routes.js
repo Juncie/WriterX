@@ -5,34 +5,30 @@ const router = express.Router();
 const User = require("./models/User");
 const Characters = require("./models/Characters");
 const Novels = require("./models/Novels");
+const Notes = require("./models/Notes");
 //const Locations = require('./models/Locations')
 // const Plots = require('./models/Plots')
 /**ALL OUR BACKEND ROUTES */
-console.log("IS 11 WORKING!@#!?");
-/**ALL OUR BACKEND ROUTES */
 router.get("/", (req, res) => {
-    console.log('anything')
+  console.log("anything");
   res.json({ serverWorking: true });
 });
-
 
 router.get("/get-the-user", authorize, async (req, res) => {
   let user = await User.findById(res.locals.user._id);
   res.json(user);
 });
-console.log("IS 21 WORKING?");
 
 router.post("/newCharacters", authorize, async (req, res) => {
-    console.log("nw char working");
-    let characters = req.body;
-    console.log("anything", req.body)
-    Characters.create(characters).then((newCharacter) => {
-      console.log(newCharacter);
-      res.json(newCharacter);
-    });
+  console.log("You've created a new Character!!");
+  let characters = req.body;
+  console.log("anything", req.body);
+  Characters.create(characters).then((newCharacter) => {
+    console.log(newCharacter);
+    res.json(newCharacter);
   });
+});
 
-console.log("IS 32 WORKING?");
 //former add-post
 router.post("/suggestions", authorize, async (req, res) => {
   let newSuggestion = req.body;
@@ -44,8 +40,6 @@ router.post("/suggestions", authorize, async (req, res) => {
   });
 });
 
-console.log("IS 43 WORKING?");
-
 router.get("/community-board", (req, res) => {
   Post.find()
     .populate("userId")
@@ -54,10 +48,9 @@ router.get("/community-board", (req, res) => {
       res.json(posts);
     });
 });
-console.log("IS 52 WORKING?");
 
 router.post("/authenticate", async (req, res) => {
-  console.log(req.body, 'This is it baby')
+  console.log(req.body, "User has been Authenticated!");
   let user = await User.findOne({ email: req.body.email });
 
   if (!user) {
@@ -70,7 +63,7 @@ router.post("/authenticate", async (req, res) => {
 });
 
 router.post("/add-character", authorize, async (req, res) => {
-  console.log("hello");
+  console.log("Added Character!");
   let characters = req.body;
   Characters.create(character).then((newCharacter) => {
     console.log(newCharater);
@@ -78,17 +71,31 @@ router.post("/add-character", authorize, async (req, res) => {
   });
 });
 
-//getallCharacters
+//NOVELS
 
 router.post("/novels", authorize, async (req, res) => {
-  console.log("helloooo");
-  let newNovels = req.body;
-  Novels.create(newNovels).then((novel) => {
-    console.log(novel);
+  console.log("Created a new novel!");
+  let newNovel = req.body;
+  newNovel.userId = res.locals.user._id;
+  Novels.create(newNovel)
+    .populate("userId")
+    .then((novel) => {
+      console.log(novel);
 
-    res.json(novel);
+      res.json(novel);
+    });
+}),
+  //NOTES
+
+  router.post("/addNote", authorize, async (req, res) => {
+    console.log("Added a new note 💪");
+    let newNote = req.body;
+    Notes.create(newNote).then((note) => {
+      console.log(note);
+
+      res.json(note);
+    });
   });
-});
 // router.post('/add-location', authorize, async (req, res) => {
 
 //     let newLocation = req.body
@@ -109,7 +116,7 @@ router.post("/novels", authorize, async (req, res) => {
 
 //Middle ware >>> Put this in the middle of any route where you want to authorize
 function authorize(req, res, next) {
-  console.log("is this authorizingggg");
+  console.log("Is Authorize on line 119 in Routes Working?");
   let token = req.headers.authorization.split(" ")[1]; //Token from front end
   if (token) {
     jwt.verify(token, "secret key", (err, data) => {

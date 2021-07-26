@@ -13,27 +13,28 @@ function Hub(props) {
     localStorage.removeItem("token");
     setUser(null);
   };
+
   // GET REQUESTS
 
   //Novels
   const [novels, setNovels] = useState([]);
-  // useEffect(() => {
-  //   actions.getAllNovels().then((res) => {
-  //     console.log(res);
-  //     setNovels(res.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    actions.getUserNovels().then((res) => {
+      console.log(res);
+      setNovels(res.data);
+    });
+  }, []);
 
-  // const getEachNovel = () => {
-  //   return novels.map((eachNovel) => {
-  //     return (
-  //       <div className="novelCovers">
-  //         <h5>{eachNovel.name}</h5>
-  //         {/* SET BACKGROUND CHANGE FUNCTION HERE */}
-  //       </div>
-  //     );
-  //   });
-  // };
+  const getEachNovel = () => {
+    return novels.map((eachNovel) => {
+      return (
+        <div className="novelCovers">
+          <h5>{eachNovel.name}</h5>
+          {/* SET BACKGROUND CHANGE FUNCTION HERE */}
+        </div>
+      );
+    });
+  };
 
   //Notes
   const [notes, setNotes] = useState([]);
@@ -55,6 +56,24 @@ function Hub(props) {
   //   });
   // };
 
+  //POST REQUESTS
+
+  //NEW NOVEL
+  const [novel, setNovel] = useState([]);
+  const [author, setAuthor] = useState("");
+  const handleNovelChange = (e) => {
+    setNovel(e.target.value);
+    console.log(novel);
+  };
+
+  const handleNovelSubmit = async (e) => {
+    e.preventDefault();
+    setAuthor(user.name);
+    console.log(author);
+    let res = await actions.newNovel({ novel, author });
+    console.log("submitted", novel);
+  };
+
   return (
     // SET DIV CLASS OF NOVELS.MAP TO .novelCovers, THE CSS IS ALREADY DONE
     <div className="Hub">
@@ -73,6 +92,10 @@ function Hub(props) {
         <h1>Novels</h1>
         <div className="HubNovels">
           {/* {getAllNovels()} */}
+          <form onSubmit={handleNovelSubmit}>
+            <input onChange={handleNovelChange} type="text" name="novel" />
+            <input type="submit" />
+          </form>
           <div
             style={{
               background: "Grey",
@@ -132,6 +155,8 @@ function Hub(props) {
 
           <div className="hubTasks">
             <h2>To Do</h2>
+            <input type="checkbox" id="checkbox" value="Edits" />
+            <label for="checkbox">Edit Chapter 1</label>
           </div>
           <div className="hubTasks">
             <h2>Recently Edited</h2>

@@ -2,8 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const NovelSchema = new Schema({
   novel: String,
-  // author: {type: Schema.types.ObjectId, ref:'User'}
-  name: String,
+  author: String,
+  userId: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
 module.exports = model("Novel", NovelSchema);

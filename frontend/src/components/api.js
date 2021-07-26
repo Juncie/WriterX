@@ -1,12 +1,13 @@
 /**WHERE WE DO ALL OF OUR BACKEND CONNECTIONS */
 
+import userEvent from "@testing-library/user-event";
 import axios from "axios";
 
 console.log(process.env);
 
 const serverUrl =
   process.env.NODE_ENV === "production"
-    ? "https://toro-plate.herokuapp.com/api"
+    ? "https://trashpandajuncie.herokuapp.com/api"
     : `http://localhost:5000/api`;
 console.log(serverUrl);
 const createHeaders = () => {
@@ -39,12 +40,21 @@ const actions = {
     localStorage.setItem("token", res.data.token);
     return res;
   },
-
-  newNovel: async (novel) => {
+  //NOVELS
+  newNovel: async (novel, author) => {
     console.log(novel);
-    let res = await axios.post(`${serverUrl}/novels`,novel, createHeaders());
-    console.log(res);
+    let res = await axios.post(`${serverUrl}/novels`, novel, author, createHeaders());
+    console.log(`Your new novel ${res} has been submitted!`);
+
     return res;
+  },
+
+  getUserNovels: async (novel) => {
+    await axios.get(`${serverUrl}/novels`, createHeaders());
+  },
+  //NOTES
+  newNote: async (note) => {
+    return await axios.post(`${serverUrl}/addNote`, note, createHeaders());
   },
 };
 
