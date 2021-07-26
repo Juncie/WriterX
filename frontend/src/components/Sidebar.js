@@ -18,12 +18,19 @@ function Sidebar(props) {
   return (
     <div>
       <nav>
-        {/* <Link to="/welcome">Home</Welcome> */}
-
         <Link to="Auth">
-          <img src="https://styles.redditmedia.com/t5_kwwt3/styles/communityIcon_4g3bzdpyw2r41.png" />
+          {/* <img src={user.imageURL} /> */}
+          {console.log(user)}
           {user?.name}
         </Link>
+        {/* <label for="Create">New</label>
+        <select name="Create" id="newItem">
+          <option value="Novel">Novel</option>
+          <option value="Chapter">Chapter</option>
+          <option value="Plot">Plot</option>
+          <option value="Character">Character</option>
+        </select> */}
+
         <Link to="/hub">Hub</Link>
         <Link to="/community-board">Community Board</Link>
         <Link to="/canvas">Canvas</Link>

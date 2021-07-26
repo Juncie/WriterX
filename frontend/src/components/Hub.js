@@ -81,7 +81,7 @@ function Hub(props) {
   return (
     // SET DIV CLASS OF NOVELS.MAP TO HUBNOVELS, THE CSS IS ALREADY DONE
     <div className="Hub">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <h2> {props.user?.name}'s Hub </h2>
       <button onClick={logOut}>LOGOUT</button>
       <section className="hubUserContent">
