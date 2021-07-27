@@ -8,4 +8,4 @@ const chaptersSchema = new Schema({
   novelId: { type: Schema.Types.ObjectId, ref: "Novel" },
 });
 
-module.exports = model("Chapters", chaptersSchema);
+module.exports = model("Chapter", chaptersSchema);

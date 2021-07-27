@@ -15,9 +15,9 @@ import Display from "./components/Display";
 import CommunityBoard from "./components/CommunityBoard";
 import Novels from "./components/directories/Novels";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Chapters from "./components/directories/Chapters";
+import Chapter from "./components/directories/Chapter";
 import Locations from "./components/directories/Locations";
-import Plots from "./components/directories/Plots";
+import Plot from "./components/directories/Plot";
 import Scenes from "./components/directories/Scenes";
 
 function App() {
@@ -41,6 +41,8 @@ function App() {
           <Route exact path="/auth" render={(props) => <Auth {...props} />} />
           <Route exact path="/hub" render={(props) => <Hub {...props} user={user} />} />
           <Route exact path="/novels/:id" render={(props) => <Canvas {...props} />} />
+          <Route exact path="/chapter/:id" render={(props) => <Chapter {...props} />} />
+          <Route exact path="/plot/:id" render={(props) => <Plot {...props} />} />
           {/* <Route exact path="/new-characters" render={(props) => <Characters />} />
           <Route exact path="/sidebar" render={(props) => <Sidebar {...props} />} />
           <Route exact path="/display" render={(props) => <Display {...props} />} />

@@ -25,19 +25,21 @@ const actions = {
     return res;
   },
   //NOVELS
-  newNovel: async (novel) => {
-    console.log(novel);
-    let res = await axios.post(`${serverUrl}/novels`, novel, createHeaders());
-    console.log(`Your new novel ${novel} has been submitted !`);
-
-    return res;
-  },
+  newNovel: async (novel) => await axios.post(`${serverUrl}/novels`, novel, createHeaders()),
 
   getUserNovels: async (novels) => await axios.get(`${serverUrl}/userNovels`, createHeaders()),
 
   getOneNovel: async (novelId) => await axios.get(`${serverUrl}/novel/${novelId}`, createHeaders()),
 
   newChapter: async (chapter) => await axios.post(`${serverUrl}/chapter`, chapter, createHeaders()),
+
+  getChapters: async (novels) => await axios.get(`${serverUrl}/getChapters`, createHeaders()),
+
+  newPlot: async (plot) => await axios.post(`${serverUrl}/plot`, plot, createHeaders()),
+
+  getChapterPlots: async (chapterId) => {
+    return  await axios.get(`${serverUrl}/plots/${chapterId}`, createHeaders())
+    },
 };
 
 

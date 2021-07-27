@@ -19,13 +19,6 @@ router.get("/get-the-user", authorize, async (req, res) => {
   res.json(user);
 });
 
-router.post("/newCharacters", authorize, async (req, res) => {
-  let characters = req.body;
-  Characters.create(characters).then((newCharacter) => {
-    res.json(newCharacter);
-  });
-});
-
 //former add-post
 router.post("/suggestions", authorize, async (req, res) => {
   let newSuggestion = req.body;
@@ -64,8 +57,7 @@ router.post("/novels", authorize, async (req, res) => {
   Novels.create(novel).then((newNovel) => {
     res.json(newNovel);
   });
-  // req.body.novel.userId
-  console.log(req.body);
+
 }),
   router.get("/userNovels", authorize, async (req, res) => {
     Novels.find({ userId: res.locals.user._id }).then((novels) => {
@@ -75,18 +67,38 @@ router.post("/novels", authorize, async (req, res) => {
 
 router.get("/novel/:novelId", authorize, async (req, res) => {
   Novels.findById(req.params.novelId).then((novel) => {
-    res.json(novel);
+    Chapters.find({novelId: req.params.novelId}).then((chapters) => {
+      res.json({novel, chapters});
+    })
   });
 
   router.post("/chapter", authorize, async (req, res) => {
     let chapter = req.body;
     console.log(req.body);
-    // chapter.novelId = re
     console.log(req.body, "This is your Chapter");
     Chapters.create(chapter).then((newChapter) => {
       res.json(newChapter);
     });
   });
+
+
+  router.post("/plot", authorize, async (req,res) => {
+    let plot = req.body;
+    console.log(req.body, "This is your plot");
+    Plots.create(plot).then((newPlot) => {
+      res.json(newPlot);
+    });
+  });
+
+  router.get("/plots/:chapterId", authorize, async (req, res) => {
+    // console.log(req, 'THIS IS REQ', res, 'THIS IS RES')
+    Plots.find({chapterId:req.params.chapterId}).then((plots) => {
+      console.log(plots)
+      res.json(plots)
+    })
+  })
+
+
 });
 
 //Middle ware >>> Put this in the middle of any route where you want to authorize
