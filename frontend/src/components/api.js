@@ -56,6 +56,14 @@ const actions = {
   newNote: async (note) => {
     return await axios.post(`${serverUrl}/addNote`, note, createHeaders());
   },
+
+  getNovelPlots: async (plots) => {
+    let res = await axios.get(`${serverUrl}/novelsPlots`, createHeaders());
+    console.log(res, 'newNovelPlot')
+    return res;
+  }
 };
+
+
 
 export default actions;

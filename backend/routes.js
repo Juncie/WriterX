@@ -7,7 +7,7 @@ const Characters = require("./models/Characters");
 const Novels = require("./models/Novels");
 const Notes = require("./models/Notes");
 //const Locations = require('./models/Locations')
-// const Plots = require('./models/Plots')
+const Plots = require('./models/Plots')
 /**ALL OUR BACKEND ROUTES */
 router.get("/", (req, res) => {
   console.log("anything");
@@ -76,7 +76,7 @@ router.post("/add-character", authorize, async (req, res) => {
 router.post("/novels", authorize, async (req, res) => {
   console.log("Created a new novel!", req.body);
   let novel = req.body.novel;
-  novel.userId = res.locals.user._id;
+  novel.novelId = res.locals.user._id;
   Novels.create(novel).then((novel) => {
     console.log(novel);
 
@@ -85,7 +85,7 @@ router.post("/novels", authorize, async (req, res) => {
 }),
   router.get("/userNovels", authorize, async (req, res) => {
     console.log("These are user Novels");
-    Novels.find({ userId: res.locals.user._id }).then((userNovels) => {
+    Novels.find({ novelId: res.locals.user._id }).then((userNovels) => {
       console.log(userNovels);
       res.json(userNovels);
     });
@@ -101,6 +101,25 @@ router.post("/addNote", authorize, async (req, res) => {
     res.json(note);
   });
 });
+
+//GET PLOT TITLES
+router.get("/novelsPlots", authorize, async (req, res) => {
+  // let novel = req.body.novel;
+  console.log(res.locals)
+  Novels.find({ novelId: res.locals.novels.novelId }).then((plots) => {
+    console.log(res.locals.novels.novelId) ;
+    res.json(plots);
+  });
+});
+
+// router.get("/userNovels", authorize, async (req, res) => {
+//   console.log("These are user Novels");
+//   Novels.find({ novelId: res.locals.user._id }).then((userNovels) => {
+//     console.log(userNovels);
+//     res.json(userNovels);
+//   });
+// });
+
 // router.post('/add-location', authorize, async (req, res) => {
 
 //     let newLocation = req.body

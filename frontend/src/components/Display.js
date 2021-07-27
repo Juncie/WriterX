@@ -1,10 +1,23 @@
-import React from 'react';
-import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
+import { useState, useEffect } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-
+import actions from "./api";
+import axios from "axios";
 
 function Display(props) {
+  
+  const [ plots, setPlots ] = useState({})
+  useEffect(() => {
+      actions.getNovelPlots().then((res) => {
+      
+      setPlots(res.data);
+      console.log(res.data.plots)
+      console.log(plots);
+    });
+  }, []);
+
+
     return (
         <div>
         <DropdownButton id="dropdown-basic-button" title="Novels">
@@ -39,11 +52,11 @@ function Display(props) {
         </DropdownButton>
 
         <DropdownButton id="dropdown-basic-button" title="Plots">
-          <Dropdown.Item href="#/action-1">Title</Dropdown.Item>
-          <Dropdown.Divider />
+          <Dropdown.Item href="#/action-1">{}</Dropdown.Item>
+          {/* <Dropdown.Divider />
           <Dropdown.Item href="#/action-2">Characters</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item href="#/action-3">Description</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Description</Dropdown.Item> */}
         </DropdownButton>
 
         <DropdownButton id="dropdown-basic-button" title="Scenes">
