@@ -38,19 +38,19 @@ function App() {
         {/* <i>{user?.name}</i> */}
         <Switch>
           <Route exact path="/" render={(props) => <Welcome {...props} />} />
-          <Route exact path="/suggestions" render={(props) => <Suggestions {...props} />} />
           <Route exact path="/auth" render={(props) => <Auth {...props} />} />
           <Route exact path="/hub" render={(props) => <Hub {...props} user={user} />} />
-          <Route exact path="/canvas" render={(props) => <Canvas {...props} />} />
-          <Route exact path="/new-characters" render={(props) => <Characters />} />
+          <Route exact path="/novels/:id" render={(props) => <Canvas {...props} />} />
+          {/* <Route exact path="/new-characters" render={(props) => <Characters />} />
           <Route exact path="/sidebar" render={(props) => <Sidebar {...props} />} />
           <Route exact path="/display" render={(props) => <Display {...props} />} />
           <Route exact path="/community-board" render={(props) => <CommunityBoard />} />
-          <Route exact path="/novels" render={(props) => <Novels {...props} />} />
-          <Route exact path="/chapters" render={(props) => <Chapters {...props} />} />
-          <Route exact path="/locations" render={(props) => <Locations {...props} />} />
-          <Route exact path="/plots" render={(props) => <Plots {...props} />} />
-          <Route exact path="/scenes" render={(props) => <Scenes {...props} />} />
+          <Route exact path="/novels/:id" render={(props) => <Novels {...props} />} />
+          <Route exact path="/novels/:id/:chapterId" render={(props) => <Chapters {...props} />} />
+          <Route exact path="/novels/:id/locations" render={(props) => <Locations {...props} />} />
+          <Route exact path="/novels/:id/plots" render={(props) => <Plots {...props} />} />
+          <Route exact path="/novels/:id/scenes" render={(props) => <Scenes {...props} />} />
+          {/* <Route exact path="/suggestions" render={(props) => <Suggestions {...props} />} /> */}
         </Switch>
       </div>
     </TheContext.Provider>

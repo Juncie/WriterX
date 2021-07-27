@@ -20,17 +20,17 @@ function Hub(props) {
   const [novels, setNovels] = useState([]);
   useEffect(() => {
     actions.getUserNovels().then((res) => {
-      console.log(res);
+      // console.log(res.data);
       setNovels(res.data);
     });
   }, []);
 
   const getEachNovel = () => {
-    return novels.map((eachNovel) => {
+    return novels.map((eachNovel, i) => {
       return (
         <div className="novelCovers">
-          <Link to="/">
-            <h5>{eachNovel.name}</h5>
+          <Link to={`/novels/${eachNovel._id}`} key={i}>
+            <h5>{eachNovel.title}</h5>
           </Link>
           {/* SET BACKGROUND CHANGE FUNCTION HERE */}
         </div>
@@ -38,44 +38,20 @@ function Hub(props) {
     });
   };
 
-  //Notes
-  const [notes, setNotes] = useState([]);
-  // useEffect(() => {
-  //   actions.getAllNotes().then((res) => {
-  //     console.log(res);
-  //     setNotes(res.data);
-  //   });
-  // }, []);
-
-  // const getEachNote = () => {
-  //   return notes.map((eachNote) => {
-  //     return (
-  //       <div className="Notes">
-  //         <h5>{eachNote.title}</h5>
-  //         {/* SET NOTE TEXT HERE*/}
-  //       </div>
-  //     );
-  //   });
-  // };
-
   //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS
 
   //NEW NOVEL
-  const [novel, setNovel] = useState([]);
-  const [author, setAuthor] = useState("");
+  const [novel, setNovel] = useState({});
   const handleNovelChange = (e) => {
-    let newNovel = { ...novel };
-    newNovel[e.target.name] = e.target.value;
-    setNovel(newNovel);
+    setNovel(([e.target.name] = e.target.value));
   };
-  console.log(novel);
 
   const handleNovelSubmit = async (e) => {
     e.preventDefault();
-    // setAuthor(user.name);
-    // console.log(author);
-    let res = await actions.newNovel({ novel });
-    console.log("submitted", novel);
+    console.log(novel);
+    let res = await actions.newNovel({ title: novel });
+
+    console.log(res, novel);
   };
 
   return (
@@ -88,9 +64,10 @@ function Hub(props) {
         <h1>Novels</h1>
         <div className="HubNovels">
           {getEachNovel()}
+
           <form onSubmit={handleNovelSubmit}>
-            <input onChange={handleNovelChange} type="text" name="novel" />
-            <input onChange={handleNovelChange} type="text" name="plots" />
+            <label for="title">New Novel</label>
+            <input onChange={handleNovelChange} type="text" name="title" />
             <input type="submit" />
           </form>
         </div>

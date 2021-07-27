@@ -15,23 +15,7 @@ const createHeaders = () => {
 };
 
 const actions = {
-  getUser: async () => {
-    return await axios.get(`${serverUrl}/get-the-user`, createHeaders());
-  },
-
-  suggestions: async (post) => {
-    let res = await axios.post(`${serverUrl}/suggestions`, post, createHeaders());
-    return res;
-  },
-  getAllPosts: async (post) => {
-    return await axios.get(`${serverUrl}/all-the-posts`, createHeaders());
-  },
-
-  postAllCharacters: async (characters) => {
-    let res = await axios.post(`${serverUrl}/newCharacters`, characters, createHeaders());
-    console.log(res);
-    return res;
-  },
+  getUser: async () => await axios.get(`${serverUrl}/get-the-user`, createHeaders()),
 
   authenticate: async (profileObj) => {
     console.log(profileObj, "profileObj");
@@ -42,20 +26,18 @@ const actions = {
   },
   //NOVELS
   newNovel: async (novel) => {
+    console.log(novel);
     let res = await axios.post(`${serverUrl}/novels`, novel, createHeaders());
-    console.log(`Your new novel ${res} has been submitted!`);
+    console.log(`Your new novel ${novel} has been submitted !`);
 
     return res;
   },
 
-  getUserNovels: async (novel) => {
-    let res = await axios.get(`${serverUrl}/userNovels`, createHeaders());
-    return res;
-  },
-  //NOTES
-  newNote: async (note) => {
-    return await axios.post(`${serverUrl}/addNote`, note, createHeaders());
-  },
+  getUserNovels: async (novels) => await axios.get(`${serverUrl}/userNovels`, createHeaders()),
+
+  getOneNovel: async (novelId) => await axios.get(`${serverUrl}/novel/${novelId}`, createHeaders()),
+
+  newChapter: async (chapter) => await axios.post(`${serverUrl}/chapter`, chapter, createHeaders()),
 };
 
 export default actions;
