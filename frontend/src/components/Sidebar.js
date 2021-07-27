@@ -2,26 +2,15 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import actions from "./api";
+import TheContext from ".././TheContext";
 
 function Sidebar(props) {
-  let [user, setUser] = useState({});
-
-  const getTheUser = async () => {
-    let res = await actions.getUser();
-    setUser(res.data);
-  };
-
-  useEffect(() => {
-    getTheUser();
-  }, []);
-
   return (
     <div>
       <nav>
         <Link to="Auth">
           {/* <img src={user.imageURL} /> */}
-          {console.log(user)}
-          {user?.name}
+          {props.user?.name}
         </Link>
         {/* <label for="Create">New</label>
         <select name="Create" id="newItem">

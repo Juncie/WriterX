@@ -1,12 +1,14 @@
-import React from 'react';
-import Sidebar from '../Sidebar'
+import React from "react";
+import Sidebar from "../Sidebar";
 
 function Plots(props) {
-    return (
-        <div>
-           <Sidebar />
-        </div>
-    );
+  const { id } = props.match.params._id;
+  console.log(id);
+  return (
+    <div>
+      <Sidebar />
+    </div>
+  );
 }
 
 export default Plots;
