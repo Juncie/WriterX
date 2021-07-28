@@ -34,7 +34,7 @@ function App() {
   return (
     <TheContext.Provider value={{ user, setUser, getTheUser }}>
       <div className="App">
-        {/* <i>{user?.name}</i> */}
+        <i>{user?.name}</i>
         <Switch>
           <Route exact path="/" render={(props) => <Welcome {...props} />} />
           <Route exact path="/auth" render={(props) => <Auth {...props} />} />
@@ -42,6 +42,7 @@ function App() {
           <Route exact path="/novels/:id" render={(props) => <Canvas {...props} />} />
           <Route exact path="/chapter/:id" render={(props) => <Chapter {...props} />} />
           <Route exact path="/plot/:id" render={(props) => <Plot {...props} />} />
+          <Route exact path="/locations" render={(props) => <Locations {...props} />} />
         </Switch>
       </div>
     </TheContext.Provider>

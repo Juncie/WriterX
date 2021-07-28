@@ -7,7 +7,7 @@ const Characters = require("./models/Characters");
 const Novels = require("./models/Novels");
 const Notes = require("./models/Notes");
 const Chapters = require("./models/Chapters");
-//const Locations = require('./models/Locations')
+const Locations = require('./models/Locations');
 const Plots = require("./models/Plots");
 /**ALL OUR BACKEND ROUTES */
 router.get("/", (req, res) => {
@@ -71,6 +71,7 @@ router.get("/novel/:novelId", authorize, async (req, res) => {
     });
   });
 
+  //CHAPTERS
   router.post("/chapter", authorize, async (req, res) => {
     let chapter = req.body;
     console.log("This is your Chapter", req.body);
@@ -87,6 +88,15 @@ router.get("/novel/:novelId", authorize, async (req, res) => {
     });
   });
 
+  //LOCATIONS 
+  router.post("/locations", authorize, async (req, res) => {
+    let locations = req.body;
+    console.log(req.body, "This is a location")
+    Locations.create(locations).then((newLocations) => {
+      res.json(newLocations);
+    })
+  })
+  //PLOTS
   router.post("/plot", authorize, async (req, res) => {
     let plot = req.body;
     console.log(req.body, "This is your plot");

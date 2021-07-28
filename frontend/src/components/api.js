@@ -41,6 +41,8 @@ const actions = {
 
   getChapterPlots: async (chapterId) => await axios.get(`${serverUrl}/plots/${chapterId}`, createHeaders()),
 
+  newLocations: async (locations) => await axios.get(`${serverUrl}/locations`, createHeaders()),
+
 };
 
 export default actions;

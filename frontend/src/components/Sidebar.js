@@ -20,7 +20,7 @@ function Sidebar(props) {
             <Link to="/chapters">Chapters</Link>
             <Link to="/new-characters">Characters</Link>
             <Link to="/locations">Locations</Link>
-            <Link to="/plots">Plots</Link>
+            <Link to={`/plot/props.match.params.id`}>Plots</Link>
             <Link to="/scenes">Scenes</Link>
           </div>
         <div className="toolBar">

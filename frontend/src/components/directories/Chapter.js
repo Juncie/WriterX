@@ -13,10 +13,10 @@ function Chapters(props) {
     })
   }, [])
   const showChapterPlots = () => {
-  return chapterPlot.map((eachPlot) => {
+  return chapterPlot.map((eachPlot, i) => {
     return (
       <div>
-      <Link to={`/plot/${eachPlot._id}`}>
+      <Link to={`/plot/${eachPlot._id}` } key={i}>
       <h3>{eachPlot.title}</h3>
       </Link>
       </div>
@@ -30,6 +30,14 @@ function Chapters(props) {
   newPlot[e.target.name] = e.target.value
   setPlot(newPlot)
   } 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    plot.chapterId=props.match.params.id
+    let res = await actions.newPlot(plot)
+    console.log(res)
+  }
+  console.log(plot)
   //EDITOR STATES
     const [content, setContent] = useState('')
     const [file, setFile] = useState([])
@@ -46,13 +54,6 @@ function Chapters(props) {
    })
   }
   
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    let res = await actions.newPlot({chapterId:props.match.params.id, title:plot.title})
-    console.log(res)
-  }
-  console.log(plot)
    return (
     <div>
       <div id='novelEditor'>
@@ -65,11 +66,11 @@ function Chapters(props) {
       </div>
 
       <h1>My Chapter{ props.match.params.id }</h1>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <input onChange={handleChange} name="title" type="text" ></input>
         <button>submit</button>
-      </form>
-      {showChapterPlots()}
+      </form> */}
+      {/* {showChapterPlots()} */}
     </div>
   );
 }
