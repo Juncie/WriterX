@@ -11,14 +11,13 @@ import Hub from "./components/Hub";
 import Canvas from "./components/directories/Canvas";
 import Characters from "./components/directories/Characters";
 import Sidebar from "./components/Sidebar";
-import Display from "./components/Display";
+import ProfileBar from "./components/ProfileBar";
 import CommunityBoard from "./components/CommunityBoard";
 import Novels from "./components/directories/Novels";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Chapter from "./components/directories/Chapter";
 import Locations from "./components/directories/Locations";
 import Plot from "./components/directories/Plot";
-import Scenes from "./components/directories/Scenes";
 
 function App() {
   let [user, setUser] = useState({});
@@ -43,16 +42,6 @@ function App() {
           <Route exact path="/novels/:id" render={(props) => <Canvas {...props} />} />
           <Route exact path="/chapter/:id" render={(props) => <Chapter {...props} />} />
           <Route exact path="/plot/:id" render={(props) => <Plot {...props} />} />
-          {/* <Route exact path="/new-characters" render={(props) => <Characters />} />
-          <Route exact path="/sidebar" render={(props) => <Sidebar {...props} />} />
-          <Route exact path="/display" render={(props) => <Display {...props} />} />
-          <Route exact path="/community-board" render={(props) => <CommunityBoard />} />
-          <Route exact path="/novels/:id" render={(props) => <Novels {...props} />} />
-          <Route exact path="/novels/:id/:chapterId" render={(props) => <Chapters {...props} />} />
-          <Route exact path="/novels/:id/locations" render={(props) => <Locations {...props} />} />
-          <Route exact path="/novels/:id/plots" render={(props) => <Plots {...props} />} />
-          <Route exact path="/novels/:id/scenes" render={(props) => <Scenes {...props} />} />
-          {/* <Route exact path="/suggestions" render={(props) => <Suggestions {...props} />} /> */}
         </Switch>
       </div>
     </TheContext.Provider>

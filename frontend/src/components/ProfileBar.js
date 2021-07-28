@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import actions from "./api";
 
-function Display(props) {
+function ProfileBar(props) {
   //
 
   //
@@ -58,9 +58,9 @@ function Display(props) {
         <Dropdown.Item href="#/action-4">Characters</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item href="#/action-5">Summary</Dropdown.Item>
-      </DropdownButton>
- */}
-      {/* {["Novels", "Chapters", "Characters", "Locations", "Plots", "Scenes"].map((variant) => (
+      </DropdownButton> */}
+ 
+      {["Novels", "Chapters", "Characters", "Locations", "Plots", "Scenes"].map((variant) => (
         <DropdownButton
           as={ButtonGroup}
           key={variant}
@@ -76,9 +76,9 @@ function Display(props) {
           <Dropdown.Divider />
           <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
         </DropdownButton>
-      ))} */}
+      ))}
     </div>
   );
 }
 
-export default Display;
+export default ProfileBar;

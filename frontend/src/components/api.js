@@ -18,13 +18,13 @@ const actions = {
   getUser: async () => await axios.get(`${serverUrl}/get-the-user`, createHeaders()),
 
   authenticate: async (profileObj) => {
-    console.log(profileObj, "profileObj");
+    // console.log(profileObj, "profileObj");
     let res = await axios.post(`${serverUrl}/authenticate`, profileObj, createHeaders());
-    console.log(res);
+    // console.log(res);
     localStorage.setItem("token", res.data.token);
     return res;
   },
-  //NOVELS
+
   newNovel: async (novel) => await axios.post(`${serverUrl}/novels`, novel, createHeaders()),
 
   getUserNovels: async (novels) => await axios.get(`${serverUrl}/userNovels`, createHeaders()),
@@ -34,14 +34,13 @@ const actions = {
   newChapter: async (chapter) => await axios.post(`${serverUrl}/chapter`, chapter, createHeaders()),
 
   getChapters: async (novels) => await axios.get(`${serverUrl}/getChapters`, createHeaders()),
-
+  
+  updatechapterArticle: async (article) => await axios.post(`${serverUrl}/chapterArticle`, article, createHeaders()),
+  
   newPlot: async (plot) => await axios.post(`${serverUrl}/plot`, plot, createHeaders()),
 
-  getChapterPlots: async (chapterId) => {
-    return  await axios.get(`${serverUrl}/plots/${chapterId}`, createHeaders())
-    },
+  getChapterPlots: async (chapterId) => await axios.get(`${serverUrl}/plots/${chapterId}`, createHeaders()),
+
 };
-
-
 
 export default actions;

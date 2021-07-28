@@ -1,34 +1,47 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Sidebar.css";
 import actions from "./api";
 import TheContext from ".././TheContext";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 function Sidebar(props) {
-  return (
-    <div>
-      <nav>
-        <Link to="Auth">
-          {/* <img src={user.imageURL} /> */}
-          {props.user?.name}
-        </Link>
-        {/* <label for="Create">New</label>
-        <select name="Create" id="newItem">
-          <option value="Novel">Novel</option>
-          <option value="Chapter">Chapter</option>
-          <option value="Plot">Plot</option>
-          <option value="Character">Character</option>
-        </select> */}
+  let { user, setUser } = useContext(TheContext);
 
-        <Link to="/hub">Hub</Link>
-        <Link to="/community-board">Community Board</Link>
-        <Link to="/canvas">Canvas</Link>
-        <Link to="/novels">Novels</Link>
-        <Link to="/chapters">Chapters</Link>
-        <Link to="/new-characters">Characters</Link>
-        <Link to="/locations">Locations</Link>
-        <Link to="/plots">Plots</Link>
-        <Link to="/scenes">Scenes</Link>
+  return (
+    <div className='sideBar-Container'>
+      <nav  className="sidebar-nav">
+          <div className='profileBar'>
+            <Link to="Auth">
+              <img src={user.imageURL} alt="ProfilePicture" />
+              {props.user?.name}
+            </Link>
+            <Link to="/chapters">Chapters</Link>
+            <Link to="/new-characters">Characters</Link>
+            <Link to="/locations">Locations</Link>
+            <Link to="/plots">Plots</Link>
+            <Link to="/scenes">Scenes</Link>
+          </div>
+        <div className="toolBar">
+          {["Novels", "Chapters", "Characters", "Locations", "Plots", "Scenes"].map((variant) => (
+            <DropdownButton
+              as={ButtonGroup}
+              key={variant}
+              id={`dropdown-variants-${variant}`}
+              variant={variant.toLowerCase()}
+              title={variant}
+            >
+              <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+              <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+              <Dropdown.Item eventKey="3" active>
+                Active Item
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+            </DropdownButton>
+          ))}
+        </div>
       </nav>
     </div>
   );

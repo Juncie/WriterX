@@ -1,3 +1,4 @@
+@import url("https://cdn.quilljs.com/1.3.6/quill.snow.css");
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -8,13 +9,6 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  background: #eeeeee;
-  padding: 1rem;
 }
 
 /* HUB PAGE Copy from here */
@@ -137,4 +131,13 @@ a {
 .ql-editor {
   height: 95vh;
   min-width: 600px;
+}
+
+.novelCanvas {
+  display: flex;
+}
+
+.novelCanvasParent{
+  display: flex;
+  flex-direction: column;
 }
