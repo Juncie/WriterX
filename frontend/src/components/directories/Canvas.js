@@ -43,12 +43,12 @@ function Canvas(props) {
         <div className="eachChapter">
           <Link to={`/chapter/${eachChapter._id}`} key={i}>
             <h5>{eachChapter.title}</h5>
-            <h5>{eachChapter.description}</h5>
           </Link>
+            <h5>{eachChapter.article}</h5>
         </div>
       );
     });
-  };
+  };  
 
   //NOVELS
   useEffect(() => {
@@ -58,6 +58,22 @@ function Canvas(props) {
       setChapters(res.data.chapters);
     }); 
   }, []);
+const [allChapters, setAllChapters] = useState([])
+  
+useEffect(() => {
+    actions.getAllChapters(props.match.params.id).then((res)=>{
+      console.log(res.data);
+      setAllChapters(res.data)
+    })
+  }, []);
+
+const showAllChapters = () => {
+  return allChapters.map((eachAllChapter)=>{
+    return(
+      <div>{eachAllChapter.title}</div>
+    ) 
+  })
+}
 
   const handleChapterChange = (e) => {
     let newChapter = { ...chapter };
@@ -82,22 +98,28 @@ function Canvas(props) {
   };
   //EDITOR STATES
   const [content, setContent] = useState('')
-  const [file, setFile] = useState([])
-//EDITOR ON CHANGE
+//   const [file, setFile] = useState([])
+// //EDITOR ON CHANGE
   const onEditorChange = value => setContent(value)
+  const onEditorSubmit = e => {
+    e.preventDefault()
+   console.log(content);
+   console.log(props.match.params);
+   actions.updatechapterArticle({article: content, novelId: props.match.params.id}).then((res)=>{
+     console.log(res.data);
+   })
+  }
 console.log(content);
-  const onFilesChange = files => setFile(files)
+  // const onFilesChange = files => setFile(files)
  
   //AUTOSAVES
-const autoSave = async () => {
-  actions.updatechapterArticle(props.match.params.chapterId).then((res)=>{
-    console.log(res.data);
-    // chapterId=
- })
-}
+
+//     console.log(res.data);
+//     // chapterId=
+//  })
 // console.log(this.quill.getContents());
 
-// setInterval(autoSave, 15000)
+// setInterval(autoSave, 5000)
 
 
 
@@ -107,30 +129,34 @@ const autoSave = async () => {
            <Sidebar />
         <div className='canvasView'>
           <div>
+            <button onClick={onEditorSubmit}>SAVE ME</button>
+            {/* {showAllChapters()} */}
             {getUserNovel()}
             {showChapters()}
           </div>
           <div className="bars">
-            <form onSubmit={handleChapterSubmit}>
+            {/* <form onSubmit={handleChapterSubmit}>
+              <label for='title'>Title</label>
               <input onChange={handleChapterChange} type="text" name="title" />
-              <input onChange={handleChapterChange} type="textarea" name="description" />
+              <label for='description'>description</label>
+              <input onChange={handleChapterChange} type="textarea" name="description" id='description' />
               <input type="submit" />
-            </form>
+            </form> */}
         </div>
-          <form onSubmit={handlePlotSubmit}>
+          {/* <form onSubmit={handlePlotSubmit}>
           <input onChange={handlePlotChange} type="text" name="title" />
             <input onChange={handlePlotChange} type="text" name="characters" />
             <input onChange={handlePlotChange} type="textarea" name="summary" />
             <input type="submit" />
           </form>
-      
-            <div id="#chapterEditor">
+       */}
+            {/* <div id="#chapterEditor">
               <QuillCanvas
               placeholder={props.match.params.id}
               onEditorChange={onEditorChange}
-              onFilesChange={onFilesChange}
+              // 
               />
-            </div>
+            </div> */}
           </div>
       
     </section>

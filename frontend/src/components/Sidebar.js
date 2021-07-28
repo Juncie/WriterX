@@ -9,12 +9,13 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 function Sidebar(props) {
   let { user, setUser } = useContext(TheContext);
 
+  const userImage = () => user.map(eachUser => <div>{eachUser.id}</div>)
   return (
     <div className='sideBar-Container'>
       <nav  className="sidebar-nav">
           <div className='profileBar'>
             <Link to="Auth">
-              <img src={user.imageURL} alt="ProfilePicture" />
+              {userImage}
               {props.user?.name}
             </Link>
             <Link to="/chapters">Chapters</Link>

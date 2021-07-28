@@ -3,11 +3,8 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 //const Post = require("./models/Suggetions");
 const User = require("./models/User");
-const Characters = require("./models/Characters");
 const Novels = require("./models/Novels");
-const Notes = require("./models/Notes");
 const Chapters = require("./models/Chapters");
-//const Locations = require('./models/Locations')
 const Plots = require("./models/Plots");
 /**ALL OUR BACKEND ROUTES */
 router.get("/", (req, res) => {
@@ -20,22 +17,6 @@ router.get("/get-the-user", authorize, async (req, res) => {
 });
 
 //former add-post
-router.post("/suggestions", authorize, async (req, res) => {
-  let newSuggestion = req.body;
-  newSuggestion.userId = res.locals.user._id;
-  Suggestion.create(newSuggestion).then((post) => {
-    res.json(post);
-  });
-});
-
-router.get("/community-board", (req, res) => {
-  Post.find()
-    .populate("userId")
-    .then((posts) => {
-      res.json(posts);
-    });
-});
-
 router.post("/authenticate", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
 
@@ -79,29 +60,28 @@ router.get("/novel/:novelId", authorize, async (req, res) => {
     });
   });
 
-  router.post("/updatechapterArticle", authorize, async (req, res) => {
+  router.get('/getAllChapters/:novelId', authorize, async (req, res)=>{
+  console.log(req.params.novelId);
+    Chapters.find({novelId: req.params.novelId}).then((allChapters)=>{
+      res.json(allChapters)
+    })  
+  })
+
+  router.post("/chapterArticle", authorize, async (req, res) => {
     let article = req.body;
     console.log("This is your Article", req.body);
-    Chapters.findByIdAndUpdate(article).then((newArticle) => {
+    Chapters.findByIdAndUpdate(req.body.novelId, article, {new: true}).then((newArticle) => {
+      console.log(newArticle);
       res.json(newArticle);
     });
   });
+});
 
-  router.post("/plot", authorize, async (req, res) => {
-    let plot = req.body;
-    console.log(req.body, "This is your plot");
-    Plots.create(plot).then((newPlot) => {
-      res.json(newPlot);
-    });
-  });
-
-  router.get("/plots/:chapterId", authorize, async (req, res) => {
-    // console.log(req, 'THIS IS REQ', res, 'THIS IS RES')
-    Plots.find({ chapterId: req.params.chapterId }).then((plots) => {
-      console.log(plots);
-      res.json(plots);
-    });
-  });
+router.get("/chapters/:chapterId", authorize, async (req, res) => {
+    console.log(req.params, 'THIS IS 81')
+    Chapters.findById(req.params.chapterId).then((chapter)=>{
+      res.json(chapter)
+    })
 });
 
 //Middle ware >>> Put this in the middle of any route where you want to authorize

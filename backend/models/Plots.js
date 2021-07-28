@@ -2,9 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const plotsSchema = new Schema({
   title: String,
-  characters: [String],
+  // characters: [String],
   summary: String,
-  chapterId: { type: Schema.Types.ObjectId, ref: "Chapter" },
+  novelId: { type: Schema.Types.ObjectId, ref: "Novel" },
 });
 
 module.exports = model("Plot", plotsSchema);
