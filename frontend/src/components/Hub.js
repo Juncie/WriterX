@@ -82,7 +82,7 @@ function Hub(props) {
                   </Link>
                 </ol>
               </div>
-              <form className="inputNote">
+              {/* <form className="inputNote">
                 <h4>New Notes</h4>
                 <textarea className="hubNewNote" id="New Notes" placeholder="New Note">
                   <input type="text" placeholder="Title" />
@@ -90,7 +90,7 @@ function Hub(props) {
                 <div>
                   <button>Add New Note</button>
                 </div>
-              </form>
+              </form> */}
             </div>
           </div>
 
