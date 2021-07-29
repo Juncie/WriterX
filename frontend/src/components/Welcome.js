@@ -3,37 +3,39 @@ import { GoogleLogin } from "react-google-login";
 import actions from "./api";
 import TheContext from "../TheContext";
 import { Link } from "react-router-dom";
-import "./Welcome.css";
 
-function Auth(props) {
+
+function Welcome(props) {
   let { getTheUser } = useContext(TheContext);
 
   const responseGoogle = async (response) => {
     console.log(response);
     await actions.authenticate(response.profileObj);
     await getTheUser();
+    props.history.push("/hub");
   };
 
   return (
-    <div>
+    <div id='welcomePage'>
       <div className="header">
-        <div className="logo">
           <h1>WX</h1>
-        </div>
-        <div className="loginButtons">
-          <button>
-            <Link to="/auth">Log In</Link>
-          </button>
-        </div>
       </div>
       <div className="body">
-        <h1>WriterX</h1>
-        <h3>Writing for the People by the People</h3>
-        <button className="join">Join Our Community</button>
+        <h1><span className='writerLogo'>Writer</span>X</h1>
+        <h3>Let Your Inner Creator Glow</h3>
+        <GoogleLogin
+        className='Google-Login'
+        clientId={process.env.REACT_APP_GOOGLEID}
+        buttonText="Start Your Journey"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={"single_host_origin"}
+      />
+
       </div>
       <div className="cb1"></div>
     </div>
   );
 }
 
-export default Auth;
+export default Welcome;

@@ -56,41 +56,25 @@ function Hub(props) {
 
   return (
     // SET DIV CLASS OF NOVELS.MAP TO HUBNOVELS, THE CSS IS ALREADY DONE
-    <div className="Hub">
-      {/* <Sidebar /> */}
-      <h2> {props.user?.name}'s Hub </h2>
-      <button onClick={logOut}>LOGOUT</button>
+    <div id="Hub">
+    <div className='hubContainer'>
+      <Sidebar />
+     
       <section className="hubUserContent">
         <h1>Novels</h1>
         <div className="HubNovels">
           {getEachNovel()}
-
-          <form onSubmit={handleNovelSubmit}>
-            <label for="title">New Novel</label>
-            <input onChange={handleNovelChange} type="text" name="title" />
+        </div>
+        <form onSubmit={handleNovelSubmit}>
+         
+            <input onChange={handleNovelChange} placeholder='Title Your New Novel' type="text" name="title" />
             <input type="submit" />
           </form>
-        </div>
         <section className="hubSection2">
           <div className="hubNotes">
             <div className="parentNewNote">
               <div className="hubNotesList">
-                <ol>
-                  <h4>My Notes</h4>
-                  <Link to="/notes">
-                    <li>Plothole on line 75</li>
-                  </Link>
-                </ol>
               </div>
-              {/* <form className="inputNote">
-                <h4>New Notes</h4>
-                <textarea className="hubNewNote" id="New Notes" placeholder="New Note">
-                  <input type="text" placeholder="Title" />
-                </textarea>
-                <div>
-                  <button>Add New Note</button>
-                </div>
-              </form> */}
             </div>
           </div>
 
@@ -104,6 +88,7 @@ function Hub(props) {
           </div>
         </section>
       </section>
+    </div>
     </div>
   );
 }
