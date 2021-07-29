@@ -210,3 +210,29 @@ transition: all .2s ease-in;
 .novelCanvas {
   display: flex;
 }
+
+
+
+.novelCanvas{
+  /* background:red; */
+  display: flex;
+  height: 100vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#novelEditor textarea {
+  width: 50vw;
+  height: 50vh;
+}
+
+textarea#editor{
+  width: 50vw;
+  height: 50vh;
+}
+
+.showChapters
+, .bars{
+  border: 1px dashed white;
+}
