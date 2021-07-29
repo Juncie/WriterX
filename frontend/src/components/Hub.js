@@ -4,7 +4,6 @@ import actions from "./api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { SplitButton } from "react-bootstrap";
 
 //
 function Hub(props) {
@@ -56,88 +55,56 @@ function Hub(props) {
   };
 
   return (
-    // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
-    <div id='hub'>
-        <Sidebar />
-        <div className='bkrd'></div>
-      <main className='hubMain'>
-        <section className='hubNovelsSect-1'>
-          <div className='hubNovelHeader'>
-            <h1>{user.name}'s Novels</h1>
-          </div>
-          <div className='displayNovels'>
+    // SET DIV CLASS OF NOVELS.MAP TO HUBNOVELS, THE CSS IS ALREADY DONE
+    <div className="Hub">
+      {/* <Sidebar /> */}
+      <h2> {props.user?.name}'s Hub </h2>
+      <button onClick={logOut}>LOGOUT</button>
+      <section className="hubUserContent">
+        <h1>Novels</h1>
+        <div className="HubNovels">
           {getEachNovel()}
-          <h1>...Or</h1>
-          <div className='novelCovers'>
-            <h4>New Novel</h4>
-          </div>
+
+          <form onSubmit={handleNovelSubmit}>
+            <label for="title">New Novel</label>
+            <input onChange={handleNovelChange} type="text" name="title" />
+            <input type="submit" />
+          </form>
         </div>
-        </section>
-        <section className='hubNovelsSect-2'>
-          <div className='hubNotes'>
-            <div className='hubNotesCol-1'>
-              <h4>Notes</h4>
-            </div>
-            <div className='hubNotesCol-2'>
-              <h4>New Note</h4>
-              <form className='newNote'>
-                <textarea style={{resize:'none'}}name='note'placeholder='New Note...' />
+        <section className="hubSection2">
+          <div className="hubNotes">
+            <div className="parentNewNote">
+              <div className="hubNotesList">
+                <ol>
+                  <h4>My Notes</h4>
+                  <Link to="/notes">
+                    <li>Plothole on line 75</li>
+                  </Link>
+                </ol>
+              </div>
+              <form className="inputNote">
+                <h4>New Notes</h4>
+                <textarea className="hubNewNote" id="New Notes" placeholder="New Note">
+                  <input type="text" placeholder="Title" />
+                </textarea>
+                <div>
+                  <button>Add New Note</button>
+                </div>
               </form>
             </div>
           </div>
-          <div className='recentlyEdited'>
-            <div className='recentEditHeader'>
-              <h1>Recently Edited</h1>
-            </div>
-            <div className='recentEditContent'>
-                <h1>Goes Here</h1>
-            </div>
+
+          <div className="hubTasks">
+            <h2>To Do</h2>
+            <input type="checkbox" id="checkbox-1" />
+            <label for="checkbox">Edit Chapter 1</label>
           </div>
-          <div className='Tasks'>
-            <h1>Tasks</h1>
-            <ol>
-              <li>Chapter 1</li>
-              <li>Chapter 2</li>
-            </ol>
+          <div className="hubTasks">
+            <h2>Recently Edited</h2>
           </div>
         </section>
-      </main>
+      </section>
     </div>
   );
 }
 export default Hub;
-
-
-  /* <main className='hubMain'>
-<Sidebar />
-  <div className='hubContainer'>
-<section className="hubUserContent">
-  <div className="HubNovels">
-    <div>
-      <h1>{user.name}'s Novels</h1>
-    </div>
-  <div>
-  </div>
-    {getEachNovel()}
-  </div>
-  <form onSubmit={handleNovelSubmit}>
-      <input onChange={handleNovelChange} placeholder='Title Your New Novel' type="text" name="title" />
-      <input type="submit" />
-    </form>
-    </section>
-  <section className="hubSection2">
-      <div className="parentNewNote">
-        </div>
-    <div className="hubTasks">
-      <h2>To Do</h2>
-      <input type="checkbox" id="checkbox-1" />
-      <label for="checkbox">Edit Chapter 1</label>
-    </div>
-    <div className="hubTasks">
-      <h2>Recently Edited</h2>
-    </div>
-
-</section>
-    </div>
-</main> */
-

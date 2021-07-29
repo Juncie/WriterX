@@ -2,14 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Rambla:wght@700&display=swap");
-
 .App {
   text-align: center;
-  background: whitesmoke;
+  background: #202224;
+  color: whitesmoke
+  
 }
 /* WELCOME *//* WELCOME *//* WELCOME *//* WELCOME *//* WELCOME */
 #welcomePage{
   font-family: Share Tech Mono;
+  color: whitesmoke
 }
 .header {
   height: 100px;
@@ -28,7 +30,7 @@
   color: rgb(74, 54, 255);
 }
 .body {
-  margin: 250px;
+  margin: 250px;;
 }
 .body > h3 {
   font-size: 2em;
@@ -47,29 +49,33 @@
   display: flex;
   align-items: center;
   padding-left: 190px;
+  color: whitesmoke;
 }
 .cb2 {
-  background-color: white;
+  background-color: #181a1b;
   height: 400px;
   display: flex;
   padding-left: 166px;
   padding-right: 220px;
+  color: whitesmoke;
 }
 .cb3 {
-  background-color: whitesmoke;
+  background-color: #202224;
   height: 400px;
   display: flex;
   align-items: center;
   padding-left: 220px;
   padding-right: 166px;
+  color: whitesmoke;
 }
 .cb4 {
-  background-color: white;
+  background-color: #181a1b;
   height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: whitesmoke;
 }
 .description {
   margin: auto;
@@ -98,86 +104,61 @@ footer {
   align-items: center;
   justify-content: space-evenly;
 }
-
-footer {
-  height: 100px;
-  background-color: rgba(28, 106, 207, 1);
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
 /* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR */
-.sidebar-nav {
-  background-image: initial;
-  background-color: rgb(160, 160, 160);
-  display: flex;
-}
-
-.sidebar-nav > img {
-  width: 50px;
-  border-radius: 50%;
-}
-
-.sidebar-nav > a {
-  color: white;
-  text-decoration: none;
-  font-family: 'Red Rose', cursive;
-}
-
-.resourceBar{
-  display: flex;
-  flex-direction: column;
-}
-
-.toolBar{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.profileBar{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background: rgba(68, 68, 68, 0.933);
-}
 .sideBar-Container{
   display: flex;
+  height: 100vh;
+  position: absolute;
+}
+.sideBarCol-1{
+  background: #3b5270;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
+.sideBarCol-1 a {
+  text-decoration: none !important;
+  padding: 5px;
+  color: whitesmoke;
+}
+
+.sideBarCol-2{
+  background: #232e3c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.btn-group-vertical>.btn, .btn-group>.btn {
+  color: white;
+ 
+}
+
+.btn-secondary {
+  background-color: #232e3c !important;
+  border-color: #232e3c !important;
+}
 
 /*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB */
 #hub{
 }
 .hubMain{
   margin: 0px 22em;
-  
+  background: no-repeat url("#")
 }
-
-.hubContainer{
-  display: flex;
+.hubNovelsSect-1{
 }
-.hubUserContent {
-  display: flex;
-  margin: 2em;
-  justify-content: space-between;
-}
-
-.Hub-Novels-Div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.HubNovels {
-  background: wheat;
+.displayNovels{
   display: flex;
   justify-content: space-evenly;
-  align-content: center;
+  overflow-x: scroll;
 }
-
+.displayNovels > h1{
+  align-self: center;
+}
 .novelCovers {
-  background: Grey;
+  background: rgb(135, 133, 255);
   height: 15em;
   width: 10em;
   border-radius: 5px;
@@ -185,94 +166,28 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
-
-.hubSection2 {
-  margin-top: 2em;
-  display: flex;
-  justify-content: space-between;
-}
-.hubNotes {
-  margin: 0;
-  padding: 0%;
-  display: flex;
-  background: burlywood;
-  flex-direction: column;
-}
-
-.hubNotesList {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  height: 25em;
-  background: rgba(49, 40, 40, 1);
-}
-.hubNotesList li {
-  list-style: none;
-  font-size: 12px;
-  height: 4.5em;
-  margin-top: 10px;
-  background: rgba(152, 84, 84, 1);
-}
-.hubNotesList ol {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 0;
-  margin: 0;
-}
-.hubNotesList ol > h4 {
-  color: white;
-}
-
-.hubNotesList::-webkit-scrollbar {
-  width: 5px;
-  background: gray;
-}
-.hubNotesList::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.hubNotesList a {
-  color: black;
-}
-
-.hubNewNotes h4 {
-  align-self: center;
-  padding-left: 1em;
-}
-.hubNewNote {
-  resize: none;
-  width: 25em;
-  height: 75%;
-}
-.inputNoteParent {
-  display: row;
-  flex-direction: column;
-  width: 100%;
-}
-
-.parentNewNote {
-  display: flex;
-}
-
 .novelCovers >a{
   text-decoration: none;
   color: aliceblue;
 }
-
 .novelCovers:hover{
  transform: scale(1.1);
-transition: all .3 ease-in;
+transition: all .2s ease-in;
 }
-
-
+.hubNovelsSect-2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.hubNotes{
+  display: flex;
+}
+.hubNotesCol-1{
+  background: #802b03;
+}
 /* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS */
 .novelCanvas {
   display: flex;
-}
-
-.novelCanvasParent{
-  display: flex;
-  flex-direction: column;
 }
