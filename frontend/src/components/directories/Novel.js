@@ -1,15 +1,14 @@
 import { React, useState, useEffect } from "react";
-import actions from ".././api";
+import actions from "../api";
 import Sidebar from "../Sidebar";
-import ProfileBar from "../ProfileBar";
 import Editor from "../Editor";
 import { Link } from "react-router-dom";
-import "./Canvas.css";
 import QuillCanvas from "../QuillCanvas";
 
 
 
-function Canvas(props) {
+
+function Novel(props) {
   const [novel, setNovel] = useState({});
   const [chapters, setChapters] = useState([]);
   const [plots, setPlots] = useState({});
@@ -91,7 +90,7 @@ const showAllChapters = () => {
 
   const getUserNovel = () => {
     return (
-      <div>
+      <div className='hub-novel-title'>
         <h1>{novel.title}</h1>
       </div>
     );
@@ -110,16 +109,6 @@ const showAllChapters = () => {
    })
   }
 console.log(content);
-  // const onFilesChange = files => setFile(files)
- 
-  //AUTOSAVES
-
-//     console.log(res.data);
-//     // chapterId=
-//  })
-// console.log(this.quill.getContents());
-
-// setInterval(autoSave, 5000)
 
 
 
@@ -164,4 +153,4 @@ console.log(content);
   );
 }
 
-export default Canvas;
+export default Novel;
