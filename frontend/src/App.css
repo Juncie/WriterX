@@ -2,14 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Rambla:wght@700&display=swap");
-
 .App {
   text-align: center;
-  background: whitesmoke;
+  background: #202224;
+  color: whitesmoke
+  
 }
 /* WELCOME *//* WELCOME *//* WELCOME *//* WELCOME *//* WELCOME */
 #welcomePage{
   font-family: Share Tech Mono;
+  color: whitesmoke
 }
 .header {
   height: 100px;
@@ -28,7 +30,7 @@
   color: rgb(74, 54, 255);
 }
 .body {
-  margin: 250px;
+  margin: 250px;;
 }
 .body > h3 {
   font-size: 2em;
@@ -47,29 +49,33 @@
   display: flex;
   align-items: center;
   padding-left: 190px;
+  color: whitesmoke;
 }
 .cb2 {
-  background-color: white;
+  background-color: #181a1b;
   height: 400px;
   display: flex;
   padding-left: 166px;
   padding-right: 220px;
+  color: whitesmoke;
 }
 .cb3 {
-  background-color: whitesmoke;
+  background-color: #202224;
   height: 400px;
   display: flex;
   align-items: center;
   padding-left: 220px;
   padding-right: 166px;
+  color: whitesmoke;
 }
 .cb4 {
-  background-color: white;
+  background-color: #181a1b;
   height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: whitesmoke;
 }
 .description {
   margin: auto;
@@ -98,20 +104,23 @@ footer {
   align-items: center;
   justify-content: space-evenly;
 }
-
-
 /* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR */
 .sideBar-Container{
   display: flex;
   height: 100vh;
   position: absolute;
 }
-
 .sideBarCol-1{
   background: #3b5270;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.sideBarCol-1 a {
+  text-decoration: none !important;
+  padding: 5px;
+  color: whitesmoke;
 }
 
 .sideBarCol-2{
@@ -121,8 +130,15 @@ footer {
   justify-content: space-evenly;
 }
 
+.btn-group-vertical>.btn, .btn-group>.btn {
+  color: white;
+ 
+}
 
-
+.btn-secondary {
+  background-color: #232e3c !important;
+  border-color: #232e3c !important;
+}
 
 /*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB */
 #hub{
@@ -146,13 +162,11 @@ footer {
 .hubNovelsSect-1{
  
 }
-
 .displayNovels{
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
 }
-
 .displayNovels > h1{
   align-self: center;
 }
@@ -172,7 +186,6 @@ footer {
   text-decoration: none;
   color: aliceblue;
 }
-
 .novelCovers:hover{
  transform: scale(1.1);
 transition: all .2s ease-in;
@@ -187,11 +200,9 @@ transition: all .2s ease-in;
   width: 100vw;
   
 }
-
 .hubNotes{
   display: flex;
 }
-
 .hubNotesCol-1{
   background: #802b03;
 }

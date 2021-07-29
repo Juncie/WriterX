@@ -4,7 +4,6 @@ import actions from "./api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { SplitButton } from "react-bootstrap";
 
 //
 function Hub(props) {
@@ -70,10 +69,12 @@ function Hub(props) {
           </div>
           <div className='displayNovels'>
           {getEachNovel()}
-          <h1>...Or</h1>
-          <div className='novelCovers'>
-            <h4>New Novel</h4>
-          </div>
+
+          <form onSubmit={handleNovelSubmit}>
+            <label for="title">New Novel</label>
+            <input onChange={handleNovelChange} type="text" name="title" />
+            <input type="submit" />
+          </form>
         </div>
         </section>
         <section className='hubNovelsSect-2'>
@@ -87,20 +88,14 @@ function Hub(props) {
               </form>
             </div>
           </div>
-          <div className='recentlyEdited'>
-            <div className='recentEditHeader'>
-              <h1>Recently Edited</h1>
-            </div>
-            <div className='recentEditContent'>
-                <h1>Goes Here</h1>
-            </div>
+
+          <div className="hubTasks">
+            <h2>To Do</h2>
+            <input type="checkbox" id="checkbox-1" />
+            <label for="checkbox">Edit Chapter 1</label>
           </div>
-          <div className='Tasks'>
-            <h1>Tasks</h1>
-            <ol>
-              <li>Chapter 1</li>
-              <li>Chapter 2</li>
-            </ol>
+          <div className="hubTasks">
+            <h2>Recently Edited</h2>
           </div>
         </section>
       </main>
@@ -109,38 +104,3 @@ function Hub(props) {
   );
 }
 export default Hub;
-
-
-  /* <main className='hubMain'>
-<Sidebar />
-  <div className='hubContainer'>
-<section className="hubUserContent">
-  <div className="HubNovels">
-    <div>
-      <h1>{user.name}'s Novels</h1>
-    </div>
-  <div>
-  </div>
-    {getEachNovel()}
-  </div>
-  <form onSubmit={handleNovelSubmit}>
-      <input onChange={handleNovelChange} placeholder='Title Your New Novel' type="text" name="title" />
-      <input type="submit" />
-    </form>
-    </section>
-  <section className="hubSection2">
-      <div className="parentNewNote">
-        </div>
-    <div className="hubTasks">
-      <h2>To Do</h2>
-      <input type="checkbox" id="checkbox-1" />
-      <label for="checkbox">Edit Chapter 1</label>
-    </div>
-    <div className="hubTasks">
-      <h2>Recently Edited</h2>
-    </div>
-
-</section>
-    </div>
-</main> */
-

@@ -43,6 +43,8 @@ const actions = {
 
 
 
+  // newLocations: async (locations) => await axios.get(`${serverUrl}/locations`, createHeaders()),
+
 };
 
 export default actions;

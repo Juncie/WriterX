@@ -52,6 +52,7 @@ router.get("/novel/:novelId", authorize, async (req, res) => {
     });
   });
 
+  //CHAPTERS
   router.post("/chapter", authorize, async (req, res) => {
     let chapter = req.body;
     console.log("This is your Chapter", req.body);
