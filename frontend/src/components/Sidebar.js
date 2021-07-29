@@ -19,9 +19,9 @@ function Sidebar(props) {
   const getEachNovel = () => {
     return props.novels.map((eachNovel, i) => {
       return (
-        <div className="novelCovers">
+        <div className="dropdownCovers">
           <Link to={`/novels/${eachNovel._id}`} key={i}>
-            <h5>{eachNovel.title}</h5>
+           {eachNovel.title}
           </Link>
           {/* SET BACKGROUND CHANGE FUNCTION HERE */}
         </div>
@@ -33,9 +33,9 @@ function Sidebar(props) {
   const getEachChapter = () => {
     return props.allChapters.map((eachChapter, i) => {
       return (
-        <div className="novelCovers">
+        <div className="dropdownCovers">
           <Link to={`/chapter/${eachChapter._id}`} key={i}>
-            <h5>{eachChapter.title}</h5>
+            {eachChapter.title}
           </Link>
           {/* SET BACKGROUND CHANGE FUNCTION HERE */}
         </div>
@@ -47,9 +47,9 @@ function Sidebar(props) {
   const getEachCharacter = () => {
     return props.allCharacters.map((eachCharacter, i) => {
       return (
-        <div className="novelCovers">
+        <div className="dropdownCovers">
           {/* <Link to={`/chapter/${eachCharacter._id}`} key={i}> */}
-          <h5>{eachCharacter.name}</h5>
+          {eachCharacter.name}
           {/* </Link> */}
           {/* SET BACKGROUND CHANGE FUNCTION HERE */}
         </div>
@@ -77,7 +77,10 @@ function Sidebar(props) {
         </div> */}
 
       <div className='sideBarCol-2'>
-        <Link to="/hub">Hub</Link>
+        <div className='userinfo'>
+        <Link to="/hub"><img src={user.imageUrl} /><h5>{user.name}</h5></Link>
+        </div>
+        
         <DropdownButton
           id="dropdown-button-dark-example2"
           variant="secondary"

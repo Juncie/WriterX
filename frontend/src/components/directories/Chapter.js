@@ -61,7 +61,7 @@ function Chapters(props) {
         /> */}
       </div>
 
-      <h1>My Chapter{props.match.params.id}</h1>
+      {/* <h1>My Chapter{props.match.params.id}</h1> */}
       <form onSubmit={handleSubmit}>
         <textarea id="editor" value={article} onChange={handleChange} name="content" type="text"></textarea>
         <button>submit</button>
