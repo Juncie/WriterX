@@ -109,7 +109,6 @@
 .hubUserContent {
   display: flex;
   margin: 2em;
-  flex-direction: column;
   justify-content: space-between;
 }
 

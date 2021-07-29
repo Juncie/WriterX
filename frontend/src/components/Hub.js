@@ -61,8 +61,8 @@ function Hub(props) {
       <Sidebar />
      
       <section className="hubUserContent">
-        <h1>Novels</h1>
         <div className="HubNovels">
+        <h1>Novels</h1>
           {getEachNovel()}
         </div>
         <form onSubmit={handleNovelSubmit}>
