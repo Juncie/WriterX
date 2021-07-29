@@ -80,7 +80,7 @@ router.get("/novel/:novelId", authorize, async (req, res) => {
 
 router.get("/chapters/:chapterId", authorize, async (req, res) => {
     console.log(req.params, 'THIS IS 81')
-    Chapters.findById(req.params.chapterId).then((chapter)=>{
+  .findById(req.params.chapterId).then((chapter)=>{
       res.json(chapter)
     })
 });
