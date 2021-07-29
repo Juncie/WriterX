@@ -9,22 +9,23 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 function Sidebar(props) {
   let { user, setUser } = useContext(TheContext);
 
-  const userImage = () => user.map(eachUser => <div>{eachUser.id}</div>)
+  const userImage = () => user.map((eachUser) => <div>{eachUser.id}</div>);
   return (
-    <div className='sideBar-Container'>
-      <nav  className="sidebar-nav">
-          <div className='profileBar'>
-            <Link to="Auth">
-              {userImage}
-              {props.user?.name}
-            </Link>
-            <Link to="/chapters">Chapters</Link>
-            <Link to="/new-characters">Characters</Link>
-            <Link to="/locations">Locations</Link>
-            <Link to="/plots">Plots</Link>
-            <Link to="/scenes">Scenes</Link>
-          </div>
-        <div className="toolBar">
+    <div className="sideBar-Container">
+      {/* <nav className='sideBarNav'> */}
+        <div className='sideBarCol-1'>
+          <Link to="Auth">
+            {userImage}
+            {props.user?.name}
+          </Link>
+          <Link to="/chapters">Chapters</Link>
+          <Link to="/new-characters">Characters</Link>
+          <Link to="/locations">Locations</Link>
+          <Link to="/plots">Plots</Link>
+          <Link to="/scenes">Scenes</Link>
+        </div>
+
+        <div className='sideBarCol-2'>
           {["Novels", "Chapters", "Characters", "Locations", "Plots", "Scenes"].map((variant) => (
             <DropdownButton
               as={ButtonGroup}
@@ -43,7 +44,7 @@ function Sidebar(props) {
             </DropdownButton>
           ))}
         </div>
-      </nav>
+      {/* </nav> */}
     </div>
   );
 }
