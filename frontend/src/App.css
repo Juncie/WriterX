@@ -25,6 +25,7 @@
 }
 .header > h1 {
   font-size: 4em;
+  text-shadow: 3px 3px black;
 }
 .writerLogo{
   color: rgb(74, 54, 255);
@@ -95,8 +96,12 @@ p.description
 .Google-Login{
   width: 25vw;
   justify-content: center;
-  
 }
+
+button.Google-Login {
+  margin-top: 20px;
+}
+
 footer {
   height: 100px;
   background-color: rgba(28, 106, 207, 1);
