@@ -13,8 +13,8 @@ function Novel(props) {
   const [chapters, setChapters] = useState([]);
   const [plots, setPlots] = useState({});
   const [chapter, setChapter] = useState({});
-  
-
+  const [character, setCharacter] = useState({});
+  const [characters, setCharacters] = useState([]);
   //PLOTS POST
   const handlePlotSubmit = async (e) => {
     e.preventDefault();
@@ -27,15 +27,13 @@ function Novel(props) {
     let newPlots = { ...plots };
     newPlots[e.target.name] = e.target.value;
     setPlots(newPlots);
-    
+
   };
 
   //PLOTS GET
   const [onePlot, setOnePlot] = useState({});
 
-  useEffect(() => {
-    console.log(props);
-  }, []);
+
   const showChapters = () => {
     return chapters.map((eachChapter, i) => {
       return (
@@ -43,36 +41,36 @@ function Novel(props) {
           <Link to={`/chapter/${eachChapter._id}`} key={i}>
             <h5>{eachChapter.title}</h5>
           </Link>
-            <h5>{eachChapter.article}</h5>
+          <h5>{eachChapter.article}</h5>
         </div>
       );
     });
-  };  
+  };
+
+
+  const showCharacters = () => {
+    return characters.map((eachCharacter, i) => {
+      return (
+        <div className="eachCharacter">
+          {/* <Link to={`/chapter/${eachCharacter._id}`} key={i}> */}
+          <h5>{eachCharacter.name}</h5>
+          {/* </Link> */}
+          <h5>{eachCharacter.bio}</h5>
+        </div>
+      );
+    });
+  };
 
   //NOVELS
   useEffect(() => {
     actions.getOneNovel(props.match.params.id).then((res) => {
-      console.log(res.data);
+      console.log(res.data, '???');
       setNovel(res.data.novel);
       setChapters(res.data.chapters);
-    }); 
-  }, []);
-const [allChapters, setAllChapters] = useState([])
-  
-useEffect(() => {
-    actions.getAllChapters(props.match.params.id).then((res)=>{
-      console.log(res.data);
-      setAllChapters(res.data)
-    })
+      setCharacters(res.data.characters)
+    });
   }, []);
 
-const showAllChapters = () => {
-  return allChapters.map((eachAllChapter)=>{
-    return(
-      <div>{eachAllChapter.title}</div>
-    ) 
-  })
-}
 
   const handleChapterChange = (e) => {
     let newChapter = { ...chapter };
@@ -84,71 +82,102 @@ const showAllChapters = () => {
   const handleChapterSubmit = async (e) => {
     e.preventDefault();
     chapter.novelId = props.match.params.id;
+    console.log(chapter);
     let res = await actions.newChapter(chapter);
     console.log(res.data);
+
+    let newChapters = [...chapters]
+    newChapters.push(res.data);
+    setChapters(newChapters)
+    props.setAllChapters(newChapters)
+    //
   };
 
   const getUserNovel = () => {
     return (
       <div className='hub-novel-title'>
-        <h1>{novel.title}</h1>
+        <h1>{novel?.title}</h1>
+
       </div>
     );
   };
-  //EDITOR STATES
-  const [content, setContent] = useState('')
-//   const [file, setFile] = useState([])
-// //EDITOR ON CHANGE
-  const onEditorChange = value => setContent(value)
-  const onEditorSubmit = e => {
-    e.preventDefault()
-   console.log(content);
-   console.log(props.match.params);
-   actions.updatechapterArticle({article: content, novelId: props.match.params.id}).then((res)=>{
-     console.log(res.data);
-   })
+
+
+  const handleCharacterChange = e => {
+    let newCharacter = { ...character }
+    newCharacter[e.target.name] = e.target.value
+    setCharacter(newCharacter);
   }
-console.log(content);
 
+  const handleCharacterSubmit = e => {
+    e.preventDefault()
 
+    character.novelId = props.match.params.id
+    actions.addCharacter(character).then(res => {
+      console.log(res.data)
+      let newCharacters = [...characters]
+      newCharacters.push(res.data)
+      setCharacters(newCharacters)
+      props.setAllCharacters(newCharacters)
+    })
 
+  }
   return (
     <div className='novelCanvasParent'>
       <section className='novelCanvas'>
-           <Sidebar />
+        {/* <Sidebar /> */}
         <div className='canvasView'>
-          <div>
-            <button onClick={onEditorSubmit}>SAVE ME</button>
-            {showAllChapters()}
+
+          <div className="bars">
+            <h2>Make a new chapter! </h2>
+            <form onSubmit={handleChapterSubmit}>
+              <label for='title'>Title</label>
+              <input onChange={handleChapterChange} placeholder="Chapter Title" type="text" name="title" />
+              {/* <label for='description'>description</label>
+              <input onChange={handleChapterChange} placeholder="Chapter Description" type="textarea" name="description" id='description' /> */}
+              <input type="submit" />
+            </form>
+
+
+
+            <form onSubmit={handleCharacterSubmit}>
+              <label for='title'>Character</label>
+              <input onChange={handleCharacterChange} placeholder="name" type="text" name="name" />
+              <input onChange={handleCharacterChange} placeholder="bio" type="text" name="bio" />
+              <input onChange={handleCharacterChange} placeholder="description" type="text" name="description" />
+
+
+              <input type="submit" />
+            </form>
+          </div>
+
+          <div className="showChapters">
+            {/* <button onClick={onEditorSubmit}>SAVE ME</button> */}
+            {/* {showAllChapters()} */}
             {getUserNovel()}
             {showChapters()}
+
+            <hr />
+            <h2>Characters:</h2>
+            {showCharacters()}
           </div>
-          <div className="bars">
-            {/* <form onSubmit={handleChapterSubmit}>
-              <label for='title'>Title</label>
-              <input onChange={handleChapterChange} type="text" name="title" />
-              <label for='description'>description</label>
-              <input onChange={handleChapterChange} type="textarea" name="description" id='description' />
-              <input type="submit" />
-            </form> */}
-        </div>
           {/* <form onSubmit={handlePlotSubmit}>
-          <input onChange={handlePlotChange} type="text" name="title" />
+            <input onChange={handlePlotChange} type="text" name="title" />
             <input onChange={handlePlotChange} type="text" name="characters" />
             <input onChange={handlePlotChange} type="textarea" name="summary" />
             <input type="submit" />
-          </form>
-       */}
-            {/* <div id="#chapterEditor">
-              <QuillCanvas
+          </form> */}
+
+          {/* <div id="#chapterEditor">
+            <QuillCanvas
               placeholder={props.match.params.id}
               onEditorChange={onEditorChange}
-              // 
-              />
-            </div> */}
-          </div>
-      
-    </section>
+            // 
+            />
+          </div> */}
+        </div>
+
+      </section>
     </div>
   );
 }

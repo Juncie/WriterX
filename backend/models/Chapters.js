@@ -6,6 +6,7 @@ const chaptersSchema = new Schema({
   article: String,
   description: String,
   novelId: { type: Schema.Types.ObjectId, ref: "Novel" },
+  userId: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
 module.exports = model("Chapter", chaptersSchema);

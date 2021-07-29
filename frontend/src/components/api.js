@@ -33,13 +33,18 @@ const actions = {
 
   newChapter: async (chapter) => await axios.post(`${serverUrl}/chapter`, chapter, createHeaders()),
 
-  getAllChapters: async (novelId) => await axios.get(`${serverUrl}/getAllChapters/${novelId}`, createHeaders()),
-  
-  updatechapterArticle: async (article) => await axios.post(`${serverUrl}/chapterArticle`,  article, createHeaders()),
-  
+  getAllChapters: async () => await axios.get(`${serverUrl}/getAllChapters`, createHeaders()),
+
+  getAllCharacters: async () => await axios.get(`${serverUrl}/getAllCharacters`, createHeaders()),
+
+
+  updatechapterArticle: async (article) => await axios.post(`${serverUrl}/chapterArticle`, article, createHeaders()),
+
   newPlot: async (plot) => await axios.post(`${serverUrl}/plot`, plot, createHeaders()),
 
   getChapter: async (chapterId) => await axios.get(`${serverUrl}/chapters/${chapterId}`, createHeaders()),
+
+  addCharacter: async (character) => await axios.post(`${serverUrl}/character`, character, createHeaders()),
 
 
 

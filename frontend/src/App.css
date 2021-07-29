@@ -147,16 +147,29 @@ footer {
 
 /*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB */
 #hub{
+  height: 100vh;
 }
 .hubMain{
-  margin: 0px 22em;
-  background: no-repeat url("#")
+    display: flex;
+    margin: 0px 10vw;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.bkrd{
+  background-image: url("https://guestpostgeek.com/wp-content/uploads/2019/02/106516868.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 150em;
+  width: 100vw; 
+  margin-bottom: 10vh;
 }
 .hubNovelsSect-1{
+ 
 }
 .displayNovels{
   display: flex;
-  justify-content: space-evenly;
+  overflow-y: hidden;
   overflow-x: scroll;
 }
 .displayNovels > h1{
@@ -171,6 +184,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 5px;
   
 }
 .novelCovers >a{
@@ -181,10 +195,15 @@ footer {
  transform: scale(1.1);
 transition: all .2s ease-in;
 }
+
+
 .hubNovelsSect-2{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  height: 100em;
+  width: 100vw;
+  
 }
 .hubNotes{
   display: flex;
@@ -195,4 +214,30 @@ transition: all .2s ease-in;
 /* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS */
 .novelCanvas {
   display: flex;
+}
+
+
+
+.novelCanvas{
+  /* background:red; */
+  display: flex;
+  height: 100vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#novelEditor textarea {
+  width: 50vw;
+  height: 50vh;
+}
+
+textarea#editor{
+  width: 50vw;
+  height: 50vh;
+}
+
+.showChapters
+, .bars{
+  border: 1px dashed white;
 }

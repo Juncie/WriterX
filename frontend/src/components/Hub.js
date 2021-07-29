@@ -16,17 +16,17 @@ function Hub(props) {
 
   // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
 
-  //Novels
-  const [novels, setNovels] = useState([]);
-  useEffect(() => {
-    actions.getUserNovels().then((res) => {
-      // console.log(res.data);
-      setNovels(res.data);
-    });
-  }, []);
+  // //Novels
+  // const [novels, setNovels] = useState([]);
+  // useEffect(() => {
+  //   actions.getUserNovels().then((res) => {
+  //     // console.log(res.data);
+  //     setNovels(res.data);
+  //   });
+  // }, []);
 
   const getEachNovel = () => {
-    return novels.map((eachNovel, i) => {
+    return props.novels.map((eachNovel, i) => {
       return (
         <div className="novelCovers">
           <Link to={`/novels/${eachNovel._id}`} key={i}>
@@ -48,48 +48,43 @@ function Hub(props) {
 
   const handleNovelSubmit = async (e) => {
     e.preventDefault();
-    console.log(novel);
     let res = await actions.newNovel({ title: novel });
-
-    console.log(res, novel);
+    let newNovs = [...props.novels]
+    newNovs.unshift(res.data)
+    props.setNovels(newNovs)
   };
 
   return (
-    // SET DIV CLASS OF NOVELS.MAP TO HUBNOVELS, THE CSS IS ALREADY DONE
-    <div className="Hub">
+    // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
+    <div id='hub'>
       {/* <Sidebar /> */}
-      <h2> {props.user?.name}'s Hub </h2>
-      <button onClick={logOut}>LOGOUT</button>
-      <section className="hubUserContent">
-        <h1>Novels</h1>
-        <div className="HubNovels">
-          {getEachNovel()}
+      <main className='hubMain'>
 
-          <form onSubmit={handleNovelSubmit}>
-            <label for="title">New Novel</label>
-            <input onChange={handleNovelChange} type="text" name="title" />
-            <input type="submit" />
-          </form>
+        <div className='bkrd'>
+          <h1>{user.name}'s Hub</h1>
         </div>
-        <section className="hubSection2">
-          <div className="hubNotes">
-            <div className="parentNewNote">
-              <div className="hubNotesList">
-                <ol>
-                  <h4>My Notes</h4>
-                  <Link to="/notes">
-                    <li>Plothole on line 75</li>
-                  </Link>
-                </ol>
-              </div>
-              <form className="inputNote">
-                <h4>New Notes</h4>
-                <textarea className="hubNewNote" id="New Notes" placeholder="New Note">
-                  <input type="text" placeholder="Title" />
-                </textarea>
-                <div>
-                  <button>Add New Note</button>
-                </div>
+        <section className='hubNovelsSect-1'>
+          <div className='hubNovelHeader'>
+            <h1>Novels</h1>
+          </div>
+          <div className='displayNovels'>
+            {getEachNovel()}
+
+            <form onSubmit={handleNovelSubmit}>
+              <label for="title">New Novel</label>
+              <input onChange={handleNovelChange} type="text" name="title" />
+              <input type="submit" />
+            </form>
+          </div>
+        </section>
+        {/* <section className='hubNovelsSect-2'>
+          <div className='hubNotes'>
+            <div className='hubNotesCol-1'>
+              <h4>Notes</h4>
+            </div>
+            <div className='hubNotesCol-2'>
+              <form className='newNote'>
+                <textarea style={{ resize: 'none' }} name='note' placeholder='New Note...' />
               </form>
             </div>
           </div>
@@ -102,8 +97,9 @@ function Hub(props) {
           <div className="hubTasks">
             <h2>Recently Edited</h2>
           </div>
-        </section>
-      </section>
+        </section> */}
+      </main>
+
     </div>
   );
 }
