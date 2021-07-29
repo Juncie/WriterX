@@ -4,6 +4,7 @@ import actions from "./api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import { SplitButton } from "react-bootstrap";
 
 //
 function Hub(props) {
@@ -55,41 +56,89 @@ function Hub(props) {
   };
 
   return (
-    // SET DIV CLASS OF NOVELS.MAP TO HUBNOVELS, THE CSS IS ALREADY DONE
-    <div id="Hub">
-    <div className='hubContainer'>
-      <Sidebar />
-     
-      <section className="hubUserContent">
-        <div className="HubNovels">
-        <h1>Novels</h1>
+    // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
+    <div id='hub'>
+        <Sidebar />
+        <div className='bkrd'></div>
+      <main className='hubMain'>
+        <section className='hubNovelsSect-1'>
+          <div className='hubNovelHeader'>
+            <h1>{user.name}'s Novels</h1>
+          </div>
+          <div className='displayNovels'>
           {getEachNovel()}
+          <h1>...Or</h1>
+          <div className='novelCovers'>
+            <h4>New Novel</h4>
+          </div>
         </div>
-        <form onSubmit={handleNovelSubmit}>
-         
-            <input onChange={handleNovelChange} placeholder='Title Your New Novel' type="text" name="title" />
-            <input type="submit" />
-          </form>
-        <section className="hubSection2">
-          <div className="hubNotes">
-            <div className="parentNewNote">
-              <div className="hubNotesList">
-              </div>
+        </section>
+       
+        <section className='hubNovelsSect-2'>
+          <div className='hubNotes'>
+            <div className='hubNotesCol-1'>
+              <h4>Notes</h4>
+            </div>
+            <div className='hubNotesCol-2'>
+              <h4>New Note</h4>
+              <form className='newNote'>
+                <textarea style={{resize:'none'}}name='note'placeholder='New Note...' />
+              </form>
             </div>
           </div>
-
-          <div className="hubTasks">
-            <h2>To Do</h2>
-            <input type="checkbox" id="checkbox-1" />
-            <label for="checkbox">Edit Chapter 1</label>
+          <div className='recentlyEdited'>
+            <div className='recentEditHeader'>
+              <h1>Recently Edited</h1>
+            </div>
+            <div className='recentEditContent'>
+                <h1>Goes Here</h1>
+            </div>
           </div>
-          <div className="hubTasks">
-            <h2>Recently Edited</h2>
+          <div className='Tasks'>
+            <h1>Tasks</h1>
+            <ol>
+              <li>Chapter 1</li>
+              <li>Chapter 2</li>
+            </ol>
           </div>
         </section>
-      </section>
-    </div>
+      </main>
     </div>
   );
 }
 export default Hub;
+
+
+  /* <main className='hubMain'>
+<Sidebar />
+  <div className='hubContainer'>
+<section className="hubUserContent">
+  <div className="HubNovels">
+    <div>
+      <h1>{user.name}'s Novels</h1>
+    </div>
+  <div>
+  </div>
+    {getEachNovel()}
+  </div>
+  <form onSubmit={handleNovelSubmit}>
+      <input onChange={handleNovelChange} placeholder='Title Your New Novel' type="text" name="title" />
+      <input type="submit" />
+    </form>
+    </section>
+  <section className="hubSection2">
+      <div className="parentNewNote">
+        </div>
+    <div className="hubTasks">
+      <h2>To Do</h2>
+      <input type="checkbox" id="checkbox-1" />
+      <label for="checkbox">Edit Chapter 1</label>
+    </div>
+    <div className="hubTasks">
+      <h2>Recently Edited</h2>
+    </div>
+
+</section>
+    </div>
+</main> */
+

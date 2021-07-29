@@ -27,7 +27,7 @@ function App() {
   return (
     <TheContext.Provider value={{ user, setUser, getTheUser }}>
       <div className="App">
-        <i>{user?.name}</i>
+        {/* <i>{user?.name}</i> */}
         <Switch>
           <Route exact path="/" render={(props) => <Welcome {...props} />} />
           <Route exact path="/hub" render={(props) => <Hub {...props} user={user} />} />
