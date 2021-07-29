@@ -4,6 +4,7 @@ import actions from "./api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import ReactCircleModal from 'react-circle-modal'
 
 //
 function Hub(props) {
@@ -14,19 +15,13 @@ function Hub(props) {
     setUser(null);
   };
 
-  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
+  //POP-UP
 
-  //Novels
-  const [novels, setNovels] = useState([]);
-  useEffect(() => {
-    actions.getUserNovels().then((res) => {
-      // console.log(res.data);
-      setNovels(res.data);
-    });
-  }, []);
+  
+// GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
 
   const getEachNovel = () => {
-    return novels.map((eachNovel, i) => {
+    return props.novels.map((eachNovel, i) => {
       return (
         <div className="novelCovers">
           <Link to={`/novels/${eachNovel._id}`} key={i}>
@@ -48,43 +43,61 @@ function Hub(props) {
 
   const handleNovelSubmit = async (e) => {
     e.preventDefault();
-    console.log(novel);
     let res = await actions.newNovel({ title: novel });
-
-    console.log(res, novel);
+    let newNovs = [...props.novels]
+    newNovs.unshift(res.data)
+    props.setNovels(newNovs)
   };
 
+const popUp = () =>{
+ return( 
+   <div className='popUp'>
+      <input type='text' name='title'/>
+      <button>Start a New Adventure</button>
+   </div>
+ )
+}
   return (
     // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
     <div id='hub'>
-        <Sidebar />
+      {/* <Sidebar /> */}
       <main className='hubMain'>
-       
+
         <div className='bkrd'>
           <h1>{user.name}'s Hub</h1>
         </div>
+        
+        
+        
         <section className='hubNovelsSect-1'>
+          
           <div className='hubNovelHeader'>
             <h1>Novels</h1>
           </div>
-          <div className='displayNovels'>
-          {getEachNovel()}
-
-          <form onSubmit={handleNovelSubmit}>
-            <label for="title">New Novel</label>
-            <input onChange={handleNovelChange} type="text" name="title" />
-            <input type="submit" />
-          </form>
-        </div>
-        </section>
-        <section className='hubNovelsSect-2'>
-          <div className='hubNotes'>
-            <div className='hubNotesCol-1'>
-              <h4>Notes</h4>
+          
+          <div className='HubSec-2'>
+            <div className='displayNovels'>
+              {getEachNovel()}
+              <h3 style={{color:'black'}}>Or...</h3>
+            {/* <div>
+             <button className='novelCovers' onClick={popUp}>
+               <h3>New Novel</h3>
+             </button>
+            
+            </div> */}
             </div>
+            <div className='hubNotesCol-1'>
+                <h4>Notes</h4>
+              </div>
+          </div>
+         
+        </section>
+        {/* <section className='hubNovelsSect-2'>
+          <div className='hubNotes'>
+           
             <div className='hubNotesCol-2'>
               <form className='newNote'>
-                <textarea style={{resize:'none'}}name='note'placeholder='New Note...' />
+                <textarea style={{ resize: 'none' }} name='note' placeholder='New Note...' />
               </form>
             </div>
           </div>
@@ -97,9 +110,9 @@ function Hub(props) {
           <div className="hubTasks">
             <h2>Recently Edited</h2>
           </div>
-        </section>
+        </section> */}
       </main>
-    
+
     </div>
   );
 }

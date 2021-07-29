@@ -7,16 +7,17 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 function Sidebar(props) {
-  const [novels, setNovels] = useState([]);
-  useEffect(() => {
-    actions.getUserNovels().then((res) => {
-      // console.log(res.data);
-      setNovels(res.data);
-    });
-  }, []);
+  // const [novels, setNovels] = useState([]);
+  // useEffect(() => {
+  //   actions.getUserNovels().then((res) => {
+  //     // console.log(res.data);
+  //     setNovels(res.data);
+  //   });
+  // }, []);
+  console.log(props)
 
   const getEachNovel = () => {
-    return novels.map((eachNovel, i) => {
+    return props.novels.map((eachNovel, i) => {
       return (
         <div className="novelCovers">
           <Link to={`/novels/${eachNovel._id}`} key={i}>
@@ -29,28 +30,54 @@ function Sidebar(props) {
   };
 
 
+  const getEachChapter = () => {
+    return props.allChapters.map((eachChapter, i) => {
+      return (
+        <div className="novelCovers">
+          <Link to={`/chapter/${eachChapter._id}`} key={i}>
+            <h5>{eachChapter.title}</h5>
+          </Link>
+          {/* SET BACKGROUND CHANGE FUNCTION HERE */}
+        </div>
+      );
+    });
+  };
+
+
+  const getEachCharacter = () => {
+    return props.allCharacters.map((eachCharacter, i) => {
+      return (
+        <div className="novelCovers">
+          {/* <Link to={`/chapter/${eachCharacter._id}`} key={i}> */}
+          <h5>{eachCharacter.name}</h5>
+          {/* </Link> */}
+          {/* SET BACKGROUND CHANGE FUNCTION HERE */}
+        </div>
+      );
+    });
+  };
+
+
   let { user, setUser } = useContext(TheContext);
 
-  
+
   const userImage = () => user.map((eachUser) => <div>{eachUser.id}</div>);
   return (
     <div className="sideBar-Container">
       {/* <nav className='sideBarNav'> */}
-        <div className='sideBarCol-1'>
+      {/* <div className='sideBarCol-1'>
           <Link to="/hub">
           user
-            {/* {userImage}
-            {props.user?.name} */}
+
           </Link>
           <Link to="/novels">Novels</Link>
           <Link to="/chapters">Chapters</Link>
           <Link to="/new-characters">Characters</Link>
-          {/* <Link to="/locations">Locations</Link>
-          <Link to="/plots">Plots</Link>
-          <Link to="/scenes">Scenes</Link> */}
-        </div>
+          
+        </div> */}
 
-        <div className='sideBarCol-2'>
+      <div className='sideBarCol-2'>
+        <Link to="/hub">Hub</Link>
         <DropdownButton
           id="dropdown-button-dark-example2"
           variant="secondary"
@@ -58,9 +85,9 @@ function Sidebar(props) {
           title="Novels"
           className="mt-2"
         >
-        <Dropdown.Item href="#/action-1" active>
-          {getEachNovel()}
-        </Dropdown.Item>
+          <Dropdown.Item href="#/action-1" active>
+            {getEachNovel()}
+          </Dropdown.Item>
         </DropdownButton>
 
         <DropdownButton
@@ -70,9 +97,9 @@ function Sidebar(props) {
           title="Chapters"
           className="mt-2"
         >
-        <Dropdown.Item href="#/action-1" active>
-          chapters
-        </Dropdown.Item>
+          <Dropdown.Item href="#/action-1" active>
+            {getEachChapter()}
+          </Dropdown.Item>
         </DropdownButton>
 
         <DropdownButton
@@ -82,9 +109,9 @@ function Sidebar(props) {
           title="Characters"
           className="mt-2"
         >
-        <Dropdown.Item href="#/action-1" active>
-          Characters
-        </Dropdown.Item>
+          <Dropdown.Item href="#/action-1" active>
+            {getEachCharacter()}
+          </Dropdown.Item>
         </DropdownButton>
 
         {/* <DropdownButton
@@ -99,8 +126,8 @@ function Sidebar(props) {
         </Dropdown.Item>
         </DropdownButton> */}
 
-        
-          {/* {["Novels", "Chapters", "Characters", "Locations", "Plots", "Scenes"].map((variant) => (
+
+        {/* {["Novels", "Chapters", "Characters", "Locations", "Plots", "Scenes"].map((variant) => (
             <DropdownButton
               as={ButtonGroup}
               key={variant}
@@ -117,7 +144,7 @@ function Sidebar(props) {
               <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
             </DropdownButton>
           ))} */}
-        </div>
+      </div>
       {/* </nav> */}
     </div>
   );

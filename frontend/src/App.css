@@ -146,7 +146,6 @@ footer {
 }
 .hubMain{
     display: flex;
-    margin: 0px 10vw;
     height: 100vh;
     flex-direction: column;
 }
@@ -155,9 +154,9 @@ footer {
   background-image: url("https://guestpostgeek.com/wp-content/uploads/2019/02/106516868.jpg");
   background-position: center;
   background-size: cover;
-  height: 150em;
+  height: 35em;
+  margin-bottom: -15em;
   width: 100vw; 
-  margin-bottom: 10vh;
 }
 .hubNovelsSect-1{
  
@@ -166,12 +165,20 @@ footer {
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
+  height: 20em;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  width: inherit;
+  margin: 0 15em;
+  border-radius: 1em;
 }
-.displayNovels > h1{
-  align-self: center;
+
+.displayNovels::-webkit-scrollbar{
+  display: none;
 }
 .novelCovers {
-  background: rgb(135, 133, 255);
+  background: rgb(47, 46, 119);
   height: 15em;
   width: 10em;
   border-radius: 5px;
@@ -179,7 +186,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 5px;
+  margin: 0 10px;
   
 }
 .novelCovers >a{
@@ -204,9 +211,80 @@ transition: all .2s ease-in;
   display: flex;
 }
 .hubNotesCol-1{
-  background: #802b03;
+  background: #371a9e;
+  width: 30em;
 }
 /* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS */
 .novelCanvas {
   display: flex;
+}
+
+.HubSec-2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.novelCanvas{
+  /* background:red; */
+  display: flex;
+  height: 100vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#novelEditor textarea {
+  width: 50vw;
+  height: 50vh;
+}
+
+textarea#editor{
+  width: 50vw;
+  height: 50vh;
+}
+
+.showChapters
+, .bars{
+  border: 1px dashed white;
+}
+
+/* Popup style */
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.box {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #999;
+  overflow: auto;
+}
+
+.close-icon {
+  content: 'x';
+  cursor: pointer;
+  position: fixed;
+  right: calc(15% - 30px);
+  top: calc(100vh - 85vh - 33px);
+  background: #ededed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
 }
