@@ -7,12 +7,10 @@
   text-align: center;
   background: whitesmoke;
 }
-
 /* WELCOME *//* WELCOME *//* WELCOME *//* WELCOME *//* WELCOME */
 #welcomePage{
   font-family: Share Tech Mono;
 }
-
 .header {
   height: 100px;
   display: flex;
@@ -23,18 +21,15 @@
   align-items: flex-start;
   padding: 0 5em;
 }
-
 .header > h1 {
   font-size: 4em;
 }
 .writerLogo{
   color: rgb(74, 54, 255);
 }
-
 .body {
   margin: 250px;
 }
-
 .body > h3 {
   font-size: 2em;
 }
@@ -53,7 +48,6 @@
   align-items: center;
   padding-left: 190px;
 }
-
 .cb2 {
   background-color: white;
   height: 400px;
@@ -61,7 +55,6 @@
   padding-left: 166px;
   padding-right: 220px;
 }
-
 .cb3 {
   background-color: whitesmoke;
   height: 400px;
@@ -70,7 +63,6 @@
   padding-left: 220px;
   padding-right: 166px;
 }
-
 .cb4 {
   background-color: white;
   height: 400px;
@@ -79,30 +71,32 @@
   align-items: center;
   flex-direction: column;
 }
-
 .description {
   margin: auto;
   
 }
-
 .description p {
   margin-top: 20px;
 }
-
 .cb1 img{
   height: 75%;
 }
-
 .cb3 img{
   height: 82%;
   margin-left: 80px;
 }
-
 p.description
 .Google-Login{
   width: 25vw;
   justify-content: center;
   
+}
+footer {
+  height: 100px;
+  background-color: rgba(28, 106, 207, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 footer {
@@ -153,9 +147,11 @@ footer {
 
 
 /*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB */
-#Hub{
-  display: flex;
-  flex-direction: column;
+#hub{
+}
+.hubMain{
+  margin: 0px 22em;
+  
 }
 
 .hubContainer{

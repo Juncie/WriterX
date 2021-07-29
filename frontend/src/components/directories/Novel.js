@@ -119,33 +119,33 @@ console.log(content);
         <div className='canvasView'>
           <div>
             <button onClick={onEditorSubmit}>SAVE ME</button>
-            {/* {showAllChapters()} */}
+            {showAllChapters()}
             {getUserNovel()}
             {showChapters()}
           </div>
           <div className="bars">
-            <form onSubmit={handleChapterSubmit}>
+            {/* <form onSubmit={handleChapterSubmit}>
               <label for='title'>Title</label>
               <input onChange={handleChapterChange} type="text" name="title" />
               <label for='description'>description</label>
               <input onChange={handleChapterChange} type="textarea" name="description" id='description' />
               <input type="submit" />
-            </form>
+            </form> */}
         </div>
-          <form onSubmit={handlePlotSubmit}>
+          {/* <form onSubmit={handlePlotSubmit}>
           <input onChange={handlePlotChange} type="text" name="title" />
             <input onChange={handlePlotChange} type="text" name="characters" />
             <input onChange={handlePlotChange} type="textarea" name="summary" />
             <input type="submit" />
           </form>
-      
-            <div id="#chapterEditor">
+       */}
+            {/* <div id="#chapterEditor">
               <QuillCanvas
               placeholder={props.match.params.id}
               onEditorChange={onEditorChange}
               // 
               />
-            </div>
+            </div> */}
           </div>
       
     </section>
