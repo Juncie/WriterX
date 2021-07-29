@@ -59,11 +59,14 @@ function Hub(props) {
     // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
     <div id='hub'>
         <Sidebar />
-        <div className='bkrd'></div>
       <main className='hubMain'>
+       
+        <div className='bkrd'>
+          <h1>{user.name}'s Hub</h1>
+        </div>
         <section className='hubNovelsSect-1'>
           <div className='hubNovelHeader'>
-            <h1>{user.name}'s Novels</h1>
+            <h1>Novels</h1>
           </div>
           <div className='displayNovels'>
           {getEachNovel()}
@@ -79,7 +82,6 @@ function Hub(props) {
               <h4>Notes</h4>
             </div>
             <div className='hubNotesCol-2'>
-              <h4>New Note</h4>
               <form className='newNote'>
                 <textarea style={{resize:'none'}}name='note'placeholder='New Note...' />
               </form>
@@ -102,6 +104,7 @@ function Hub(props) {
           </div>
         </section>
       </main>
+    
     </div>
   );
 }
