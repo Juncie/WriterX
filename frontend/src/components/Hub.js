@@ -73,7 +73,6 @@ function Hub(props) {
           </div>
         </div>
         </section>
-       
         <section className='hubNovelsSect-2'>
           <div className='hubNotes'>
             <div className='hubNotesCol-1'>
