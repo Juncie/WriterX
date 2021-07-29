@@ -43,7 +43,7 @@ const actions = {
 
 
 
-  newLocations: async (locations) => await axios.get(`${serverUrl}/locations`, createHeaders()),
+  // newLocations: async (locations) => await axios.get(`${serverUrl}/locations`, createHeaders()),
 
 };
 

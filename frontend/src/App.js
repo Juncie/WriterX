@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/novels/:id" render={(props) => <Novel {...props} />} />
           <Route exact path="/chapter/:id" render={(props) => <Chapter {...props} />} />
           <Route exact path="/plot/:id" render={(props) => <Plot {...props} />} />
-          <Route exact path="/locations" render={(props) => <Locations {...props} />} />
+          {/* <Route exact path="/locations" render={(props) => <Locations {...props} />} /> */}
         </Switch>
       </div>
     </TheContext.Provider>
