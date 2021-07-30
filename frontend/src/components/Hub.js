@@ -4,7 +4,7 @@ import actions from "./api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import ReactCircleModal from 'react-circle-modal'
+import Popup from "./Popup";
 
 //
 function Hub(props) {
@@ -13,12 +13,13 @@ function Hub(props) {
   const logOut = () => {
     localStorage.removeItem("token");
     setUser(null);
+    props.history.push("/");
+
   };
 
   //POP-UP
 
-  
-// GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
+  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
 
   const getEachNovel = () => {
     return props.novels.map((eachNovel, i) => {
@@ -33,6 +34,8 @@ function Hub(props) {
     });
   };
 
+  const [open, setOpen] = useState(false);
+
   //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS //POST REQUESTS
 
   //NEW NOVEL
@@ -44,53 +47,57 @@ function Hub(props) {
   const handleNovelSubmit = async (e) => {
     e.preventDefault();
     let res = await actions.newNovel({ title: novel });
-    let newNovs = [...props.novels]
-    newNovs.unshift(res.data)
-    props.setNovels(newNovs)
+    let newNovs = [...props.novels];
+    newNovs.unshift(res.data);
+    props.setNovels(newNovs);
   };
 
-const popUp = () =>{
- return( 
-   <div className='popUp'>
-      <input type='text' name='title'/>
-      <button>Start a New Adventure</button>
-   </div>
- )
-}
   return (
     // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
-    <div id='hub'>
-      {/* <Sidebar /> */}
-      <main className='hubMain'>
-
-        <div className='bkrd'>
+    <div id="hub">
+      <main className="hubMain">
+        <div className="bkrd">
           <h1>{user.name}'s Hub</h1>
+          <button onClick={logOut}><h2>Log Out</h2></button>
         </div>
-        
-        
-        
-        <section className='hubNovelsSect-1'>
-          
-          <div className='hubNovelHeader'>
+
+        <section className="hubNovelsSect-1">
+          <div className="hubNovelHeader">
             <h1>Novels</h1>
           </div>
-          
-          <div className='HubSec-2'>
-            <div className='displayNovels'>
+
+          <div className="HubSec-2">
+            <div className="displayNovels">
               {getEachNovel()}
-              <h3 style={{color:'black'}}>Or...</h3>
-            {/* <div>
-             <button className='novelCovers' onClick={popUp}>
-               <h3>New Novel</h3>
-             </button>
-            
-            </div> */}
-            </div>
-            <div className='hubNotesCol-1'>
-                <h4>Notes</h4>
+              <h3 style={{ color: "black" }}>Or...</h3>
+              <div>
+                <div onClick={() => setOpen(!open)} className="novelCovers">
+                  <h1>New Novel</h1>
+                </div>
+                {open && (
+                  <form className="newNovelCover" onSubmit={handleNovelSubmit} placeholder="title">
+                    <div className="makeNovel">
+                      <h1>New Novel</h1>
+                      <input
+                      style={{width:'35em', height:'2.5em'}}
+                        onChange={handleNovelChange}
+                        type="text"
+                        placeholder="Novel Title"
+                        name="title"
+                      />
+                      <div className='popupControls'>
+                        <button >Create Novel</button>
+                        <button onClick={() => setOpen(false)}>Close</button>
+                      </div>
+                    </div>
+                  </form>
+                )}
               </div>
+            </div>
+            <div className="hubNotesCol-1">
+              <h4>Notes</h4>
+            </div>
           </div>
-         
         </section>
         {/* <section className='hubNovelsSect-2'>
           <div className='hubNotes'>
@@ -112,7 +119,6 @@ const popUp = () =>{
           </div>
         </section> */}
       </main>
-
     </div>
   );
 }
