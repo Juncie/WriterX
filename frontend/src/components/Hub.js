@@ -12,7 +12,7 @@ function Hub(props) {
   const logOut = () => {
     localStorage.removeItem("token");
     setUser(null);
-    props.history.push("/");
+    props.history.push('/');
   };
   //POP-UP
   // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
@@ -83,14 +83,12 @@ const getEachNote = () => {
       <main className="hubMain">
         <div className="bkrd">
           <h1>{user.name}'s Hub</h1>
-          <button onClick={logOut}>
-            <h2>Log Out</h2>
-          </button>
+          <button className='logOutButton' style={{width:'10em', padding:'5px', borderRadius:'10px'}} onClick={logOut}>Log Out</button>
         </div>
 
         <section className="hubNovelsSect-1">
           <div className="hubNovelHeader">
-            <h1>Novels</h1>
+            <h1 >Novels</h1>
           </div>
 
           <div className="HubSec-2">
@@ -99,6 +97,7 @@ const getEachNote = () => {
               <div>
                 <div onClick={() => setOpen(!open)} className="novelCovers">
                   <h3>New Novel</h3>
+                <img src={'https://img.icons8.com/ios11/2x/plus.png'} alt='Add' />
                 </div>
                 {open && (
                   <form className="newNovelCover" onSubmit={handleNovelSubmit} placeholder="title">
@@ -122,7 +121,7 @@ const getEachNote = () => {
             </div>
             <div className="hubNotes">
               <div className="hubNotesCol-1">
-                  <h2>Notes</h2>
+                  <h2 style={{color:'white'}}>Notes</h2>
                 {getEachNote()}
               </div>
               <div className="hubNotesCol-2">

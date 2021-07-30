@@ -7,13 +7,11 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 function Sidebar(props) {
-  // const [novels, setNovels] = useState([]);
-  // useEffect(() => {
-  //   actions.getUserNovels().then((res) => {
-  //     // console.log(res.data);
-  //     setNovels(res.data);
-  //   });
-  // }, []);
+  const logOut = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+    props.history.push("/");
+  };
   console.log(props)
 
   const getEachNovel = () => {
@@ -77,8 +75,10 @@ function Sidebar(props) {
         </div> */}
 
       <div className='sideBarCol-2'>
-        <div className='userinfo'>
-        <Link to="/hub"><img src={user.imageUrl} /><h5>{user.name}</h5></Link>
+        <div>
+          <div className='userinfo'>
+          <Link to="/hub"><img src={user.imageUrl} /><h5>{user.name}</h5></Link>
+          </div>
         </div>
         
         <DropdownButton
