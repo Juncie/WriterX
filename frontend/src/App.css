@@ -585,7 +585,14 @@ button #editor {
  margin-top: 50px;
 }
 
+
 .addChapter input {
+  margin: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.bars input {
   margin: 5px;
   border-radius: 10px;
   text-align: center;

@@ -35,10 +35,10 @@ function Welcome(props) {
         <p>Have easy access to your most recent work as soon as you log in. 
         Always be able to pick up where you started and track goals</p>
         </div>
-        <img src="https://puri.sm/wp-content/uploads/2020/06/librem-14-main-header-image.png" />
+        <img src="https://i.imgur.com/pI0hKds.jpeg"/>
       </div>
       <div className="cb2">
-      <img src="https://www.insight.com/content/dam/insight-web/en_US/store/buy-category/monitor-generic.png" />
+      <img src="https://i.imgur.com/eF6R2tZ.png" />
         <div className="description">
           <h3>Quickly reference</h3>
             <p>Whether it's notes you wrote about a plot, or a photograph to give you inspiration on the character you're writting, quickly reference what you need to inspire yourself and keep going!</p>
@@ -46,10 +46,10 @@ function Welcome(props) {
       </div>
       <div className="cb3">
       <div className="description">
-        <h3>Edit your text</h3>
-        <p>Need emphasis on a certain word or phrase? Fancy headers that keep you organized? We've got you covered! with our text editing toolbar, you can customize your text/notes</p>
+        <h3>Never forget an idea</h3>
+        <p>With the notes section available as soon as you log in, never forget another idea again! You can manage your notes for different novels </p>
         </div>
-        <img src="https://images.anandtech.com/doci/10113/XPS%2017%20pearl.png" />
+        <img src="https://i.imgur.com/USply5S.png" />
       </div>
       <div className="cb4">
         <h3>Join Our Community Today!</h3>
