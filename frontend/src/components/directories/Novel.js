@@ -42,6 +42,7 @@ function Novel(props) {
             <h4>{eachChapter.title}</h4>
           </Link>
           <h5>{eachChapter.article}</h5>
+          <hr />
         </div>
       );
     });
@@ -54,7 +55,7 @@ function Novel(props) {
         <div className="eachCharacter">
           {/* <Link to={`/chapter/${eachCharacter._id}`} key={i}> */}
           <h4>{eachCharacter.name}</h4>
-          {/* </Link> */}
+          <hr />
           <h5>{eachCharacter.bio}</h5>
         </div>
       );
@@ -133,10 +134,11 @@ function Novel(props) {
     <div className='novelCanvasParent'>
       <section className='novelCanvas'>
         <div className='canvasView'>
-
+        
           <div className="bars">
+            <h2 className='deleteNov'>Delete Novel<img width='35px'src='https://img.icons8.com/m_outlined/2x/delete-trash.png' onClick={deleteNovel} alt='Delete'/>
+</h2>
             <h2>Make a new chapter! </h2>
-      <img width='25px'src='https://img.icons8.com/m_outlined/2x/delete-trash.png' onClick={deleteNovel} alt='Delete'/>
             <form onSubmit={handleChapterSubmit}>
               <input onChange={handleChapterChange} placeholder="Chapter Title" type="text" name="title" />
               <input type="submit" />
@@ -158,11 +160,11 @@ function Novel(props) {
 
           <div className="showChapters">
             {getUserNovel()}
+            <hr />
             {showChapters()}
 
-            <hr />
             <h2>Characters:</h2>
-            {showCharacters()}
+            <div>{showCharacters()}</div>
           </div>
   
         </div>

@@ -8,7 +8,7 @@
 
 .App {
   text-align: center;
-  background-image: url('https://cutewallpaper.org/21/dark-gradient-backgrounds/HD-wallpaper-simple-gradient-minimalism-copy-space-.jpg');
+  background-image: url('https://lz12v4f1p8c1cumxnbiqvm10-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/murdered-out-dark-black-gradient.jpg');
   background-size: cover;
   color: whitesmoke
   
@@ -451,6 +451,7 @@ height: 25em;
 /* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS */
 .novelCanvasParent {
   display: flex;
+  width: 100vw;
 }
 
 .novelCanvas {
@@ -509,6 +510,16 @@ hr {
   border: 1px inset #232e3c !important;
 }
 
+.deleteNov > img{
+  padding: 0;
+  margin-left: 5px;
+}
+.deleteNov > img:hover{
+  background: rgba(165, 165, 165, 0.583);
+  cursor: pointer;
+  transform: scale(1.01);
+  padding:1px;
+}
 /* Popup style */
 .popup-box {
   position: fixed;
