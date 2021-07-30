@@ -37,7 +37,8 @@ const actions = {
 
   getAllCharacters: async () => await axios.get(`${serverUrl}/getAllCharacters`, createHeaders()),
 
-
+  deleteOneNovel: async (novelId) => await axios.post(`${serverUrl}/deleteOneNovel`, novelId, createHeaders()),
+  
   updatechapterArticle: async (article) => await axios.post(`${serverUrl}/chapterArticle`, article, createHeaders()),
 
   newPlot: async (plot) => await axios.post(`${serverUrl}/plot`, plot, createHeaders()),
@@ -45,6 +46,8 @@ const actions = {
   getChapter: async (chapterId) => await axios.get(`${serverUrl}/chapters/${chapterId}`, createHeaders()),
 
   addCharacter: async (character) => await axios.post(`${serverUrl}/character`, character, createHeaders()),
+  
+  newNote: async (note) => await axios.post(`${serverUrl}/newNote`, note, createHeaders()),
 
 
 

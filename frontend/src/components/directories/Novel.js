@@ -122,23 +122,26 @@ function Novel(props) {
     })
 
   }
+  const deleteNovel = () => {
+    actions.deleteOneNovel(props.novels).then((res) => {
+      console.log("Deleted", res);
+      props.history.push('/hub')
+    });
+  };
+
   return (
     <div className='novelCanvasParent'>
       <section className='novelCanvas'>
-        {/* <Sidebar /> */}
         <div className='canvasView'>
 
           <div className="bars">
             <h2>Make a new chapter! </h2>
+      <img width='25px'src='https://img.icons8.com/m_outlined/2x/delete-trash.png' onClick={deleteNovel} alt='Delete'/>
             <form onSubmit={handleChapterSubmit}>
               <label for='title'>Title</label>
               <input onChange={handleChapterChange} placeholder="Chapter Title" type="text" name="title" />
-              {/* <label for='description'>description</label>
-              <input onChange={handleChapterChange} placeholder="Chapter Description" type="textarea" name="description" id='description' /> */}
               <input type="submit" />
             </form>
-
-
 
             <form onSubmit={handleCharacterSubmit}>
               <label for='title'>Character</label>
@@ -152,8 +155,6 @@ function Novel(props) {
           </div>
 
           <div className="showChapters">
-            {/* <button onClick={onEditorSubmit}>SAVE ME</button> */}
-            {/* {showAllChapters()} */}
             {getUserNovel()}
             {showChapters()}
 
@@ -161,20 +162,7 @@ function Novel(props) {
             <h2>Characters:</h2>
             {showCharacters()}
           </div>
-          {/* <form onSubmit={handlePlotSubmit}>
-            <input onChange={handlePlotChange} type="text" name="title" />
-            <input onChange={handlePlotChange} type="text" name="characters" />
-            <input onChange={handlePlotChange} type="textarea" name="summary" />
-            <input type="submit" />
-          </form> */}
-
-          {/* <div id="#chapterEditor">
-            <QuillCanvas
-              placeholder={props.match.params.id}
-              onEditorChange={onEditorChange}
-            // 
-            />
-          </div> */}
+  
         </div>
 
       </section>

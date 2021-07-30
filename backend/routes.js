@@ -6,6 +6,7 @@ const User = require("./models/User");
 const Novels = require("./models/Novels");
 const Chapters = require("./models/Chapters");
 const Character = require("./models/Character");
+const Note = require('./models/Note');
 
 const Plots = require("./models/Plots");
 /**ALL OUR BACKEND ROUTES */
@@ -35,7 +36,6 @@ router.post("/authenticate", async (req, res) => {
 
 router.post("/novels", authorize, async (req, res) => {
   let novel = req.body;
-  console.log(req.body, "This is your Novel");
   novel.userId = res.locals.user._id;
   Novels.create(novel).then((newNovel) => {
     res.json(newNovel);
@@ -62,15 +62,12 @@ router.get("/novel/:novelId", authorize, async (req, res) => {
 router.post("/chapter", authorize, async (req, res) => {
   let chapter = req.body;
   chapter.userId = res.locals.user._id
-  console.log("This is your Chapter", req.body);
   Chapters.create(chapter).then((newChapter) => {
     res.json(newChapter);
   });
 });
 
-console.log('wtf!!')
 router.get("/getAllChapters", authorize, async (req, res) => {
-  console.log(' get all ', res.locals.user);
   Chapters.find({ userId: res.locals.user._id }).then((allChapters) => {
     res.json(allChapters)
   })
@@ -78,7 +75,6 @@ router.get("/getAllChapters", authorize, async (req, res) => {
 
 
 router.get("/getAllCharacters", authorize, async (req, res) => {
-  console.log(' get all ', res.locals.user);
   Character.find({ userId: res.locals.user._id }).then((allCharacters) => {
     res.json(allCharacters)
   })
@@ -86,16 +82,13 @@ router.get("/getAllCharacters", authorize, async (req, res) => {
 
 router.post("/chapterArticle", authorize, async (req, res) => {
   let article = req.body;
-  console.log("This is your Article", req.body);
   Chapters.findByIdAndUpdate(req.body.chapterId, article, { new: true }).then((newArticle) => {
-    console.log(newArticle);
     res.json(newArticle);
   });
 });
 // });
 
 router.get("/chapters/:chapterId", authorize, async (req, res) => {
-  console.log(req.params, 'THIS IS 81')
   Chapters.findById(req.params.chapterId).then((chapter) => {
     res.json(chapter)
   })
@@ -106,6 +99,19 @@ router.post('/character', authorize, async (req, res) => {
   req.body.userId = res.locals.user._id
   Character.create(req.body).then(character => {
     res.json(character)
+  })
+})
+
+router.post('/deleteOneNovel', authorize, async (req, res)=>{
+  console.log(req.params.novelId);
+  Novels.deleteOne({novelId: req.params.novelId}).then((deletedNovel)=>{
+    console.log('You Deleted', deletedNovel);
+  })
+})
+router.post('/newNote', authorize, async (req, res)=>{
+  note.userId = res.locals.user._id;
+  Note.create(req.body).then((newNote)=>{
+    console.log('You Created a new note!', deletedNovel);
   })
 })
 

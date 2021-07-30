@@ -4,7 +4,6 @@ import actions from "./api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import Popup from "./Popup";
 
 //
 function Hub(props) {
@@ -16,20 +15,22 @@ function Hub(props) {
     props.history.push("/");
 
   };
-
   //POP-UP
-
   // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
 
   const getEachNovel = () => {
     return props.novels.map((eachNovel, i) => {
       return (
-        <div className="novelCovers">
-          <Link to={`/novels/${eachNovel._id}`} key={i}>
-            <h5>{eachNovel.title}</h5>
-          </Link>
-          {/* SET BACKGROUND CHANGE FUNCTION HERE */}
+        <div>
+          <div className="novelCovers">
+            <Link to={`/novels/${eachNovel._id}`} key={i}>
+              <h5>{eachNovel.title}</h5>
+              {console.log(eachNovel._id)}
+            </Link>
+            {/* SET BACKGROUND CHANGE FUNCTION HERE */}
+          </div>
         </div>
+
       );
     });
   };
@@ -51,6 +52,26 @@ function Hub(props) {
     newNovs.unshift(res.data);
     props.setNovels(newNovs);
   };
+  console.log(props.novels);
+
+  //NEW NOTE
+  const [note, setNote] = useState({});
+
+  const handleNoteChange = (e) => {
+    setNote(([e.target.name] = e.target.value));
+  };
+
+  const handleNoteSubmit = async (e) => {
+    e.preventDefault();
+    let res = await actions.newNote({ note });
+    let newNote = [...props.Notes];
+    newNote.unshift(res.data);
+    props.setNote(newNote);
+  };
+  console.log(props.novels);
+
+  
+
 
   return (
     // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
@@ -94,8 +115,18 @@ function Hub(props) {
                 )}
               </div>
             </div>
-            <div className="hubNotesCol-1">
-              <h4>Notes</h4>
+            <div className="hubNotes">
+              <div className='hubNotesCol-1'>
+                <h4>Notes</h4>
+              </div>
+              <div className='hubNotesCol-2'>
+                  <form onSubmit={handleNoteSubmit}>
+                    <input type='text' name='title' placeholder='title your note' />
+                    <textarea onChange={handleNoteChange} placeholder='new note...' type='textarea' name='note'>
+                      </textarea>
+                      <button >Add Note</button>
+                      </form>
+              </div>
             </div>
           </div>
         </section>

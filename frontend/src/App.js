@@ -26,7 +26,6 @@ function App() {
 
 
 
-  console.log("persistance")
 
   useEffect(() => {
     actions.getUserNovels().then((res) => {
@@ -34,7 +33,6 @@ function App() {
       setNovels(res.data);
     });
 
-    console.log("fire")
 
     actions.getAllChapters().then(res => {
       console.log(res)
@@ -55,7 +53,6 @@ function App() {
     getTheUser();
   }, []);
 
-  console.log(novels)
 
   return (
     <TheContext.Provider value={{ user, setUser, getTheUser }}>
