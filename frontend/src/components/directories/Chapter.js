@@ -55,8 +55,8 @@ function Chapters(props) {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <textarea id="editor" value={article} onChange={handleChange} name="content" type="text"></textarea>
         <button>submit</button>
+        <textarea id="editor" value={article} onChange={handleChange} name="content" type="text"></textarea>
       </form>
     </div>
   );

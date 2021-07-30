@@ -552,9 +552,11 @@ hr {
 /* TEXT AREA TEXT AREA TEXT AREA TEXT AREA TEXT AREA */
 textarea#editor {
   width: 90vw;
-  height: 90vh;
+  overflow-y: scroll;
+  height: 91.2vh;
   margin-left: 200px;
-  padding:80px;
+  padding: 80px;
+  resize: none;
 }
 
 button #editor {
