@@ -18,7 +18,7 @@ function Welcome(props) {
       </div>
       <div className="body">
         <h1><span className='writerLogo'>Writer</span>X</h1>
-        <h3>Let Your Inner Creator Glow</h3>
+        <h3>Let Your Inner Creator Shine</h3>
         <GoogleLogin
         className='Google-Login'
         clientId={process.env.REACT_APP_GOOGLEID}

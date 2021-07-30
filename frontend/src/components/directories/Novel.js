@@ -39,9 +39,9 @@ function Novel(props) {
       return (
         <div className="eachChapter">
           <Link to={`/chapter/${eachChapter._id}`} key={i}>
-            <h4>{eachChapter.title}</h4>
-          </Link>
+            <h1>{eachChapter.title}</h1>
           <h5>{eachChapter.article}</h5>
+          </Link>
           <hr />
         </div>
       );
@@ -126,7 +126,7 @@ function Novel(props) {
   const deleteNovel = () => {
     actions.deleteOneNovel(props.novels).then((res) => {
       console.log("Deleted", res);
-      props.history.push('/hub')
+      props.history.goBack();
     });
   };
 

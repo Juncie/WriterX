@@ -146,23 +146,26 @@ button.Google-Login {
   color: whitesmoke;
   white-space: nowrap;
   text-overflow: ellipsis;
-  /* width: 100px; */
+  width: 150px;
   display: block;
   overflow: hidden;
 }
 .userinfo {
   display: flex;
+
 }
 
+.userinfo > button{
+  background: #232e3c;
+}
 
+.hubMain {
+  color: #181a1b;
+  font-weight: bold;
+}
 .btn-group-vertical>.btn, .btn-group>.btn {
   color: white;
  
-}
-
-.btn-secondary {
-  background-color: #232e3c !important;
-  border-color: #232e3c !important;
 }
 
 /*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB */
@@ -211,6 +214,8 @@ button.Google-Login {
 .btn-secondary {
   background-color: #232e3c !important;
   border-color: #232e3c !important;
+  width: 12em;
+  height: 3em;
 }
 
 div.dropdown-menu.show {
@@ -375,7 +380,7 @@ color: #fff;
   justify-content: center;
 }
 .hubNotesCol-1{
-  background: #2c1e1e;
+  background: #1c1e26;  
   width: 15em;
   height: 25em;
   overflow-y: scroll;
@@ -395,11 +400,16 @@ color: #fff;
 }
 
 .hubNotesCol-1::-webkit-scrollbar-thumb{
-  background: #57444c;
+  background: #181a1b;
 }
 
 .hubNotesCol-1::-webkit-scrollbar-thumb:hover{
   background: #6a6a6a;
+}
+
+.logOutButton:hover{
+  transform: scale(1.02);
+  transition: all .1s ease-in;
 }
 
 .hubNotesCol-2 > form {
@@ -477,6 +487,7 @@ textarea#editor{
   height: 50vh;
   background: #34373a;
   border: none;
+  font-size: 1.3em;
 }
 
 #editor {
@@ -631,4 +642,14 @@ cursor:initial;
 .showChapters {
   word-break: break-word;
   padding: 50px 125px;
+  overflow-y: scroll;
+}
+
+.hub-novel-title> h1{
+  font-size: 5em;
+}
+
+.eachChapter > h2{
+  font-size: 5em;
+  background-color: crimson;
 }
