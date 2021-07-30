@@ -342,7 +342,7 @@ color: #fff;
   transition: .02s all ease-in;
 }
 .makeNovel{
-  background: rgba(0, 0, 0, 0);
+  background: #1b2733;
   font-family: Share Tech Mono;
   height: 30em;
   position: relative;
@@ -367,16 +367,6 @@ color: #fff;
 }
 
 /* Animation */
-.makeNovel-start-off {
-  transition: height 0s ease-in 0;
-}
-.makeNovel-start-on {
-  transition: height 0s ease-in .5s;
-}
-.makeNovel--show {
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-}
 /* NOTES NOTES NOTES NOTES NOTES NOTES NOTES NOTES NOTES NOTES NOTES*/
 
 .hubNotes{
