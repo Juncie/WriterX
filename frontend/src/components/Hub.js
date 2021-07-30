@@ -13,7 +13,6 @@ function Hub(props) {
     localStorage.removeItem("token");
     setUser(null);
     props.history.push("/");
-
   };
   //POP-UP
   // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS  // GET REQUESTS
@@ -22,18 +21,26 @@ function Hub(props) {
     return props.novels.map((eachNovel, i) => {
       return (
         <div>
+            <Link style={{textDecoration:'none'}}to={`/novels/${eachNovel._id}`} key={i}>
           <div className="novelCovers">
-            <Link to={`/novels/${eachNovel._id}`} key={i}>
-              <h5>{eachNovel.title}</h5>
-              {console.log(eachNovel._id)}
-            </Link>
-            {/* SET BACKGROUND CHANGE FUNCTION HERE */}
+              <h3>{eachNovel.title}</h3>
           </div>
+            </Link>
         </div>
-
       );
     });
   };
+console.log(props);
+  
+const getEachNote = () => {
+    return props.allNotes.map((eachNote, i)=>{
+      return(
+        <div className='eachNote'>
+          {eachNote.title}
+        </div>
+      )
+    })
+  }
 
   const [open, setOpen] = useState(false);
 
@@ -52,26 +59,23 @@ function Hub(props) {
     newNovs.unshift(res.data);
     props.setNovels(newNovs);
   };
-  console.log(props.novels);
 
   //NEW NOTE
   const [note, setNote] = useState({});
 
   const handleNoteChange = (e) => {
-    setNote(([e.target.name] = e.target.value));
+    let newContent = { ...note };
+    newContent[e.target.name] = e.target.value;
+    setNote(newContent);
   };
-
+  console.log(note);
   const handleNoteSubmit = async (e) => {
     e.preventDefault();
-    let res = await actions.newNote({ note });
-    let newNote = [...props.Notes];
-    newNote.unshift(res.data);
-    props.setNote(newNote);
+    let res = await actions.newNote(note);
+    let newcontent = [...props.contents];
+    newcontent.unshift(res.data);
+    props.setContent(newcontent);
   };
-  console.log(props.novels);
-
-  
-
 
   return (
     // SET DIV CLASS OF NOVELS.MAP TO novelCovers, THE CSS IS ALREADY DONE
@@ -79,7 +83,9 @@ function Hub(props) {
       <main className="hubMain">
         <div className="bkrd">
           <h1>{user.name}'s Hub</h1>
-          <button onClick={logOut}><h2>Log Out</h2></button>
+          <button onClick={logOut}>
+            <h2>Log Out</h2>
+          </button>
         </div>
 
         <section className="hubNovelsSect-1">
@@ -90,23 +96,22 @@ function Hub(props) {
           <div className="HubSec-2">
             <div className="displayNovels">
               {getEachNovel()}
-              <h3 style={{ color: "black" }}>Or...</h3>
               <div>
                 <div onClick={() => setOpen(!open)} className="novelCovers">
-                  <h1>New Novel</h1>
+                  <h3>New Novel</h3>
                 </div>
                 {open && (
                   <form className="newNovelCover" onSubmit={handleNovelSubmit} placeholder="title">
                     <div className="makeNovel">
                       <h1>New Novel</h1>
                       <input
-                      style={{width:'35em', height:'2.5em'}}
+                        style={{ width: "35em", height: "2.5em" }}
                         onChange={handleNovelChange}
                         type="text"
                         placeholder="Novel Title"
                         name="title"
                       />
-                      <div className='popupControls'>
+                      <div className="popupControls">
                         <button >Create Novel</button>
                         <button onClick={() => setOpen(false)}>Close</button>
                       </div>
@@ -116,16 +121,26 @@ function Hub(props) {
               </div>
             </div>
             <div className="hubNotes">
-              <div className='hubNotesCol-1'>
-                <h4>Notes</h4>
+              <div className="hubNotesCol-1">
+                  <h2>Notes</h2>
+                {getEachNote()}
               </div>
-              <div className='hubNotesCol-2'>
-                  <form onSubmit={handleNoteSubmit}>
-                    <input type='text' name='title' placeholder='title your note' />
-                    <textarea onChange={handleNoteChange} placeholder='new note...' type='textarea' name='note'>
-                      </textarea>
-                      <button >Add Note</button>
-                      </form>
+              <div className="hubNotesCol-2">
+                <form onSubmit={handleNoteSubmit}>
+                  <input
+                    onChange={handleNoteChange}
+                    type="text"
+                    name="title"
+                    placeholder="title your note"
+                  />
+                  <textarea
+                    onChange={handleNoteChange}
+                    placeholder="new note..."
+                    type="textarea"
+                    name="content"
+                  ></textarea>
+                  <button>Add Note</button>
+                </form>
               </div>
             </div>
           </div>

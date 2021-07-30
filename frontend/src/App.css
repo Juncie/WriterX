@@ -1,10 +1,15 @@
 /* @import url("https://cdn.quilljs.com/1.3.6/quill.snow.css"); */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Rambla:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap');
+
 .App {
   text-align: center;
-  background: #202224;
+  background-image: url('https://cutewallpaper.org/21/dark-gradient-backgrounds/HD-wallpaper-simple-gradient-minimalism-copy-space-.jpg');
+  background-size: cover;
   color: whitesmoke
   
 }
@@ -127,11 +132,12 @@ button.Google-Login {
   margin-top: 20px;
 }
 .sideBarCol-2{
-  background: #232e3c;
+  background: #0e0e10fd;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 150px;
+  justify-content: space-evenly;
+  width: 200px;
+  align-items: center;
 }
 
 .sideBarCol-2 a {
@@ -162,6 +168,8 @@ button.Google-Login {
 /*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB *//*HUB */
 #hub{
   height: 100vh;
+  font-weight: bolder;
+  font-family: 'PT Sans Narrow', sans-serif;
 }
 .hubMain{
     display: flex;
@@ -223,12 +231,12 @@ div.dropdown-menu.show {
 
 
 .bkrd{
-  background-image: url("https://guestpostgeek.com/wp-content/uploads/2019/02/106516868.jpg");
-  background-position: center;
+  background-image: url("https://c4.wallpaperflare.com/wallpaper/46/374/498/coffee-cappuccino-cafes-rain-wallpaper-preview.jpg");
+  background-position:center;
+  background-repeat: no-repeat;
   background-size: cover;
   height: 35em;
   margin-bottom: -15em;
-  width: 100vw; 
 }
 .hubNovelsSect-1{
  
@@ -240,8 +248,7 @@ div.dropdown-menu.show {
   height: 20em;
   justify-content: center;
   align-items: center;
-  background: white;
-  width: inherit;
+  background: #1c1e26;  
   margin: 0 15em;
   border-radius: 1em;
 }
@@ -261,15 +268,17 @@ div.dropdown-menu.show {
   width: 1em;
 }
 .novelCovers {
-  background: rgb(47, 46, 119);
+  background: rgb(52, 51, 123);
   height: 15em;
   width: 10em;
+  color: wheat;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 10px;
+  overflow: hidden;
   }
 
 
@@ -280,6 +289,7 @@ div.dropdown-menu.show {
 .novelCovers:hover{
  transform: scale(1.1);
 transition: all .2s ease-in;
+color: #fff;
 }
 
 
@@ -372,11 +382,34 @@ transition: all .2s ease-in;
 .hubNotes{
   display: flex;
   margin: 2em 15em;
-  height: 25em;
+  justify-content: center;
 }
 .hubNotesCol-1{
-  background: #371a9e;
+  background: #2c1e1e;
   width: 15em;
+  height: 25em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.hubNotesCol-1 > h2 {
+  padding: 10px;
+}
+
+.hubNotesCol-1::-webkit-scrollbar{
+  width: 7px;
+  background: #181a1b;
+}
+.hubNotesCol-1::-webkit-scrollbar-track{
+  background: #181a1b;
+}
+
+.hubNotesCol-1::-webkit-scrollbar-thumb{
+  background: #57444c;
+}
+
+.hubNotesCol-1::-webkit-scrollbar-thumb:hover{
+  background: #6a6a6a;
 }
 
 .hubNotesCol-2 > form {
@@ -384,6 +417,7 @@ background: rgb(30, 46, 5);
 height: 25em;
 display: flex;
 flex-direction: column;
+
 }
 .hubNotesCol-2 {
   width: 25em;
@@ -395,8 +429,30 @@ height: 25em;
   height: 23em;
 }
 
+.eachNote{
+  background: #985454;
+  margin: 10px 0;
+  padding: 5px 0;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.eachNote:hover{
+  transform: scale(1.04);
+  color: #4980fc;
+  transition: ease-in all .1s;
+}
 
 /* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS */
+.novelCanvasParent {
+  display: flex;
+}
+
 .novelCanvas {
   display: flex;
 }
@@ -416,14 +472,41 @@ height: 25em;
   flex-direction: column;
 }
 
-#novelEditor  {
+#novelEditor textarea {
   width: 50vw;
   height: 50vh;
 }
 
+#novelEditor h1 {
+  font-family: 'Gowun Batang', serif;
+}
+
+textarea#editor{
+  width: 50vw;
+  height: 50vh;
+  background: #34373a;
+  border: none;
+}
+
+#editor {
+  font-family: 'Gowun Batang', serif;
+  color: whitesmoke;
+}
+
 .showChapters
 , .bars{
-  border: 1px dashed white;
+  border: 1px inset #232e3c;
+  font-family: 'Gowun Batang', serif;
+  
+}
+
+.showChapters a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+hr {
+  border: 1px inset #232e3c !important;
 }
 
 /* Popup style */
@@ -469,7 +552,7 @@ height: 25em;
 textarea#editor {
   width: 90vw;
   height: 90vh;
-  margin-left: 150px;
+  margin-left: 200px;
   padding:80px;
 }
 
@@ -477,3 +560,65 @@ button #editor {
   width: 50px;
 }
 
+.canvasView {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: 200px;
+  height: 100vh;
+}
+
+.addChapter  {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  /* font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; */
+}
+
+.bars h2{
+ margin-top: 50px;
+}
+
+.addChapter input {
+  margin: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.addChapter textarea {
+  margin: 5px;
+  border-radius: 10px;
+  height: 100px;
+  text-align: center;
+  resize: none;
+  height: 20vh;
+  overflow-y: scroll;
+}
+
+.addChapter textarea::-webkit-scrollbar{
+  width: 15px;
+  background:#1c193050;
+  cursor: pointer;
+}
+.addChapter textarea::-webkit-scrollbar-thumb{
+background:#21195750 ;
+cursor:initial;
+}
+
+.addChapter textarea::-webkit-scrollbar-thumb:hover{
+  background:#30238050 ;
+
+}
+
+.addChapter label {
+  font-size: 18px;
+  margin-top: 100px;
+}
+
+.showChapters {
+  word-break: break-word;
+  padding: 50px 125px;
+}

@@ -23,6 +23,7 @@ function App() {
   const [novels, setNovels] = useState([]);
   const [allChapters, setAllChapters] = useState([]);
   const [allCharacters, setAllCharacters] = useState([]);
+  const [allNotes, setAllNotes] = useState([]);
 
 
 
@@ -45,6 +46,11 @@ function App() {
       setAllCharacters(res.data);
     })
 
+    actions.getAllNotes().then(res=>{
+      console.log(res);
+      setAllNotes(res.data)
+    })
+
 
   }, []);
 
@@ -58,11 +64,11 @@ function App() {
     <TheContext.Provider value={{ user, setUser, getTheUser }}>
       <div className="App">
         {/* <i>{user?.name}</i> */}
-        {user?.name && <Sidebar novels={novels} allChapters={allChapters} allCharacters={allCharacters} />}
+        {user?.name && <Sidebar novels={novels} allChapters={allChapters} allCharacters={allCharacters} setAllNotes={setAllNotes} allNotes={allNotes} />}
         <Switch>
           <Route exact path="/" render={(props) => <Welcome {...props} />} />
-          <Route exact path="/hub" render={(props) => <Hub {...props} setNovels={setNovels} novels={novels} user={user} />} />
-          <Route exact path="/novels/:id" render={(props) => <Novel {...props} setAllChapters={setAllChapters} setAllCharacters={setAllCharacters} />} />
+          <Route exact path="/hub" render={(props) => <Hub {...props} setNovels={setNovels} novels={novels} user={user} setAllNotes={setAllNotes} allNotes={allNotes} />} />
+          <Route exact path="/novels/:id" render={(props) => <Novel {...props} setAllChapters={setAllChapters} setAllCharacters={setAllCharacters}  />} />
           <Route exact path="/chapter/:id" render={(props) => <Chapter {...props} />} />
           <Route exact path="/plot/:id" render={(props) => <Plot {...props} />} />
           {/* <Route exact path="/locations" render={(props) => <Locations {...props} />} /> */}

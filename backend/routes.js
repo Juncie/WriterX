@@ -103,15 +103,22 @@ router.post('/character', authorize, async (req, res) => {
 })
 
 router.post('/deleteOneNovel', authorize, async (req, res)=>{
-  console.log(req.params.novelId);
+  // console.log(req.body.userId);
   Novels.deleteOne({novelId: req.params.novelId}).then((deletedNovel)=>{
     console.log('You Deleted', deletedNovel);
   })
 })
 router.post('/newNote', authorize, async (req, res)=>{
-  note.userId = res.locals.user._id;
+  let note = req.body;
+  note.userId = res.locals.user._id
   Note.create(req.body).then((newNote)=>{
-    console.log('You Created a new note!', deletedNovel);
+    console.log('You Created a new note!', newNote);
+  })
+})
+router.get("/getAllNotes", authorize, async (req, res) => {
+  Note.find({ userId: res.locals.user._id }).then((allNotes) => {
+    console.log('These are your notes', allNotes);
+    res.json(allNotes)
   })
 })
 

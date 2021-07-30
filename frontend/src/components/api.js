@@ -49,6 +49,9 @@ const actions = {
   
   newNote: async (note) => await axios.post(`${serverUrl}/newNote`, note, createHeaders()),
 
+  getAllNotes: async () => await axios.get(`${serverUrl}/getAllNotes`, createHeaders()),
+
+
 
 
   // newLocations: async (locations) => await axios.get(`${serverUrl}/locations`, createHeaders()),

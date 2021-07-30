@@ -39,7 +39,7 @@ function Novel(props) {
       return (
         <div className="eachChapter">
           <Link to={`/chapter/${eachChapter._id}`} key={i}>
-            <h5>{eachChapter.title}</h5>
+            <h4>{eachChapter.title}</h4>
           </Link>
           <h5>{eachChapter.article}</h5>
         </div>
@@ -53,7 +53,7 @@ function Novel(props) {
       return (
         <div className="eachCharacter">
           {/* <Link to={`/chapter/${eachCharacter._id}`} key={i}> */}
-          <h5>{eachCharacter.name}</h5>
+          <h4>{eachCharacter.name}</h4>
           {/* </Link> */}
           <h5>{eachCharacter.bio}</h5>
         </div>
@@ -138,16 +138,18 @@ function Novel(props) {
             <h2>Make a new chapter! </h2>
       <img width='25px'src='https://img.icons8.com/m_outlined/2x/delete-trash.png' onClick={deleteNovel} alt='Delete'/>
             <form onSubmit={handleChapterSubmit}>
-              <label for='title'>Title</label>
               <input onChange={handleChapterChange} placeholder="Chapter Title" type="text" name="title" />
               <input type="submit" />
             </form>
 
-            <form onSubmit={handleCharacterSubmit}>
+
+
+            <form onSubmit={handleCharacterSubmit} className="addChapter">
               <label for='title'>Character</label>
               <input onChange={handleCharacterChange} placeholder="name" type="text" name="name" />
-              <input onChange={handleCharacterChange} placeholder="bio" type="text" name="bio" />
-              <input onChange={handleCharacterChange} placeholder="description" type="text" name="description" />
+              <textarea onChange={handleCharacterChange} placeholder="bio" type="text" name="bio" />
+              <textarea onChange={handleCharacterChange} placeholder="description" type="text" name="description" />
+
 
 
               <input type="submit" />
