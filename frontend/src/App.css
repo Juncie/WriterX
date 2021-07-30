@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Rambla:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap');
+
 .App {
   text-align: center;
   background: #202224;
@@ -131,7 +134,8 @@ button.Google-Login {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 150px;
+  width: 200px;
+  /* font-family: 'Gowun Batang', serif; */
 }
 
 .sideBarCol-2 a {
@@ -348,6 +352,10 @@ transition: all .2s ease-in;
 
 }
 /* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS *//* NOVELS */
+.novelCanvasParent {
+  display: flex;
+}
+
 .novelCanvas {
   display: flex;
 }
@@ -372,14 +380,35 @@ transition: all .2s ease-in;
   height: 50vh;
 }
 
+#novelEditor h1 {
+  font-family: 'Gowun Batang', serif;
+}
+
 textarea#editor{
   width: 50vw;
   height: 50vh;
+  background: #34373a;
+  border: none;
+}
+
+#editor {
+  font-family: 'Gowun Batang', serif;
+  color: whitesmoke;
 }
 
 .showChapters
 , .bars{
-  border: 1px dashed white;
+  border: 1px inset #232e3c;
+  font-family: 'Gowun Batang', serif;
+}
+ 
+.showChapters a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+hr {
+  border: 1px inset #232e3c !important;
 }
 
 /* Popup style */
@@ -425,7 +454,7 @@ textarea#editor{
 textarea#editor {
   width: 90vw;
   height: 90vh;
-  margin-left: 150px;
+  margin-left: 200px;
   padding:80px;
 }
 
@@ -433,3 +462,45 @@ button #editor {
   width: 50px;
 }
 
+.canvasView {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: 200px;
+  height: 100vh;
+}
+
+.addChapter  {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  /* font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; */
+}
+
+.bars h2{
+ margin-top: 50px;
+}
+
+.addChapter input {
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.addChapter textarea {
+  margin: 5px;
+  border-radius: 10px;
+  height: 100px;
+}
+
+.addChapter label {
+  font-size: 18px;
+  margin-top: 100px;
+}
+
+.showChapters {
+  word-break: break-word;
+  padding: 50px 125px;
+}
