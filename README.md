@@ -1,2 +1,2 @@
 # WriterX
-A writing platform for the People by the People
+All of your Creativity in one place.
